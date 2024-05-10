@@ -24,9 +24,9 @@ So this is the overview of our website where people can save the income they are
 1. **Fork and Clone the Repository**
    To get started with contributing to our project, fork the repo and then clone it to your local machine:
       ```bash
-         git clone https://github.com/usha-madithati/esmart.github.io
-            cd esmart.github.io
-               ```
+        git clone https://github.com/usha-madithati/esmart.github.io
+        cd esmart.github.io
+      ```
 
 2. **Make Your Changes**
  Make the necessary modifications or additions to the project files.
@@ -45,11 +45,10 @@ So this is the overview of our website where people can save the income they are
  ### Contributing
 
 We love your input! We want to make contributing to this project as easy and transparent as possible, whether it's:
-                                       - Reporting a bug
-                                       - Discussing the current state of the code
-                                       - Submitting a fix
-               
-                                       - Proposing new features
+- Reporting a bug
+- Discussing the current state of the code
+- Submitting a fix
+- Proposing new features
 
 ![Smart saver Infographic](https://camo.githubusercontent.com/dd5e3080a7adc2ead8f86cbbd6577cee0a38439c0ebf195021ce41587b0a405f/68747470733a2f2f6d69726f2e6d656469756d2e636f6d2f6d61782f313430302f312a633459675258595161794f5657785633376f757272772e706e67)
 
