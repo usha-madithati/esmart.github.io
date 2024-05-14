@@ -1,0 +1,108 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    height: 100%;
+}
+.logo img {
+    height: 100px;
+    width: 100px;
+    margin: 10px;
+
+}
+.logo h5{
+    color: white;
+    margin-left: 10px;
+    font-size: 1.5rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.navbar {
+    min-height: 100%;
+    max-height: 100%;
+    background: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    height: 70px;
+    margin-bottom: 50px;
+}
+
+nav ul {
+    display: flex;
+}
+
+nav ul li {
+    list-style: none;
+}
+
+ul li a {
+    text-decoration: none;
+    color: rgb(231, 75, 75);
+    margin: 10px;
+    font-weight: 1000;
+    font-size: 20px;
+    transition: .5s;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+ul li a:hover {
+    background: rgb(94, 36, 105);
+    border-radius: 20px;
+    color: white;
+}
+.container{
+    display: flex;
+    height: 370px;
+    border: 1px solid black;
+    margin: auto;
+    padding: 50px 60px;
+    width: 700px;
+    background: url(../food.jpg);
+}
+.contact-form{
+    margin-right: 40px;
+    border-right: 1px solid white;
+    padding-right: 90px;
+}
+.contact-form h4{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    color: white;
+}
+.contact-form input{
+    border: none;
+    border-bottom: 1px solid black;
+    height: 30px;
+    width: 200px;
+}
+.contact-form label{
+    color: white;
+    font-weight: 500;
+    font-size: 1rem;
+}
+textarea{
+    width: 266px;
+    height: 135px;
+    margin-bottom: 25px;
+}
+.text-side p{
+    margin-bottom: 10px;
+    color: white;
+}
+.Message{
+    font-weight: 600;
+}
+.button{
+    padding: 10px 30px;
+    margin: 0px 80px;
+    background-color: rgb(231, 78, 103);
+    border: none;
+    border: 2px solid rgb(231, 78, 103);
+}
