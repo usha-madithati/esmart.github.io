@@ -22,6 +22,7 @@ Share your feedback and insights with the Smart Savers community. Your reviews h
 Effortlessly scan QR codes to access instant product information, including ingredients, pricing, and environmental impact.
 ## Others: 
 Explore additional pages including product manaagement sections, learn more and benefits of the same.
+##Here is the figma design of our project.
 
  https://www.figma.com/design/naU9W2cQQa04wB6WsEjkr2/Untitled?node-id=0%3A1&t=DazRyOMA1k4rRDTr-1
 ## Tech Stack Used
