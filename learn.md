@@ -114,5 +114,5 @@ This project uses the MIT license; see the details in the [LICENSE.txt](./LICENS
 <a name="contactus"></a>
 ## Contact Us
 
-For queries related to this project, submit an issue via GitHub or contact us directly through email internship@csedge.courses. Our team will be happy to assist you further. Happy coding!
+For queries related to this project, submit an issue via GitHub or contact us directly through email ushamadithati712@gmail.com. Our team will be happy to assist you further. Happy coding!
 
