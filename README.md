@@ -23,17 +23,7 @@ Effortlessly scan QR codes to access instant product information, including ingr
 ## Others: 
 Explore additional pages including product manaagement sections, learn more and benefits of the same.
 
-![image](https://github.com/kanikaa-3018/esmart.github.io/assets/98574423/13e3ebe3-e93d-454f-b9c8-f6a38d2b774d)
-![image](https://github.com/kanikaa-3018/esmart.github.io/assets/98574423/2f744e4d-ef52-42a9-b2b5-553468d2164d)
-![image](https://github.com/kanikaa-3018/esmart.github.io/assets/98574423/e7b6ccd0-98ea-4263-8423-9a98eba2f38e)
-![image](https://github.com/kanikaa-3018/esmart.github.io/assets/98574423/fff873dd-7a06-408e-82e4-e2fdde4cf477)
-![image](https://github.com/kanikaa-3018/esmart.github.io/assets/98574423/6d90c4bd-a637-4c65-9afb-ab11b249dd55)
-![image](https://github.com/kanikaa-3018/esmart.github.io/assets/98574423/a94dfb7e-546c-42e2-b7d0-2648311836d7)
-![image](https://github.com/kanikaa-3018/esmart.github.io/assets/98574423/b614e9ad-23ea-462f-9817-29c0bb671efb)
-![image](https://github.com/kanikaa-3018/esmart.github.io/assets/98574423/d64e86ad-8ee5-4c93-a1e4-d6ef96b7162e)
-
-
-
+ https://www.figma.com/design/naU9W2cQQa04wB6WsEjkr2/Untitled?node-id=0%3A1&t=DazRyOMA1k4rRDTr-1
 ## Tech Stack Used
 
 1. HTML5
