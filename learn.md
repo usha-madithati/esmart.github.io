@@ -4,7 +4,7 @@ Welcome to Smart Saver, an e-commerce website focused on HTML5, CSS, JavaScript 
 
 # **Table Of Contents**
 
-## 1. [Getting Started](usha-madithati/esmart.github.io/learn.md)
+## 1. [Getting Started](usha-madithati/esmart.github.io/main/learn.md)
 
  - Prerequisites
  * Installation
