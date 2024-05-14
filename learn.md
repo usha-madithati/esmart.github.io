@@ -1,5 +1,5 @@
 # Smart Saver
-Welcome to Smart Saver, an e-commerce website  focused on HTML5, CSS, JavaScript (JS), and Bootstrap. This repository offeres various users to keep track of their product's status. Through our website users can easily track their product's expiration date by getting notified through their mobile phones.
+Welcome to Smart Saver, an e-commerce website  focused on saving each rupee of users which they spend on household items. This repository offeres various users to keep track of their product's status. Through our website users can easily track their product's expiration date by getting notified through their mobile phones.
 ## Table Of Contents
 
 1. **[Getting Started](#gettingstarted)**
