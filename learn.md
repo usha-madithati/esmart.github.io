@@ -26,7 +26,7 @@ Welcome to Smart Saver, an e-commerce website focused on HTML5, CSS, JavaScript 
 ## 5. [Bootstrap](usha-madithati/esmart.github.io/learn.md)
  - Introduction
  * Resources
-## 6. [Contribution Guidelines](usha-madithati/esmart.github.io/lContribution Guidelines.md)
+## 6. [Contribution Guidelines](usha-madithati/esmart.github.io/Contribution Guidelines.md)
 ## 7. [Code of Conduct](usha-madithati/esmart.github.io/CODE_OF_CONDUCT.md)
 ## 8. [License](usha-madithati/esmart.github.io/LICENSE.md)
 ## 9. [Contact Us](usha-madithati/esmart.github.io/blob/main/CODE_OF_CONDUCT.md)
