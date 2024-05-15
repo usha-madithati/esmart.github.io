@@ -2,7 +2,7 @@ import React from 'react'
 import '../Login/Login.css'
 import { FaPhoneAlt } from 'react-icons/fa';
 import { FaKey } from "react-icons/fa";
-import logo from "../../assets/logo.png"
+import logo from "../../assets/logo1.png"
 
 
 export default function Login() {
