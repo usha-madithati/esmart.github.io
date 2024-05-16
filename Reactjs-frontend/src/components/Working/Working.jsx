@@ -3,7 +3,28 @@ import "./Working.css";
 import image1 from "../../assets/login.png";
 import image2 from "../../assets/export.png";
 import image3 from "../../assets/device.png";
+
 function Working() {
+  const working_data = [
+    {
+      image: image1,
+      heading: "Login to you account",
+      description:
+        "  Log in to your SmartSaver account and unlock eco-friendly savings today",
+    },
+    {
+      image: image2,
+      heading: "Scan QR code of product",
+      description:
+        "  Scan the QR code of the product to get started instantly.",
+    },
+    {
+      image: image3,
+      heading: "Grant Device Access",
+      description:
+        "  Real-time product tracking and updates. Stay connected to your purchases effortlessly.",
+    },
+  ];
   return (
     <div className="working_main">
       <div className="working_heading">
@@ -11,47 +32,19 @@ function Working() {
         <h3 className="font">follow the instructions for more</h3>
       </div>
       <div className="working_instructions">
-        <div className="elem">
-          <div className="elem_top">
-            <img src={image1} alt="" />
+        {working_data.map((items, index) => (
+          <div className="elem">
+            <div className="elem_top">
+              <img src={items.image} alt="" />
+            </div>
+            <div className="elem_heading">
+              <h1 className="font">{items.heading}</h1>
+            </div>
+            <div className="elem_desc">
+              <p className="font">{items.description}</p>
+            </div>
           </div>
-          <div className="elem_heading">
-            <h1 className="font">Login to you account</h1>
-          </div>
-          <div className="elem_desc">
-            <p className="font">
-              Log in to your SmartSaver account and unlock eco-friendly savings
-              today.
-            </p>
-          </div>
-        </div>
-        <div className="elem">
-          <div className="elem_top">
-            <img src={image2} alt="" />
-          </div>
-          <div className="elem_heading">
-            <h1 className="font">Scan QR code of product</h1>
-          </div>
-          <div className="elem_desc">
-            <p className="font">
-              Scan the QR code of the product to get started instantly.
-            </p>
-          </div>
-        </div>
-        <div className="elem">
-          <div className="elem_top">
-            <img src={image3} alt="" />
-          </div>
-          <div className="elem_heading">
-            <h1 className="font">Grant Device Access</h1>
-          </div>
-          <div className="elem_desc">
-            <p className="font">
-              Real-time product tracking and updates. Stay connected to your
-              purchases effortlessly.
-            </p>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );
