@@ -10,6 +10,8 @@
   width: 50%;
   height: 100%;
   display: flex;
+  /* background-color: red; */
+  padding-left: 5vw;
   flex-direction: column;
   justify-content: space-between;
 }
@@ -101,6 +103,6 @@
 }
 .para {
   font-size: 0.9vw;
-  width: 81%;
+  width: 90%;
   opacity: 0.8;
 }
