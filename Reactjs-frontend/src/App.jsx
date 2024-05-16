@@ -3,14 +3,14 @@ import viteLogo from '/vite.svg'
 
 import Navbar from './components/Navbar/Navbar'
 import Hero from './components/Hero/Hero'
+import Working from './components/Working/Working'
 
 
 
 function App() {
   return (
     <>
-      <Navbar />
-      <Hero />
+      <Working/>
 
     </>
   )
