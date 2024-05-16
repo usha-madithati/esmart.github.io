@@ -1,18 +1,35 @@
-.signup-section {
+.contact-section {
     height: 100vh;
 }
 
-.signup-section .container {
+.contact-section .container {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     height: 100%;
     width: 100%;
 }
-.logo{
+
+.title {
+    text-align: center;
+    font-size: 3rem;
+    color: black;
+}
+
+#paragraph {
+    font-size: 18px;
+    opacity: 50%;
+    color: black;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.logo {
     height: 65px;
     margin-bottom: 0.5rem;
 }
+
 .form {
     background-color: white;
     padding: 1rem 2rem;
@@ -26,17 +43,20 @@
     width: 100%;
 }
 
-.signup {
+.contact {
     color: #0FA958;
     display: block;
     font-weight: bold;
     font-size: 2.25rem;
+    margin-top: 0.5rem;
 }
-.signup-para{
+
+.contact-para {
     color: #507763;
     margin-bottom: 1rem;
 }
-.input-div{
+
+.input-div {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -46,9 +66,10 @@
     border-radius: 10px;
     padding: 0rem 1rem;
 }
+
 .form-input {
     width: 100%;
-    padding: 1rem;    
+    padding: 1rem;
     outline: none;
     border: none;
     background-color: #EDF7ED;
@@ -60,7 +81,7 @@
     outline: none;
 }
 
-.login-button {
+.submit-button {
     width: 100%;
     padding: 1rem;
     border-radius: 10px;
@@ -71,35 +92,20 @@
     font-size: 17px;
     font-weight: bold;
     font-family: "Be Vietnam Pro", sans-serif;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     margin-top: 0.5rem;
 }
 
-.login-button:hover {
+.submit-button:hover {
     background-color: #0b8544;
     cursor: pointer;
 }
-.signup-button{
-    width: 100%;
-    padding: 1rem;
-    border-radius: 10px;
-    color: #0FA958;
-    background-color: #ffffff;
-    cursor: pointer;
-    transition: all 0.5s;
-    font-size: 17px;
-    font-weight: bold;
-    font-family: "Be Vietnam Pro", sans-serif;
-    border: 1px solid #0FA958;
-    margin-bottom: 0.5rem;
-}
-.signup-button:hover {
-    background-color: #0b8544;
-    cursor: pointer;
-    color: white;
-    border: 1px solid #0b8544;
-}
-.icon{
+
+.icon {
     opacity: 50%;
     color: black;
+}
+
+#message-icon {
+    margin-bottom: 5.2rem;
 }

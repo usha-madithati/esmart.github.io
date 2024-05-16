@@ -15,7 +15,7 @@
 }
 .form {
     background-color: white;
-    padding: 2rem;
+    padding: 1rem 2rem;
     border-radius: 30px;
     display: flex;
     flex-direction: column;
@@ -31,11 +31,10 @@
     display: block;
     font-weight: bold;
     font-size: 2.25rem;
-    margin-bottom: 0.2rem;
 }
 .signin-para{
     color: #507763;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 .input-div{
     width: 100%;
@@ -73,7 +72,7 @@
     font-weight: bold;
     font-family: "Be Vietnam Pro", sans-serif;
     margin-bottom: 1rem;
-    margin-top: 1.25rem;
+    margin-top: 0.5rem;
 }
 
 .login-button:hover {
@@ -92,6 +91,7 @@
     font-weight: bold;
     font-family: "Be Vietnam Pro", sans-serif;
     border: 1px solid #0FA958;
+    margin-bottom: 0.5rem;
 }
 .signup-button:hover {
     background-color: #0b8544;
