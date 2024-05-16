@@ -10,10 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "locomotive-scroll": "^5.0.0-beta.12",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.2.1",
-    "react-router-dom": "^6.23.1"
+    "react-router-dom": "^6.23.1",
+    "swiper": "^11.1.3"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
