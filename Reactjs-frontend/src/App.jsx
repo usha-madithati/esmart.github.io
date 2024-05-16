@@ -11,10 +11,10 @@ import Management from './components/Management/Management'
 function App() {
   return (
     <>
-      {/* <Navbar />
-      <Hero/> */}
+      <Navbar />
+      <Hero/>
       <Working />
-      {/* <Management/> */}
+      <Management/>
 
     </>
   )

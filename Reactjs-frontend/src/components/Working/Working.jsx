@@ -33,7 +33,7 @@ function Working() {
       </div>
       <div className="working_instructions">
         {working_data.map((items, index) => (
-          <div className="elem">
+          <div key={index} className="elem">
             <div className="elem_top">
               <img src={items.image} alt="" />
             </div>
