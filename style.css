@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+
+
+}
+
+.navbar {
+    min-height: 150px;
+    max-width: 100%;
+   /* background-color: black;*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header {
+    min-height: 100vh;
+    max-width: 100%;
+    background-image: url(https://tse3.mm.bing.net/th?id=OIP.lYslLxm3sZkmg85A4YkykwHaDl&pid=Api&P=0&h=180);
+    background-repeat: no-repeat;
+    background-position: right;
+    display: flex;
+    flex-direction: column;
+    gap: 150px;
+}
+
+.logo img {
+    height: 150px;
+    width: 150px;
+    margin: 10px;
+}
+
+
+
+ul {
+    display: flex;
+}
+
+li {
+    list-style: none;
+}
+
+ul li a {
+    text-decoration: none;
+    color: black;
+    background: peachpuff;
+    padding: 10px 20px;
+    margin: 10px;
+    border: 2px solid blueviolet;
+    font-weight: 1000;
+    font-variant: small-caps;
+    letter-spacing: 1px;
+    transition: .5s;
+
+}
+
+ul li a:hover {
+    background: rgb(102, 36, 105);
+    border-radius: 20px;
+    letter-spacing: 2px;
+    color: black;
+}
+
+
+
+h1 {
+    color: black;
+    text-align: center;
+    font-size: 90px;
+}
+
+lucky {
+    color: deeppink;
+    font-size: 100px;
+    font-weight: 1000;
+    font-variant: small-caps;
+    letter-spacing: 1.5px;
+}
