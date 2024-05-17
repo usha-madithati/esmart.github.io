@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Toggle switch styles */
+input:checked ~ .dot {
+    transform: translateX(100%);
+    background-color: #4CAF50;
+  }
+  
