@@ -26,7 +26,7 @@ function Working() {
     },
   ];
   return (
-    <div className="working_main">
+    <div className="working_main" id="about">
       <div className="working_heading">
         <h1 className="font">how smart saver works</h1>
         <h3 className="font">follow the instructions for more</h3>

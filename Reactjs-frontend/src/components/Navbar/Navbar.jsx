@@ -6,7 +6,7 @@ function Navbar() {
   const [active, setactive] = useState(false);
   const pages = [
     { name: "home", path: "/" },
-    { name: "about", path: "/about" },
+    { name: "about", path: "/about" ,},
     { name: "login", path: "/login" },
     { name: "scan qr", path: "/scan" },
     { name: "get notified", path: "/notified" },

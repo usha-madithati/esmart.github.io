@@ -51,29 +51,3 @@ section {
   position: relative;
   overflow: hidden;
 }
-
-section .title {
-  position: relative;
-  text-align: center;
-  font-size: 3rem;
-  font-weight: bold;
-  margin-bottom: 60px;
-  padding-bottom: 20px;
-  font-family: "Be Vietnam Pro", sans-serif;
-}
-
-section .title::before {
-  content: "";
-  position: absolute;
-  bottom: 0px;
-  left: 50%;
-  width: 500px;
-  height: 5px;
-  background: #0159ed;
-  background: linear-gradient(
-    to right,
-    rgba(255, 94, 247, 1) 17.8%,
-    rgba(2, 245, 255, 1) 100.2%
-  );
-  transform: translateX(-50%);
-}
