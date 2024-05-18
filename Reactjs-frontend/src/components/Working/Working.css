@@ -1,0 +1,60 @@
+.working_main {
+  margin-top: 5vw;
+  width: 100%;
+  height: 60vh;
+
+}
+.working_heading {
+  width: 100%;
+  text-align: center;
+}
+.working_heading h1 {
+  font-size: 3vw;
+  text-transform: capitalize;
+}
+.working_heading h3 {
+  text-transform: capitalize;
+  opacity: 0.7;
+}
+.working_instructions {
+  width: 100%;
+  margin-top: 1vw;
+  height: 78%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5vw;
+}
+.elem {
+  width: 15%;
+  height: 90%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+.elem_top {
+  width: 100%;
+  height: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.elem_top img {
+  width: 20%;
+}
+.elem_heading {
+  width: 100%;
+}
+.elem_heading h1 {
+  font-size: 1.5vw;
+  text-align: center;
+}
+.elem_desc {
+  margin-top: 0.5vw;
+  width: 100%;
+}
+.elem_desc p {
+  text-align: center;
+  font-size: 1.1vw;
+  opacity: 0.7;
+}

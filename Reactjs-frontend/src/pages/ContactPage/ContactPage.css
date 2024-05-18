@@ -1,0 +1,111 @@
+.contact-section {
+    height: 100vh;
+}
+
+.contact-section .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.title {
+    text-align: center;
+    font-size: 3rem;
+    color: black;
+}
+
+#paragraph {
+    font-size: 18px;
+    opacity: 50%;
+    color: black;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.logo {
+    height: 65px;
+    margin-bottom: 0.5rem;
+}
+
+.form {
+    background-color: white;
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 5px 5px 15px -1px rgba(0, 0, 0, 0.75);
+    font-family: "Be Vietnam Pro", sans-serif;
+    max-width: 500px;
+    width: 100%;
+}
+
+.contact {
+    color: #0FA958;
+    display: block;
+    font-weight: bold;
+    font-size: 2.25rem;
+    margin-top: 0.5rem;
+}
+
+.contact-para {
+    color: #507763;
+    margin-bottom: 1rem;
+}
+
+.input-div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #EDF7ED;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    padding: 0rem 1rem;
+}
+
+.form-input {
+    width: 100%;
+    padding: 1rem;
+    outline: none;
+    border: none;
+    background-color: #EDF7ED;
+    font-family: "Be Vietnam Pro", sans-serif;
+    font-size: 17px;
+}
+
+.form-input:focus {
+    outline: none;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 10px;
+    color: white;
+    background-color: #0FA958;
+    cursor: pointer;
+    transition: all 0.5s;
+    font-size: 17px;
+    font-weight: bold;
+    font-family: "Be Vietnam Pro", sans-serif;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.submit-button:hover {
+    background-color: #0b8544;
+    cursor: pointer;
+}
+
+.icon {
+    opacity: 50%;
+    color: black;
+}
+
+#message-icon {
+    margin-bottom: 5.2rem;
+}
