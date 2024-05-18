@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const CustomerVoices = () => {
   return (
@@ -68,6 +69,7 @@ const CustomerVoices = () => {
           </div>
         </div>
       </div>
+      <Footer></Footer>
     </>
   );
 };

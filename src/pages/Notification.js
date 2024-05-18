@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const NotificationSettings = () => {
   return (
@@ -94,6 +95,7 @@ const NotificationSettings = () => {
           </div>
         </div>
       </div>
+      <Footer></Footer>
     </>
   );
 };
