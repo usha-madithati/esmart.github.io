@@ -10,7 +10,7 @@ After scanning , the users will have to give access to their mobile devices in o
 The users even have chance to set alaram in prior of 2 days or 5 days or 15 days.
 So this is the overview of our website where people can save the income they are spending on dalily product purchase.
 
-Try our web application: https://esmartgit.vercel.app/
+Try our web application: [https://esmartgit.vercel.app/](https://esmart-github-io-oq3w.vercel.app/)
 
 ## Figma Prototypes and Designs
 Key Features
@@ -73,7 +73,7 @@ We love your input! We want to make contributing to this project as easy and tra
  - Check and test whole website application and its functionality
  - Add the live hosted link of changed website things in your PR
 
-Try our web application here: https://esmartgit.vercel.app/
+Try our web application here: [https://esmartgit.vercel.app/](https://esmart-github-io-oq3w.vercel.app/)
 
 ![Smart saver Infographic](https://camo.githubusercontent.com/dd5e3080a7adc2ead8f86cbbd6577cee0a38439c0ebf195021ce41587b0a405f/68747470733a2f2f6d69726f2e6d656469756d2e636f6d2f6d61782f313430302f312a633459675258595161794f5657785633376f757272772e706e67)
 
