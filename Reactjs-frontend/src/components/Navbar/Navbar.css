@@ -4,16 +4,21 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.18);
+  background-color: white;
 }
+
 .navbar-left img {
   width: 7%;
 }
+
 .navbar-left {
   display: flex;
   align-items: center;
   gap: 0.1vw;
 }
-.navbar-right {
+
+.navbar-right .links{
   width: 50vw;
   display: flex;
   align-items: center;
@@ -21,13 +26,16 @@
   text-transform: uppercase;
   font-weight: 600;
 }
+
 .colour:hover {
   color: green;
   text-decoration: underline;
 }
+
 .heading_logo {
   font-weight: 500;
 }
+
 .colour {
   color: black;
   transition: all ease-in 0.2s;

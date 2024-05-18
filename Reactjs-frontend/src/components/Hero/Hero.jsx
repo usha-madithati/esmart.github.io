@@ -6,7 +6,7 @@ import { RiInstagramFill } from "react-icons/ri";
 import { BsTwitterX } from "react-icons/bs";
 function Hero() {
   return (
-    <div className="general_padding_horizontal_hero hero_main">
+    <div className="general_padding_horizontal_hero hero_main" id="home">
       <div className="hero-left">
         <div className="left-top">
           <h1 className="heading font_heading">smart saver</h1>
