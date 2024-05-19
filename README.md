@@ -31,6 +31,7 @@ Explore additional pages including product manaagement sections, learn more and 
 ![image](https://github.com/kanikaa-3018/esmart.github.io/assets/98574423/a94dfb7e-546c-42e2-b7d0-2648311836d7)
 ![image](https://github.com/kanikaa-3018/esmart.github.io/assets/98574423/b614e9ad-23ea-462f-9817-29c0bb671efb)
 ![image](https://github.com/kanikaa-3018/esmart.github.io/assets/98574423/d64e86ad-8ee5-4c93-a1e4-d6ef96b7162e)
+![image](https://github.com/kanikaa-3018/esmart.github.io/assets/98574423/bc042200-63b2-46aa-be45-44ae952d1ff4)
 
 
 
