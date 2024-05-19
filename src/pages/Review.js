@@ -1,25 +1,26 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 
-const CustomerVoices = () => {
+const Review = () => {
   return (
     <>
       <Navbar></Navbar>
       <div className="min-h-screen bg-gray-100 p-6 flex flex-col items-center">
         <div className="container mx-auto">
           <header className="text-center mb-6">
-            <h1 className="text-4xl font-bold">Contact Us</h1>
+            <h1 className="text-4xl font-bold">Your Reviews Matters</h1>
             <p className="text-gray-600 mt-2">
-              Contact us and feel free to share your queries here.
+              Share your thoughts! Help us improve and guide others. Join our
+              eco-conscious community, share your feedback now!
             </p>
           </header>
 
           <div className="max-w-md mx-auto bg-white shadow-2xl rounded-lg p-6">
             <h2 className="text-2xl font-bold text-center text-green-700 mb-4">
-              Smart Saver
+              Customer Voices
             </h2>
             <p className="text-center text-gray-600 mb-6">
-              Share your queries and message here and our team will contact you.
+              Hear what our community says
             </p>
 
             <form>
@@ -61,7 +62,7 @@ const CustomerVoices = () => {
                   type="submit"
                   className="px-4 py-2 bg-green-600 text-white font-semibold rounded-md hover:bg-green-700 focus:outline-none focus:ring"
                 >
-                  Send Message
+                  Send
                 </button>
               </div>
             </form>
@@ -72,4 +73,4 @@ const CustomerVoices = () => {
   );
 };
 
-export default CustomerVoices;
+export default Review;
