@@ -40,7 +40,6 @@ function QRCodeVerification() {
           </div>
         </section>
       </div>
-      <Footer></Footer>
     </>
   );
 }

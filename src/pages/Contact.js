@@ -69,7 +69,6 @@ const CustomerVoices = () => {
           </div>
         </div>
       </div>
-      <Footer></Footer>
     </>
   );
 };

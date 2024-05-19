@@ -70,7 +70,6 @@ const Review = () => {
           </div>
         </div>
       </div>
-      <Footer></Footer>
     </>
   );
 };

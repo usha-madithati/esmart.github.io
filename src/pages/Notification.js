@@ -95,7 +95,6 @@ const NotificationSettings = () => {
           </div>
         </div>
       </div>
-      <Footer></Footer>
     </>
   );
 };
