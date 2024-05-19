@@ -7,9 +7,9 @@ const Navbar = () => {
       <div className="flex items-center">
         <Link to="/">
           <img
-            src="https://i.postimg.cc/8PZbqb9Z/logo1.png"
+            src="https://i.postimg.cc/jSY8z9x8/S-3-2.png"
             alt="Logo"
-            className="h-10 px-3"
+            className="h-20 px-3"
           />
         </Link>
       </div>
