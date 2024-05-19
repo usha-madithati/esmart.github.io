@@ -6,6 +6,7 @@ import SignUp from "./pages/Signup";
 import Login from "./pages/Login";
 import NotificationSettings from "./pages/Notification";
 import CustomerVoices from "./pages/Contact";
+import Review from "./pages/Review";
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
           element={<NotificationSettings></NotificationSettings>}
         ></Route>
         <Route path="/about" element={<Home></Home>}></Route>
+        <Route path="/user/review" element={<Review></Review>}></Route>
       </Routes>
     </>
   );

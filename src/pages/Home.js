@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
+import Footer from "../components/Footer";
 
 const Home = () => {
   return (
@@ -175,6 +176,7 @@ const Home = () => {
           </section>
         </main>
       </div>
+      <Footer></Footer>
     </>
   );
 };
