@@ -9,7 +9,7 @@ const Footer = () => {
           <div class="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
             <Link class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
               <img
-                src="https://i.postimg.cc/8PZbqb9Z/logo1.png"
+                src="https://i.postimg.cc/jSY8z9x8/S-3-2.png"
                 className="h=20 w-20"
               ></img>{" "}
               <span class="ml-3 text-xl">Smart Saver</span>
