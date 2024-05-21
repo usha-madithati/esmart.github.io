@@ -15,18 +15,15 @@ const App = () => {
         <Route path="/" element={<Home></Home>}></Route>
         <Route
           path="/scanqr"
-          element={<QRCodeVerification></QRCodeVerification>}
-        ></Route>
+          element={<QRCodeVerification></QRCodeVerification>}></Route>
         <Route path="/user/signup" element={<SignUp></SignUp>}></Route>
         <Route path="/user/login" element={<Login></Login>}></Route>
         <Route
           path="/contact"
-          element={<CustomerVoices></CustomerVoices>}
-        ></Route>
+          element={<CustomerVoices></CustomerVoices>}></Route>
         <Route
           path="/user/notifications"
-          element={<NotificationSettings></NotificationSettings>}
-        ></Route>
+          element={<NotificationSettings></NotificationSettings>}></Route>
         <Route path="/about" element={<Home></Home>}></Route>
         <Route path="/user/review" element={<Review></Review>}></Route>
       </Routes>
