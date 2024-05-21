@@ -9,7 +9,7 @@
 .navbar {
     min-height: 150px;
     max-width: 100%;
-   /* background-color: black;*/
+    /* background-color: black;*/
     display: flex;
     justify-content: space-between;
     align-items: center;

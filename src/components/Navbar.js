@@ -15,37 +15,32 @@ const Navbar = () => {
       </div>
       <div className="flex-1 flex justify-center space-x-6">
         <Link className="text-lg font-semibold hover:text-green-600" to="/">
-          HOME
+          <i class="fa-solid fa-house"></i> HOME
         </Link>
         <Link
           className="text-lg font-semibold hover:text-green-600"
-          to="/about"
-        >
-          ABOUT
+          to="/about">
+          <i class="fa-solid fa-circle-info"></i> ABOUT
         </Link>
         <Link
           className="text-lg font-semibold hover:text-green-600"
-          to="/user/login"
-        >
-          LOGIN
+          to="/user/login">
+          <i class="fa-solid fa-right-to-bracket"></i> LOGIN
         </Link>
         <Link
           className="text-lg font-semibold hover:text-green-600"
-          to="/scanqr"
-        >
-          SCAN QR
+          to="/scanqr">
+          <i class="fa-solid fa-qrcode"></i> SCAN QR
         </Link>
         <Link
           className="text-lg font-semibold hover:text-green-600"
-          to="/user/notifications"
-        >
-          GET NOTIFIED
+          to="/user/notifications">
+          <i class="fa-solid fa-envelope"></i> GET NOTIFIED
         </Link>
         <Link
           className="text-lg font-semibold hover:text-green-600"
-          to="/contact"
-        >
-          CONTACT
+          to="/contact">
+          <i class="fa-solid fa-phone"></i> CONTACT
         </Link>
       </div>
       <div className="w-10"></div> {/* Spacer to keep the alignment */}
