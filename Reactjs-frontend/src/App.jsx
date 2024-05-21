@@ -4,6 +4,8 @@ import Login from "./pages/Login/Login";
 import SignUp from "./pages/SignUp/SignUp";
 import Contact from "./pages/ContactPage/ContactPage";
 import { Route, Routes } from "react-router-dom";
+import Scan from "./pages/Scan Qr/Scan";
+import Notify from "./pages/Notification Page/Notify";
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/scan" element={<Scan />} />
+        <Route path="/notified" element={<Notify />} />
       </Routes>
     </>
   );

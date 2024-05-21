@@ -8,7 +8,7 @@ function Working() {
   const working_data = [
     {
       image: image1,
-      heading: "Login to you account",
+      heading: "Login to your account",
       description:
         "  Log in to your SmartSaver account and unlock eco-friendly savings today",
     },
