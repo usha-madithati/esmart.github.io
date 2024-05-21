@@ -160,7 +160,7 @@ const NotificationSettings = () => {
           </div>
         </div>
       </section>
-      <Footer />
+      
     </>
   );
 };
