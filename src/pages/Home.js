@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useEffect, useRef } from 'react';
 import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
+import { useLocation } from 'react-router-dom';
 
 const Home = () => {
+  const aboutUsRef = useRef(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash === '#about-us') {
+      aboutUsRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [location]);
+
   return (
     <>
       <Navbar />
@@ -31,13 +41,11 @@ const Home = () => {
               Our Motive
             </h2>
             <p className="text-gray-600 mt-4 text-center max-w-2xl mx-auto">
-              Empowering users to track household product expiration via QR
-              scanning, enabling timely notifications, ensuring product safety,
-              and minimizing waste.
+              Our Motive is to empower users with timely awareness of household product expiration. Through platform users effortlessly scan product QR code's upon login instantly accessing expiration dates.With customizable notification preferneces they can recieve timely alerts via SMS, ensuring products are used before expiry. We priortize user connvenience, enhancing safety and efficiency imanaging household items.
             </p>
           </section>
 
-          <section className="mt-16">
+          <section className="mt-16" id="about-us" ref={aboutUsRef}>
             <h2 className="text-3xl font-semibold text-gray-800 text-center">
               How Smart Saver Works
             </h2>

@@ -27,7 +27,7 @@ const App = () => {
           path="/user/notifications"
           element={<NotificationSettings></NotificationSettings>}
         ></Route>
-        <Route path="/about" element={<Home></Home>}></Route>
+        {/* <Route path="/#about" element={<Home></Home>}></Route> */}
         <Route path="/user/review" element={<Review></Review>}></Route>
       </Routes>
     </>
