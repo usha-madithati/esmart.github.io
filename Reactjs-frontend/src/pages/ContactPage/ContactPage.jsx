@@ -4,6 +4,7 @@ import { FaUser } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
 import { MdOutlineMessage } from "react-icons/md";
 import axios from "axios";
+import toast from 'react-hot-toast';
 function ContactPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -15,12 +16,13 @@ function ContactPage() {
       email,
       message,
     });
+    toast.success("Message Sent")
     setName("");
     setEmail("");
     setmessage("");
   };
   return (
-    <section className="contact-section">
+    <section className="contact-section" id="contactus">
       <div className="container">
         <h1 className="title font">Your Reviews Matters</h1>
         <p id="paragraph" className="font">

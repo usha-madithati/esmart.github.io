@@ -3,6 +3,7 @@ import React from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Hero from "../../components/Hero/Hero";
 import AboutPage from "../AboutPage/AboutPage";
+import ContactPage from "../ContactPage/ContactPage";
 
 function HomePage() {
   // const locomotiveScroll = new LocomotiveScroll();
@@ -11,6 +12,7 @@ function HomePage() {
       <Navbar />
       <Hero />
       <AboutPage />
+      <ContactPage/>
     </div>
   );
 }

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function Navbar() {
   const navigate = useNavigate();
   const [active, setactive] = useState(false);
-  
+
   const currentPage = window.location.pathname;
   return (
     <div className="navbar_main general_padding_horizontal_navbar">
@@ -21,9 +21,9 @@ function Navbar() {
           <Link to="/login" className={`currentPage === items.path ? "active" : "" colour`}>Login</Link>
           <Link to="/scan" className={`currentPage === items.path ? "active" : "" colour`}>Scan QR</Link>
           <Link to="/notified" className={`currentPage === items.path ? "active" : "" colour`}>Get Notified</Link>
-          <Link to="/contact" className={`currentPage === items.path ? "active" : "" colour`}>Contact Us</Link>
+          <a href="#contactus" className={`currentPage === items.path ? "active" : "" colour`} onClick={e => { navigate('/') }}>Contact Us</a>
         </div>
-        
+
       </div>
     </div>
   );

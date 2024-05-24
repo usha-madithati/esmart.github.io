@@ -4,6 +4,7 @@ import image1 from "../../assets/image2.jpg";
 import { FaSnapchatGhost } from "react-icons/fa";
 import { RiInstagramFill } from "react-icons/ri";
 import { BsTwitterX } from "react-icons/bs";
+import { Link } from "react-router-dom";
 function Hero() {
   return (
     <div className="general_padding_horizontal_hero hero_main" id="home">
@@ -12,7 +13,9 @@ function Hero() {
           <h1 className="heading font_heading">smart saver</h1>
           <h4 className="subheading font ">stay fresh</h4>
           <button className="btn">
-            <h2 className="font">scan now</h2>
+            <Link to="/scan">
+              <h2 className="font">scan now</h2>
+            </Link>
           </button>
         </div>
 
