@@ -7,7 +7,7 @@ const CustomerVoices = () => {
     <>
       <Navbar></Navbar>
       {/* old style contact page, not removed due to a testing */}
-      {/* <div className="min-h-screen bg-gray-100 p-6 flex flex-col items-center">
+      <div className="min-h-screen bg-gray-100 p-6 flex flex-col items-center">
         <div className="container mx-auto">
           <header className="text-center mb-6">
             <h1 className="text-4xl font-bold">Contact Us</h1>
@@ -69,9 +69,9 @@ const CustomerVoices = () => {
             </form>
           </div>
         </div>
-      </div> */}
+      </div>
       {/* new styled with google api integration */}
-      <section class="text-gray-600 body-font relative">
+      {/* <section class="text-gray-600 body-font relative">
   <div class="absolute inset-0 bg-gray-300">
     <iframe width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0" title="map" scrolling="no" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14238.484340255187!2d80.94794955!3d26.852001650000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399bfd09c18f1e13%3A0xbf01e68d3158fb37!2sHazratganj%2C%20Lucknow%2C%20Uttar%20Pradesh%20226001!5e0!3m2!1sen!2sin!4v1716560587108!5m2!1sen!2sin"></iframe>
   </div>
@@ -93,7 +93,7 @@ const CustomerVoices = () => {
       <p class="text-xs text-gray-500 mt-3">Our team will be in contact with you as soon as possibles.</p>
     </div>
   </div>
-</section>
+</section> */}
     </>
   );
 };
