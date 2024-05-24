@@ -32,7 +32,9 @@ Explore additional pages including product manaagement sections, learn more and 
 1. HTML5
 2. CSS
 3. JS
-4. ReactJS(need to be converted for better performance)
+4. ReactJS (in development)
+5. Tailwind CSS
+6. Google API
 
 ## Get Started
 

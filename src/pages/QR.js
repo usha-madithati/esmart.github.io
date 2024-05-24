@@ -34,7 +34,7 @@ function QRCodeVerification() {
                 Scan Now
               </button>
               <button className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 bg-gray-200 text-gray-700 px-6 py-2 rounded-md hover:bg-gray-300 md:w-auto mt-4 md:mt-0">
-                Browse Image
+                Browse Image <input type="file"/>
               </button>
             </div>
           </div>
