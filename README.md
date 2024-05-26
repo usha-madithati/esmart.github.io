@@ -68,10 +68,12 @@ We love your input! We want to make contributing to this project as easy and tra
 - Proposing new features
 
 ### Deployment
- - Login to your vercel
- - Select the forked repo of this repository
+ - Login to your vercel here: https://vercel.com/login
+ - Now select the forked repository on vercel
+ - Now after selecting the repository select the root or default branch to     get  deployed.
+   It can be seen here: https:vercel.com/new/clone?repository-url=https://github.com/usha-madithati/esmart.github.io
  - Check and test whole website application and its functionality
- - Add the live hosted link of changed website things in your PR
+ - Add the live hosted link of changed website things in your PR.
 
 Try our web application here: [https://esmartgit.vercel.app/](https://esmart-github-io-oq3w.vercel.app/)
 
