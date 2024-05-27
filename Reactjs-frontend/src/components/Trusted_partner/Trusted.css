@@ -67,13 +67,30 @@
 }
 /* ----------------------------------- */
 @media (max-width: 1024px) {
-  
+  .trusted_main {
+    margin-top: 10vw;
+    height: 37vh;
+  }
+  .trusted_right img {
+    width: 80%;
+  }
 }
 
 @media (max-width: 767px) {
-  
+  .trusted_main {
+    margin-top: 10vw;
+    height: 37vh;
+  }
+  .trusted_right img {
+    width: 80%;
+  }
 }
 
 @media (max-width: 480px) {
+  .trusted_main {
+
+    height: 25vh;
+
+  }
   
 }
