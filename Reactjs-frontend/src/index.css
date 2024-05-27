@@ -29,6 +29,9 @@
   .general_padding_horizontal_navbar {
     padding: 1vw 2.5vw;
   }
+  .general_padding_horizontal_hero {
+    padding: 1vw;
+  }
 }
 .general_padding_horizontal_hero {
   padding: 1vw 6vw;
