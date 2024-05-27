@@ -62,7 +62,7 @@ Explore additional pages including product manaagement sections, learn more and 
 ### Backend Setup
 
  - Navigate through the `backend` folder
- - Setup `.env` file and set `MONGO_URL` and other dev dependencies regarding in `.env.example` and set your own .env file
+ - Setup `.env` file and set `MONGO_URL` and other dev dependencies regarding in `.env.sample` and set your own .env file
  - Make the conection string and copy the string in the mongodb compass and start server in the mongodb cluster in compassUI or on website respectively
  -  Now install all dependencies required for backend setup `npm install`
  -  Now run the server with `npm start`
