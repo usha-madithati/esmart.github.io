@@ -12,6 +12,24 @@
 .general_padding_horizontal_navbar {
   padding: 1vw 10vw;
 }
+@media (max-width: 1024px) {
+  .general_padding_horizontal_navbar {
+    padding: 1vw 2vw;
+  }
+}
+
+@media (max-width: 767px) {
+  .general_padding_horizontal_navbar {
+    padding: 1vw;
+  }
+
+}
+
+@media (max-width: 480px) {
+  .general_padding_horizontal_navbar {
+    padding: 1vw 2.5vw;
+  }
+}
 .general_padding_horizontal_hero {
   padding: 1vw 6vw;
 }

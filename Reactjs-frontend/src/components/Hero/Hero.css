@@ -116,5 +116,112 @@
 }
 
 @media (max-width: 480px) {
-  
+  .hero_main {
+    width: 100%;
+    height: 88vh;
+    padding: 1vw 2vw;
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+  }
+  .hero-left {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    /* background-color: red; */
+    padding-left: 5vw;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .hero-right {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .img-div {
+    width: 37vw;
+    height: 37vw;
+    border-radius: 50%;
+    background-color: white;
+    overflow: hidden;
+  }
+  .img-div img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .heading {
+    text-transform: uppercase;
+    font-size: 4.5vw;
+    letter-spacing: -0.2vw;
+    opacity: 0.8;
+  }
+  .left-top {
+    margin-top: 8vw;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+  }
+  .subheading {
+    margin-top: -1vw;
+    font-size: 1vw;
+    margin-left: 0.5vw;
+    letter-spacing: 0.5vw;
+    opacity: 1;
+    text-transform: uppercase;
+  }
+  .btn {
+    margin-top: 3vw;
+    padding: 1vw 2vw;
+    background-color: #62b006;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .btn h2 {
+    font-size: 1vw;
+    color: white;
+    text-transform: uppercase;
+  }
+  .left-bottom {
+    width: 100%;
+    height: 25vh;
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+  }
+  .left-bottom .left {
+      margin-left: -1vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 10%;
+    height: 100%;
+  }
+  .icon-1 {
+    height: 50%;
+    width: 30%;
+  }
+  .right {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+  }
+  .motive {
+    margin-top: 1vw;
+    font-size: 1.2vw;
+    text-transform: capitalize;
+  }
+  .para {
+    font-size: 0.9vw;
+    width: 90%;
+    opacity: 0.8;
+  }
 }
