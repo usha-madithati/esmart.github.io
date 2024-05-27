@@ -227,18 +227,20 @@
     height: 70%;
   }
   .img-div {
-    width: 40vw;
-    height: 40vw;
+    width: 65vw;
+    height: 65vw;
   }
 
   .heading {
     text-transform: uppercase;
-    font-size: 9.5vw;
+    font-size:11.5vw;
     letter-spacing: -0.2vw;
     opacity: 0.8;
+    margin-top: 1vw;
   }
   .left-top {
     margin-top: 0vw;
+    align-items: center;
   }
   .subheading {
     margin-top: -2vw;
@@ -260,15 +262,15 @@
     width: 15%;
   }
   .icon-1 {
-    height: 50%;
-    width: 10%;
+    height: 20%;
+    width: 25%;
   }
 
   .motive {
     margin-top: 0vw;
-    font-size: 3.2vw;
+    font-size: 5.2vw;
   }
   .para {
-    font-size: 1.5vw;
+    font-size: 2vw;
   }
 }

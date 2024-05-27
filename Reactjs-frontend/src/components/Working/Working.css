@@ -74,5 +74,12 @@
     width: 25%;
     height: 60%;
   }
-
+  .elem_heading h1
+  {
+    font-size: 2.5vw;
+  }
+  .elem_desc p
+  {
+    font-size: 1.9vw;
+  }
 }
