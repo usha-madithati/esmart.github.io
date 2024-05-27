@@ -68,5 +68,11 @@
 }
 
 @media (max-width: 480px) {
-  
+
+  .elem {
+    margin-top: -15vw;
+    width: 25%;
+    height: 60%;
+  }
+
 }
