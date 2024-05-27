@@ -43,6 +43,7 @@ const Home = () => {
             <p className="text-gray-600 mt-4 text-center max-w-2xl mx-auto">
               Our Motive is to empower users with timely awareness of household product expiration. Through platform users effortlessly scan product QR code's upon login instantly accessing expiration dates.With customizable notification preferneces they can recieve timely alerts via SMS, ensuring products are used before expiry. We priortize user connvenience, enhancing safety and efficiency imanaging household items.
             </p>
+            <hr style="border: 0; height: 1px; background: #333; margin: 20px 0;"></hr>
           </section>
 
           <section className="mt-16" id="about-us" ref={aboutUsRef}>
@@ -92,6 +93,7 @@ const Home = () => {
                 </p>
               </div>
             </div>
+            <hr style="border: 0; height: 1px; background: #333; margin: 20px 0;"></hr>
           </section>
 
           <h1 class="mb-4 text-3xl font-extrabold text-gray-900 dark:text-black py-4 text-center mt-10 md:text-5xl lg:text-6xl">
