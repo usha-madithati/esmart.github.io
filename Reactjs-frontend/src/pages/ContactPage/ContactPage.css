@@ -25,11 +25,6 @@
     margin-bottom: 1rem;
 }
 
-.logo {
-    height: 65px;
-    margin-bottom: 0.5rem;
-}
-
 .form {
     background-color: white;
     padding: 1rem 2rem;
@@ -108,4 +103,54 @@
 
 #message-icon {
     margin-bottom: 5.2rem;
+}
+
+/* ----------------------------------------- */
+@media (max-width: 1024px) {
+    .title {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .form .form-input {
+        font-size: 16px;
+    }
+
+    .form .submit-button {
+        font-size: 16px;
+    }
+
+    .form .contact {
+        font-size: 1.8rem;
+    }
+    #paragraph{
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-section .form {
+        padding: 1rem 1.5rem;
+    }
+
+    .form .form-input {
+        padding: 0.9rem;
+    }
+
+    .form .submit-button {
+        padding: 0.9rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .form .input-div {
+        margin-bottom: 0.8rem;
+    }
+    #paragraph{
+        font-size: 16px;
+    }
 }

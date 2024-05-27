@@ -9,10 +9,12 @@
   height: 100%;
   width: 100%;
 }
+
 .logo {
   height: 65px;
   margin-bottom: 0.5rem;
 }
+
 .form {
   background-color: white;
   padding: 1rem 2rem;
@@ -32,10 +34,12 @@
   font-weight: bold;
   font-size: 2.25rem;
 }
+
 .signin-para {
   color: #507763;
   margin-bottom: 1rem;
 }
+
 .input-div {
   width: 100%;
   display: flex;
@@ -46,6 +50,7 @@
   border-radius: 10px;
   padding: 0rem 1rem;
 }
+
 .form-input {
   width: 100%;
   padding: 1rem;
@@ -79,9 +84,11 @@
   background-color: #0b8544;
   cursor: pointer;
 }
+
 .link_signup {
   width: 100%;
 }
+
 .signup-button {
   width: 100%;
   padding: 1rem;
@@ -96,13 +103,64 @@
   border: 1px solid #0fa958;
   margin-bottom: 0.5rem;
 }
+
 .signup-button:hover {
   background-color: #0b8544;
   cursor: pointer;
   color: white;
   border: 1px solid #0b8544;
 }
+
 .icon {
   opacity: 50%;
   color: black;
+}
+
+/* ----------------------------------------------------------------- */
+@media (max-width: 1024px) {}
+
+@media (max-width: 767px) {
+  .form .logo {
+    height: 55px;
+    margin-bottom: 0.3rem;
+  }
+
+  .form .form-input {
+    font-size: 16px;
+  }
+
+  .form .login-button {
+    font-size: 16px;
+  }
+
+  .form .signup-button {
+    font-size: 16px;
+  }
+
+  .form .signin {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-section .form {
+    padding: 1rem 1.5rem;
+  }
+
+  .form .form-input {
+    padding: 0.9rem;
+  }
+
+  .form .login-button {
+    padding: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .form .signup-button {
+    padding: 0.9rem;
+  }
+
+  .form .input-div {
+    margin-bottom: 0.8rem;
+  }
 }

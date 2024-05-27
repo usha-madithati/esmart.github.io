@@ -105,3 +105,51 @@
   opacity: 50%;
   color: black;
 }
+/* --------------------------------------------------- */
+@media (max-width: 1024px) {}
+
+@media (max-width: 767px) {
+  .form .logo {
+    height: 55px;
+    margin-bottom: 0.3rem;
+  }
+
+  .form .form-input {
+    font-size: 16px;
+  }
+
+  .form .login-button {
+    font-size: 16px;
+  }
+
+  .form .signup-button {
+    font-size: 16px;
+  }
+
+  .form .signup {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .signup-section .form {
+    padding: 1rem 1.5rem;
+  }
+
+  .form .form-input {
+    padding: 0.9rem;
+  }
+
+  .form .login-button {
+    padding: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .form .signup-button {
+    padding: 0.9rem;
+  }
+
+  .form .input-div {
+    margin-bottom: 0.8rem;
+  }
+}

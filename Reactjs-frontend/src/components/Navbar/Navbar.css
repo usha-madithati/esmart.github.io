@@ -40,3 +40,16 @@
   color: black;
   transition: all ease-in 0.2s;
 }
+/* ----------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  
+}
+
+@media (max-width: 767px) {
+  
+
+}
+
+@media (max-width: 480px) {
+  
+}
