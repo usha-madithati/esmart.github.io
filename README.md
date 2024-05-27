@@ -59,6 +59,16 @@ Explore additional pages including product manaagement sections, learn more and 
 4. **Create a Pull Request**
   Navigate back to the original repository and open a pull request from your forked repository.
 
+### Backend Setup
+
+ - Navigate through the `backend` folder
+ - Setup `.env` file and set `MONGO_URL` and other dev dependencies regarding in `.env.example` and set your own .env file
+ - Make the conection string and copy the string in the mongodb compass and start server in the mongodb cluster in compassUI or on website respectively
+ -  Now install all dependencies required for backend setup `npm install`
+ -  Now run the server with `npm start`
+ -  Your backend server will be running on `PORT: 6352`
+
+
  ### Contributing
 
 We love your input! We want to make contributing to this project as easy and transparent as possible, whether it's:
