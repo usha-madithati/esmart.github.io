@@ -1,11 +1,6 @@
 import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema({
-  id: {
-    type: Number,
-    required: true,
-    unique: true,
-  },
   product_name: {
     type: String,
     required: true,
@@ -21,6 +16,14 @@ const productSchema = new mongoose.Schema({
   expiry_date: {
     type: Date,
     required: true,
+  },
+  product_info: {
+    type: String,
+    required: true,
+  },
+  id: {
+    type: String, // Or whatever type you prefer
+    unique: false, // Ensure this is not unique
   },
 });
 

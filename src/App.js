@@ -7,12 +7,15 @@ import Login from "./pages/Login";
 import NotificationSettings from "./pages/Notification";
 import CustomerVoices from "./pages/Contact";
 import Review from "./pages/Review";
+import "react-toastify/dist/ReactToastify.css";
+import PForm from "./components/PForm";
 
 const App = () => {
   return (
     <>
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
+        <Route path="/user/add-products" element={<PForm></PForm>}></Route>
         <Route
           path="/scanqr"
           element={<QRCodeVerification></QRCodeVerification>}
