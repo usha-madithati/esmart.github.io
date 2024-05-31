@@ -3,6 +3,9 @@ import dotenv from "dotenv";
 import dbConnect from "./db/datbase.js";
 import Product from "./Schemas/Products.schema.js";
 import cors from "cors";
+import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
+import User from "./Schemas/User.Schema.js";
 
 dotenv.config();
 
@@ -11,7 +14,7 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware to parse JSON and form data
 app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 // Connect to the database
@@ -33,8 +36,7 @@ app.get("/products", async (req, res) => {
 
 // Route to handle form submissions via API (POST request)
 app.post("/add-product", async (req, res) => {
-  const { product_name, barcode, mfd, expiry_date, product_info, id } =
-    req.body;
+  const { product_name, barcode, mfd, expiry_date, product_info, id } = req.body;
 
   if (!product_name || !barcode || !mfd || !expiry_date || !product_info) {
     return res.status(400).send({ message: "All fields are required" });
@@ -76,6 +78,61 @@ app.post("/add-product", async (req, res) => {
       success: false,
       error: error.message,
     });
+  }
+});
+
+// Signup Route API
+app.post("/signup", async (req, res) => {
+  const { name, email, phone, password } = req.body;
+
+  if (!name || !email || !phone || !password) {
+    return res.status(400).send({ message: "All fields are required" });
+  }
+
+  const existingUser = await User.findOne({ email });
+  if (existingUser) {
+    return res.status(400).send({ message: "Email already in use" });
+  }
+
+  const hashedPassword = await bcrypt.hash(password, 10);
+  const newUser = new User({ name, email, phone, password: hashedPassword });
+
+  try {
+    await newUser.save();
+    res.status(201).send({ message: "User registered successfully!" });
+  } catch (error) {
+    res
+      .status(500)
+      .send({ message: "Error registering user", error: error.message });
+  }
+});
+
+// Login Route API
+app.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.status(400).send({ message: "Email and password are required" });
+  }
+
+  try {
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).send({ message: "Invalid email or password" });
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).send({ message: "Invalid email or password" });
+    }
+
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "1h",
+    });
+
+    res.status(200).send({ success: true, message: "Login successful", token });
+  } catch (error) {
+    res.status(500).send({ message: "Error logging in", error: error.message });
   }
 });
 

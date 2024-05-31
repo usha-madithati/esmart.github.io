@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Oval } from "react-loader-spinner";
 
 const SignUp = () => {
   const [username, setUsername] = useState("");
@@ -9,6 +13,7 @@ const SignUp = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const validatePhoneNumber = (number) => {
@@ -21,7 +26,7 @@ const SignUp = () => {
     return emailRegex.test(email);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = {};
 
@@ -44,15 +49,40 @@ const SignUp = () => {
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
-      // Proceed with form submission (e.g., API call)
-      console.log("Form submitted");
-      navigate("/user/signup"); // Navigate to the same page
+      setLoading(true);
+      try {
+        const response = await axios.post("http://localhost:6352/signup", {
+          name: username,
+          email,
+          phone: phoneNumber,
+          password,
+        });
+        if (response.status === 201) {
+          toast.success("User Registered successfully.");
+          setTimeout(() => {
+            navigate("/user/login");
+          }, 2000);
+        }
+      } catch (error) {
+        if (error.response) {
+          setErrors({ server: error.response.data.message });
+        } else if (error.request) {
+          setErrors({
+            server: "Server not responding. Please try again later.",
+          });
+        } else {
+          setErrors({ server: "An error occurred. Please try again." });
+        }
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
   return (
     <>
       <Navbar />
+      <ToastContainer />
       <div className="flex items-center justify-center min-h-screen bg-gray-100">
         <div className="w-full max-w-md p-8 overflow-hidden space-y-6 bg-white rounded-lg m-5 shadow-2xl">
           <div className="flex justify-center">
@@ -68,13 +98,14 @@ const SignUp = () => {
           <p className="text-center text-gray-600">Register a new user</p>
           <form className="space-y-4" onSubmit={handleSubmit}>
             <div>
-              <label className="block text-gray-700">Username</label>
+              <label className="block text-gray-700">Full Name</label>
               <input
                 type="text"
+                id="name"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-green-600"
-                placeholder="Username"
+                placeholder="Full Name"
               />
               {errors.username && (
                 <p className="mt-1 text-sm text-red-600">{errors.username}</p>
@@ -103,7 +134,9 @@ const SignUp = () => {
                 placeholder="Phone Number"
               />
               {errors.phoneNumber && (
-                <p className="mt-1 text-sm text-red-600">{errors.phoneNumber}</p>
+                <p className="mt-1 text-sm text-red-600">
+                  {errors.phoneNumber}
+                </p>
               )}
             </div>
             <div>
@@ -119,8 +152,30 @@ const SignUp = () => {
                 <p className="mt-1 text-sm text-red-600">{errors.password}</p>
               )}
             </div>
-            <button className="w-full px-4 py-2 text-white bg-green-600 rounded-md hover:bg-green-700">
-              Sign Up
+            {errors.server && (
+              <p className="mt-1 text-sm text-red-600">{errors.server}</p>
+            )}
+            <button
+              type="submit"
+              className="w-full px-4 py-2 text-white bg-green-600 rounded-md hover:bg-green-700"
+              disabled={loading}
+            >
+              {loading ? (
+                <div className="flex justify-center items-center">
+                  <Oval
+                    height={24}
+                    width={24}
+                    color="#ffffff"
+                    visible={true}
+                    ariaLabel="oval-loading"
+                    secondaryColor="#4f46e5"
+                    strokeWidth={2}
+                    strokeWidthSecondary={2}
+                  />
+                </div>
+              ) : (
+                "Sign Up"
+              )}
             </button>
             <div className="flex justify-center mt-4">
               <Link to="/user/login" className="text-green-600 hover:underline">
