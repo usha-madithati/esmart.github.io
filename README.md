@@ -16,8 +16,21 @@ Try our web application: [https://esmartgit.vercel.app/](https://esmart-github-i
 Key Features
 ## Homepage: 
 Navigate through our user-friendly homepage to discover the latest deals and eco-friendly products.
-## Login/Signup: 
-Easily create an account or log in to access personalized offers and track your savings journey.
+
+## Logging the User:
+ - Navigate to the login page
+ - Enter your credentials (`email` , `password`)
+ - You will get required response from `server` in toast or text form
+ - Ensure to run the server
+ - If not loggedin navigate through the signup page (`/signup`)
+
+## Registering the User(Locally):
+ - Firstly ensure that you have must setup the backend correctly and the server is running.
+ - Then fill all the required fields(`name , email , phone number , password `)
+ - You will get the required response from `server` in toast or textual error form.
+ - After successfully registring the user you will navigate automatically to `/login` page.
+ - Login the application as steps told above.
+
 ## Review Section: 
 Share your feedback and insights with the Smart Savers community. Your reviews help us improve and guide others in making informed choices.
 ## QR Code Scanning: 
