@@ -1,7 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import QRCodeVerification from "./pages/QR";
 import SignUp from "./pages/Signup";
 import Login from "./pages/Login";
 import NotificationSettings from "./pages/Notification";
@@ -9,6 +8,7 @@ import CustomerVoices from "./pages/Contact";
 import Review from "./pages/Review";
 import "react-toastify/dist/ReactToastify.css";
 import PForm from "./components/PForm";
+import QRCodeVerification from "./pages/QR";
 
 const App = () => {
   return (

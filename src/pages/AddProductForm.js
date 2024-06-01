@@ -1,35 +1,88 @@
-import React from "react";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { useNavigate } from "react-router-dom";
+// src/pages/AddProductForm.jsx
+import React, { useState } from "react";
+import axios from "axios";
 
-const AddProductForm = () => {
-  const navigate = useNavigate();
+function AddProductForm() {
+  const [formData, setFormData] = useState({
+    product_name: "",
+    barcode: "",
+    mfd: "",
+    expiry_date: "",
+    product_info: "",
+  });
+  const [message, setMessage] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      toast.info("Add your products here");
-      navigate("/user/add-products");
+      const response = await axios.post(
+        "http://localhost:6352/add-product",
+        formData
+      );
+      setMessage(response.data.message);
     } catch (error) {
-      console.log(error);
-      toast.error("Error ocurred");
+      setMessage(error.response.data.message);
     }
   };
 
   return (
-    <>
-      <ToastContainer></ToastContainer>
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <input
+        type="text"
+        name="product_name"
+        value={formData.product_name}
+        onChange={handleChange}
+        placeholder="Product Name"
+        className="border rounded px-4 py-2 w-full"
+      />
+      <input
+        type="text"
+        name="barcode"
+        value={formData.barcode}
+        onChange={handleChange}
+        placeholder="Barcode"
+        className="border rounded px-4 py-2 w-full"
+      />
+      <input
+        type="date"
+        name="mfd"
+        value={formData.mfd}
+        onChange={handleChange}
+        placeholder="Manufacturing Date"
+        className="border rounded px-4 py-2 w-full"
+      />
+      <input
+        type="date"
+        name="expiry_date"
+        value={formData.expiry_date}
+        onChange={handleChange}
+        placeholder="Expiry Date"
+        className="border rounded px-4 py-2 w-full"
+      />
+      <textarea
+        name="product_info"
+        value={formData.product_info}
+        onChange={handleChange}
+        placeholder="Product Info"
+        className="border rounded px-4 py-2 w-full"
+      />
       <button
-        onClick={handleSubmit}
-        class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white"
+        type="submit"
+        className="bg-blue-500 text-white px-4 py-2 rounded"
       >
-        <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-          Add your product
-        </span>
+        Add Product
       </button>
-    </>
+      {message && <p>{message}</p>}
+    </form>
   );
-};
+}
 
 export default AddProductForm;

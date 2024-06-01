@@ -1,6 +1,7 @@
+// Schemas/Products.schema.js
 import mongoose from "mongoose";
 
-const productSchema = new mongoose.Schema({
+const ProductSchema = new mongoose.Schema({
   product_name: {
     type: String,
     required: true,
@@ -8,6 +9,7 @@ const productSchema = new mongoose.Schema({
   barcode: {
     type: String,
     required: true,
+    unique: true,
   },
   mfd: {
     type: Date,
@@ -21,12 +23,8 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  id: {
-    type: String, // Or whatever type you prefer
-    unique: false, // Ensure this is not unique
-  },
 });
 
-const Product = mongoose.model("Product", productSchema);
+const Product = mongoose.model("Product", ProductSchema);
 
 export default Product;

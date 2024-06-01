@@ -1,3 +1,4 @@
+// server.js
 import express from "express";
 import dotenv from "dotenv";
 import dbConnect from "./db/datbase.js";
@@ -21,13 +22,17 @@ app.use(cors());
 dbConnect();
 
 // API for displaying products
-app.get("/products", async (req, res) => {
+app.get("/products/:barcode", async (req, res) => {
+  const { barcode } = req.params;
   try {
-    const products = await Product.find({});
-    res.status(200).send(products);
+    const product = await Product.findOne({ barcode });
+    if (!product) {
+      return res.status(404).send({ message: "Product not found" });
+    }
+    res.status(200).send(product);
   } catch (error) {
     res.status(500).send({
-      message: "Error occurred when fetching products.",
+      message: "Error occurred when fetching product.",
       error: error.message,
     });
     console.log(error);
@@ -36,7 +41,8 @@ app.get("/products", async (req, res) => {
 
 // Route to handle form submissions via API (POST request)
 app.post("/add-product", async (req, res) => {
-  const { product_name, barcode, mfd, expiry_date, product_info, id } = req.body;
+  const { product_name, barcode, mfd, expiry_date, product_info, id } =
+    req.body;
 
   if (!product_name || !barcode || !mfd || !expiry_date || !product_info) {
     return res.status(400).send({ message: "All fields are required" });
