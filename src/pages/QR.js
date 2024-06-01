@@ -1,17 +1,28 @@
+// src/pages/QRCodeVerification.jsx
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import AddProductForm from "./AddProductForm";
 import { Oval } from "react-loader-spinner";
+<<<<<<< HEAD
 import QrReader from "react-qr-reader";
 import axios from "axios";
 
 const QRCodeVerification = () => {
+=======
+import QrScanner from "@react-qr-scanner";
+import axios from "axios";
+
+function QRCodeVerification() {
+  const [isImageLoading, setIsImageLoading] = useState(true);
+  const [scannedData, setScannedData] = useState(null);
+>>>>>>> 6e8acce5577cfcbfb71916d312f1af43f208c948
   const [productInfo, setProductInfo] = useState(null);
   const [error, setError] = useState(null);
 
   const handleScan = async (data) => {
     if (data) {
+<<<<<<< HEAD
       try {
         const response = await axios.post(
           `http://localhost:6352/scan-product`,
@@ -23,6 +34,14 @@ const QRCodeVerification = () => {
           `http://localhost:6352/add-product`,
           response.data.product
         );
+=======
+      setScannedData(data);
+      try {
+        const response = await axios.get(
+          `http://localhost:3000/products/${data}`
+        );
+        setProductInfo(response.data);
+>>>>>>> 6e8acce5577cfcbfb71916d312f1af43f208c948
       } catch (err) {
         setError("Product not found");
       }
@@ -52,10 +71,16 @@ const QRCodeVerification = () => {
                 seconds.
               </b>
             </p>
+<<<<<<< HEAD
             <QrReader
               delay={300}
               onError={handleError}
               onScan={handleScan}
+=======
+            <QrScanner
+              onScan={handleScan}
+              onError={handleError}
+>>>>>>> 6e8acce5577cfcbfb71916d312f1af43f208c948
               style={{ width: "100%" }}
             />
             {productInfo && (
