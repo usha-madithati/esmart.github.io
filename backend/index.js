@@ -1,4 +1,3 @@
-// server.js
 import express from "express";
 import dotenv from "dotenv";
 import dbConnect from "./db/datbase.js";
@@ -22,17 +21,13 @@ app.use(cors());
 dbConnect();
 
 // API for displaying products
-app.get("/products/:barcode", async (req, res) => {
-  const { barcode } = req.params;
+app.get("/products", async (req, res) => {
   try {
-    const product = await Product.findOne({ barcode });
-    if (!product) {
-      return res.status(404).send({ message: "Product not found" });
-    }
-    res.status(200).send(product);
+    const products = await Product.find({});
+    res.status(200).send(products);
   } catch (error) {
     res.status(500).send({
-      message: "Error occurred when fetching product.",
+      message: "Error occurred when fetching products.",
       error: error.message,
     });
     console.log(error);
@@ -82,6 +77,34 @@ app.post("/add-product", async (req, res) => {
     res.status(500).send({
       message: "Error adding product",
       success: false,
+      error: error.message,
+    });
+  }
+});
+
+// Route to handle scanning and storing product
+app.post("/scan-product", async (req, res) => {
+  const { barcode } = req.body;
+
+  if (!barcode) {
+    return res.status(400).send({ message: "Barcode is required" });
+  }
+
+  try {
+    let product = await Product.findOne({ barcode });
+
+    if (!product) {
+      // If the product is not found, you can return an error or handle as needed
+      return res.status(404).send({ message: "Product not found" });
+    }
+
+    res.status(200).send({
+      message: "Product scanned successfully",
+      product: product,
+    });
+  } catch (error) {
+    res.status(500).send({
+      message: "Error scanning product",
       error: error.message,
     });
   }

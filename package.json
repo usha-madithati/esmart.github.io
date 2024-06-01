@@ -13,6 +13,7 @@
     "react-icons": "^5.2.1",
     "react-loader-spinner": "^6.1.6",
     "react-qr-reader": "^2.2.1",
+    "react-qr-scanner": "^1.0.0-alpha.8",
     "react-router-dom": "^6.23.1",
     "react-scripts": "5.0.1",
     "react-toastify": "^10.0.5",
