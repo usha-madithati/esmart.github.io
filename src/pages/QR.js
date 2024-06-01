@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import AddProductForm from "./AddProductForm";
 import { Oval } from "react-loader-spinner";
-import QrReader from "react-qr-reader"; // Correct import for version 2.2.1
+import QrScanner from "@react-qr-scanner";
 import axios from "axios";
 
 function QRCodeVerification() {
@@ -18,7 +18,7 @@ function QRCodeVerification() {
       setScannedData(data);
       try {
         const response = await axios.get(
-          `http://localhost:6352/products/${data}`
+          `http://localhost:3000/products/${data}`
         );
         setProductInfo(response.data);
       } catch (err) {
@@ -80,10 +80,9 @@ function QRCodeVerification() {
                 seconds.
               </b>
             </p>
-            <QrReader
-              delay={300}
-              onError={handleError}
+            <QrScanner
               onScan={handleScan}
+              onError={handleError}
               style={{ width: "100%" }}
             />
             {productInfo && (
@@ -107,7 +106,6 @@ function QRCodeVerification() {
               <button className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 md:w-auto">
                 Scan Now
               </button>
-              <AddProductForm />
             </div>
           </div>
         </section>

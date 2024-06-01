@@ -8,6 +8,7 @@ import CustomerVoices from "./pages/Contact";
 import Review from "./pages/Review";
 import "react-toastify/dist/ReactToastify.css";
 import PForm from "./components/PForm";
+import AddProductForm from "./pages/AddProductForm.js";
 import QRCodeVerification from "./pages/QR";
 
 const App = () => {
@@ -22,6 +23,10 @@ const App = () => {
         ></Route>
         <Route path="/user/signup" element={<SignUp></SignUp>}></Route>
         <Route path="/user/login" element={<Login></Login>}></Route>
+        <Route
+          path="/user/add-product"
+          element={<AddProductForm></AddProductForm>}
+        ></Route>
         <Route
           path="/contact"
           element={<CustomerVoices></CustomerVoices>}
