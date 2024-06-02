@@ -4,23 +4,44 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import AddProductForm from "./AddProductForm";
 import { Oval } from "react-loader-spinner";
+<<<<<<< HEAD
+import QrReader from "react-qr-reader";
+import axios from "axios";
+
+const QRCodeVerification = () => {
+=======
 import QrScanner from "@react-qr-scanner";
 import axios from "axios";
 
 function QRCodeVerification() {
   const [isImageLoading, setIsImageLoading] = useState(true);
   const [scannedData, setScannedData] = useState(null);
+>>>>>>> 6e8acce5577cfcbfb71916d312f1af43f208c948
   const [productInfo, setProductInfo] = useState(null);
   const [error, setError] = useState(null);
 
   const handleScan = async (data) => {
     if (data) {
+<<<<<<< HEAD
+      try {
+        const response = await axios.post(
+          `http://localhost:6352/scan-product`,
+          { barcode: data }
+        );
+        setProductInfo(response.data.product);
+        // Save the product information to the database if not already present
+        await axios.post(
+          `http://localhost:6352/add-product`,
+          response.data.product
+        );
+=======
       setScannedData(data);
       try {
         const response = await axios.get(
           `http://localhost:3000/products/${data}`
         );
         setProductInfo(response.data);
+>>>>>>> 6e8acce5577cfcbfb71916d312f1af43f208c948
       } catch (err) {
         setError("Product not found");
       }
@@ -41,36 +62,6 @@ function QRCodeVerification() {
             <h1 className="text-5xl font-bold text-center">
               QR Code Verification
             </h1>
-            <div
-              className="h-[350px] w-[350px] md:h-auto md:w-auto flex justify-center items-center m-2"
-              style={{ aspectRatio: "300 / 300" }}
-            >
-              {isImageLoading && (
-                <Oval
-                  height={80}
-                  width={80}
-                  color="#4fa94d"
-                  wrapperStyle={{}}
-                  wrapperClass=""
-                  visible={true}
-                  ariaLabel="oval-loading"
-                  secondaryColor="#4fa94d"
-                  strokeWidth={2}
-                  strokeWidthSecondary={2}
-                />
-              )}
-              <img
-                src="https://i.postimg.cc/PJghMmyQ/9427512-4149572-removebg-preview-1-1.jpg"
-                alt="Phone with QR codes"
-                className={`h-full w-full ${
-                  isImageLoading ? "hidden" : "block"
-                }`}
-                width="300"
-                height="300"
-                style={{ objectFit: "cover" }}
-                onLoad={() => setIsImageLoading(false)}
-              />
-            </div>
           </div>
           <div className="md:w-1/2">
             <p className="text-xl mb-6">
@@ -80,9 +71,16 @@ function QRCodeVerification() {
                 seconds.
               </b>
             </p>
+<<<<<<< HEAD
+            <QrReader
+              delay={300}
+              onError={handleError}
+              onScan={handleScan}
+=======
             <QrScanner
               onScan={handleScan}
               onError={handleError}
+>>>>>>> 6e8acce5577cfcbfb71916d312f1af43f208c948
               style={{ width: "100%" }}
             />
             {productInfo && (
