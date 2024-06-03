@@ -1,11 +1,10 @@
-// src/pages/QRCodeVerification.jsx
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import AddProductForm from "./AddProductForm";
 import { Oval } from "react-loader-spinner";
-import QrScanner from "react-qr-scanner";
 import axios from "axios";
+import jsQR from "jsqr";
 
 const QRCodeVerification = () => {
   const [isImageLoading, setIsImageLoading] = useState(true);
@@ -13,6 +12,67 @@ const QRCodeVerification = () => {
   const [productInfo, setProductInfo] = useState(null);
   const [error, setError] = useState(null);
   const [isScannerOpen, setIsScannerOpen] = useState(false);
+  const videoRef = useRef(null);
+  const canvasRef = useRef(null);
+  const requestRef = useRef(null);
+
+  useEffect(() => {
+    if (isScannerOpen) {
+      startScanner();
+    } else {
+      stopScanner();
+    }
+
+    return () => {
+      stopScanner();
+    };
+  }, [isScannerOpen]);
+
+  const startScanner = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: { facingMode: "environment" },
+      });
+      videoRef.current.srcObject = stream;
+      videoRef.current.setAttribute("playsinline", true); // for iOS
+      videoRef.current.play();
+      requestRef.current = requestAnimationFrame(tick);
+    } catch (err) {
+      console.error("Error accessing camera: ", err);
+      setError("Error accessing camera: " + err.message);
+    }
+  };
+
+  const stopScanner = () => {
+    if (videoRef.current && videoRef.current.srcObject) {
+      const tracks = videoRef.current.srcObject.getTracks();
+      tracks.forEach((track) => track.stop());
+      videoRef.current.srcObject = null;
+    }
+    if (requestRef.current) {
+      cancelAnimationFrame(requestRef.current);
+    }
+  };
+
+  const tick = () => {
+    if (videoRef.current.readyState === videoRef.current.HAVE_ENOUGH_DATA) {
+      const canvas = canvasRef.current;
+      const context = canvas.getContext("2d");
+      canvas.height = videoRef.current.videoHeight;
+      canvas.width = videoRef.current.videoWidth;
+      context.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
+      const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+      const code = jsQR(imageData.data, imageData.width, imageData.height);
+
+      if (code) {
+        handleScan(code.data);
+      } else {
+        requestRef.current = requestAnimationFrame(tick);
+      }
+    } else {
+      requestRef.current = requestAnimationFrame(tick);
+    }
+  };
 
   const handleScan = async (data) => {
     if (data) {
@@ -30,14 +90,14 @@ const QRCodeVerification = () => {
           response.data.product
         );
       } catch (err) {
-        setError("Product not found");
+        setError("Product not found: " + err.message);
       }
     }
   };
 
   const handleError = (err) => {
-    console.error(err);
-    setError("Error scanning code");
+    console.error("Error scanning code: ", err);
+    setError("Error scanning code: " + err.message);
   };
 
   return (
@@ -89,12 +149,10 @@ const QRCodeVerification = () => {
               </b>
             </p>
             {isScannerOpen && (
-              <QrScanner
-                delay={300}
-                onError={handleError}
-                onScan={handleScan}
-                style={{ width: "100%" }}
-              />
+              <div className="relative">
+                <video ref={videoRef} style={{ width: "100%" }} />
+                <canvas ref={canvasRef} style={{ display: "none" }} />
+              </div>
             )}
             {productInfo && (
               <div className="mt-4 p-4 border rounded-md shadow-md">
