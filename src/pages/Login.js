@@ -41,8 +41,10 @@ const Login = () => {
           password,
         });
 
-        if (response) {
+        if (response && response.data.success) {
           toast.success("Login successful!");
+          localStorage.setItem("isLoggedIn", true);
+          localStorage.setItem("token", response.data.token); // Store the JWT token
           setTimeout(() => {
             navigate("/");
           }, 2000); // Redirect after 2 seconds
