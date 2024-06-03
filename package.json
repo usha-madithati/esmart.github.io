@@ -16,6 +16,7 @@
     "react-router-dom": "^6.23.1",
     "react-scripts": "5.0.1",
     "react-toastify": "^10.0.5",
+    "react-webcam-qr-scanner": "^1.0.8",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
