@@ -12,10 +12,7 @@ So this is the overview of our website where people can save the income they are
 
 Try our web application: [https://esmartgit.vercel.app/](https://esmart-github-io-oq3w.vercel.app/)
 
-## Figma Prototypes and Designs
-Key Features
-## Homepage: 
-Navigate through our user-friendly homepage to discover the latest deals and eco-friendly products.
+### STEPS TO PROCEED:
 
 ## Logging the User:
  - Navigate to the login page
