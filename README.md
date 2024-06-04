@@ -20,23 +20,23 @@ Navigate through our user-friendly homepage to discover the latest deals and eco
 ## Logging the User:
  - Navigate to the login page
  - Enter your credentials (`email` , `password`)
- - You will get required response from `server` in toast or text form
+ - You will get the required response from `server` in toast or text form
  - Ensure to run the server
- - If not loggedin navigate through the signup page (`/signup`)
+ - If not logged in navigate through the signup page (`/signup`)
 
 ## Registering the User(Locally):
- - Firstly ensure that you have must setup the backend correctly and the server is running.
+ - First, ensure you have set the backend correctly and the server is running.
  - Then fill all the required fields(`name , email , phone number , password `)
- - You will get the required response from `server` in toast or textual error form.
- - After successfully registring the user you will navigate automatically to `/login` page.
- - Login the application as steps told above.
+ - You will get the required response from the `server` in toast or textual error form.
+ - After successfully registering the user you will navigate automatically to `/login` page.
+ - Login to the application as per the steps told above.
 
 ## Review Section: 
 Share your feedback and insights with the Smart Savers community. Your reviews help us improve and guide others in making informed choices.
 ## QR Code Scanning: 
 Effortlessly scan QR codes to access instant product information, including ingredients, pricing, and environmental impact.
 ## Others: 
-Explore additional pages including product manaagement sections, learn more and benefits of the same.
+Explore additional pages including product management sections, and learn more and the benefits of the same.
 ##Here is the figma design of our project.
 
  https://www.figma.com/design/naU9W2cQQa04wB6WsEjkr2/Untitled?node-id=0%3A1&t=DazRyOMA1k4rRDTr-1
@@ -48,6 +48,12 @@ Explore additional pages including product manaagement sections, learn more and 
 4. ReactJS(need to be converted for better performance)
 
 ## Get Started
+
+1. After successfully setting up the project you can view the project on port `3000`
+2. Give access to the camera and log in with your credentials as well.
+3. Now scan the particular product QR and get all the details.
+4. If the software couldn't find your product then our database is missing the product details inn it.
+5. Add that particular product by following the above steps as mentioned above.
 
 ### Setup and Installation
 
