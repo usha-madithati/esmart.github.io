@@ -36,16 +36,21 @@ const Login = () => {
     if (Object.keys(newErrors).length === 0) {
       setLoading(true);
       try {
-        const response = await axios.post("http://localhost:6352/login", {
-          email,
-          password,
-        });
+        const response = await axios.post(
+          "https://smartserver-production.up.railway.app/login",
+          {
+            email,
+            password,
+          }
+        );
 
-        if (response) {
+        if (response && response.data.success) {
           toast.success("Login successful!");
+          localStorage.setItem("isLoggedIn", true);
+          localStorage.setItem("token", response.data.token); // Store the JWT token
           setTimeout(() => {
             navigate("/");
-          }, 2000); // Redirect after 2 seconds
+          }, 2000);
         }
       } catch (error) {
         if (error.response) {

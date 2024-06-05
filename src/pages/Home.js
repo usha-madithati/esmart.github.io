@@ -1,18 +1,29 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from "react";
 import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
-import { useLocation } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Home = () => {
   const aboutUsRef = useRef(null);
+  const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
-    if (location.hash === '#about-us') {
-      aboutUsRef.current.scrollIntoView({ behavior: 'smooth' });
+    if (location.hash === "#about-us") {
+      aboutUsRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [location]);
+
+  const handleScanNowClick = () => {
+    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+    if (!isLoggedIn) {
+      navigate("/user/login");
+    } else {
+      navigate("/scanqr");
+    }
+  };
 
   return (
     <>
@@ -28,11 +39,13 @@ const Home = () => {
             <div>
               <h1 className="text-5xl font-bold text-gray-800">SMART SAVER</h1>
               <p className="text-xl text-gray-600 mt-4">STAY FRESH</p>
-              <Link to="/scanqr">
-                <button className="mt-8 px-8 py-3 bg-green-500 text-white rounded-full text-lg font-semibold hover:bg-green-600">
-                  SCAN NOW
-                </button>
-              </Link>
+
+              <button
+                className="mt-8 px-8 py-3 bg-green-500 text-white rounded-full text-lg font-semibold hover:bg-green-600"
+                onClick={handleScanNowClick}
+              >
+                SCAN NOW
+              </button>
             </div>
           </section>
 
@@ -41,7 +54,13 @@ const Home = () => {
               Our Motive
             </h2>
             <p className="text-gray-600 mt-4 text-center max-w-2xl mx-auto">
-              Our Motive is to empower users with timely awareness of household product expiration. Through platform users effortlessly scan product QR code's upon login instantly accessing expiration dates.With customizable notification preferneces they can recieve timely alerts via SMS, ensuring products are used before expiry. We priortize user connvenience, enhancing safety and efficiency imanaging household items.
+              Our Motive is to empower users with timely awareness of household
+              product expiration. Through platform users effortlessly scan
+              product QR code's upon login instantly accessing expiration
+              dates.With customizable notification preferneces they can recieve
+              timely alerts via SMS, ensuring products are used before expiry.
+              We priortize user connvenience, enhancing safety and efficiency
+              imanaging household items.
             </p>
           </section>
 

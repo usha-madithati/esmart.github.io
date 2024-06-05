@@ -51,12 +51,15 @@ const SignUp = () => {
     if (Object.keys(newErrors).length === 0) {
       setLoading(true);
       try {
-        const response = await axios.post("http://localhost:6352/signup", {
-          name: username,
-          email,
-          phone: phoneNumber,
-          password,
-        });
+        const response = await axios.post(
+          "https://smartserver-production.up.railway.app/signup",
+          {
+            name: username,
+            email,
+            phone: phoneNumber,
+            password,
+          }
+        );
         if (response.status === 201) {
           toast.success("User Registered successfully.");
           setTimeout(() => {

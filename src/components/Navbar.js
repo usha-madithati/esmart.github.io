@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+
   return (
     <nav className="flex items-center justify-between px-6 py-4">
       <div className="flex items-center">
@@ -23,23 +25,34 @@ const Navbar = () => {
         >
           ABOUT
         </Link>
-        <Link
-          className="text-lg font-semibold hover:text-green-600"
-          to="/user/login"
-        >
-          LOGIN
-        </Link>
+        {isLoggedIn ? (
+          <>
+            <Link
+              className="text-lg font-semibold hover:text-green-600"
+              to="/user/dashboard"
+            >
+              USER
+            </Link>
+            <Link
+              className="text-lg font-semibold hover:text-green-600"
+              to="/user/notifications"
+            >
+              GET NOTIFIED
+            </Link>
+          </>
+        ) : (
+          <Link
+            className="text-lg font-semibold hover:text-green-600"
+            to="/user/login"
+          >
+            LOGIN
+          </Link>
+        )}
         <Link
           className="text-lg font-semibold hover:text-green-600"
           to="/scanqr"
         >
           SCAN QR
-        </Link>
-        <Link
-          className="text-lg font-semibold hover:text-green-600"
-          to="/user/notifications"
-        >
-          GET NOTIFIED
         </Link>
         <Link
           className="text-lg font-semibold hover:text-green-600"
