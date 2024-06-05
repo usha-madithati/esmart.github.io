@@ -5,7 +5,7 @@ const Navbar = () => {
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
 
   return (
-    <nav className="flex items-center justify-between px-6 py-4">
+    <nav className="flex flex-col items-center justify-between px-6 py-4 md:flex-row">
       <div className="flex items-center">
         <Link to="/">
           <img
@@ -15,7 +15,7 @@ const Navbar = () => {
           />
         </Link>
       </div>
-      <div className="flex-1 flex justify-center space-x-6">
+      <div className="flex flex-col items-center justify-center flex-1 space-x-6 md:flex-row">
         <Link className="text-lg font-semibold hover:text-green-600" to="/">
           HOME
         </Link>
