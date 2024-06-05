@@ -48,7 +48,7 @@ const PForm = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:6352/add-product",
+        "https://smartserver-production.up.railway.app/add-product",
         formattedProductData
       );
       toast.success("Product added successfully!");

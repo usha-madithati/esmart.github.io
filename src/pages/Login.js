@@ -47,7 +47,11 @@ const Login = () => {
         if (response && response.data.success) {
           toast.success("Login successful!");
           localStorage.setItem("isLoggedIn", true);
-          localStorage.setItem("token", response.data.token); // Store the JWT token
+          localStorage.setItem("token", response.data.token);
+          localStorage.setItem(
+            "currentUser",
+            JSON.stringify({ name: "User Name" })
+          );
           setTimeout(() => {
             navigate("/");
           }, 2000);
