@@ -28,20 +28,20 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-gray-100 flex flex-col items-center">
-        <main className="flex-grow w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <section className="flex flex-col md:flex-row items-center text-center md:text-left space-y-4 md:space-y-0 md:space-x-8">
+      <div className="flex flex-col items-center min-h-screen bg-gray-100 ">
+        <main className="flex-grow w-full max-w-6xl px-4 py-12 mx-auto sm:px-6 lg:px-8">
+          <section className="flex flex-col items-center space-y-4 text-center md:flex-row md:text-left md:space-y-0 md:space-x-8">
             <img
               src="https://i.postimg.cc/43qNYjMm/Ellipse-1.png"
-              className="h-140 md:h-140 w-auto mb-1 md:mb-0 overflow-hidden"
+              className="w-auto mb-1 overflow-hidden h-140 md:h-140 md:mb-0"
               alt="Illustration"
             />
             <div>
               <h1 className="text-5xl font-bold text-gray-800">SMART SAVER</h1>
-              <p className="text-xl text-gray-600 mt-4">STAY FRESH</p>
+              <p className="mt-4 text-xl text-gray-600">STAY FRESH</p>
 
               <button
-                className="mt-8 px-8 py-3 bg-green-500 text-white rounded-full text-lg font-semibold hover:bg-green-600"
+                className="px-8 py-3 mt-8 text-lg font-semibold text-white bg-green-500 rounded-full hover:bg-green-600"
                 onClick={handleScanNowClick}
               >
                 SCAN NOW
@@ -50,10 +50,10 @@ const Home = () => {
           </section>
 
           <section className="mt-16">
-            <h2 className="text-3xl font-semibold text-gray-800 text-center">
+            <h2 className="text-3xl font-semibold text-center text-gray-800">
               Our Motive
             </h2>
-            <p className="text-gray-600 mt-4 text-center max-w-2xl mx-auto">
+            <p className="max-w-2xl mx-auto mt-4 text-center text-gray-600">
               Our Motive is to empower users with timely awareness of household
               product expiration. Through platform users effortlessly scan
               product QR code's upon login instantly accessing expiration
@@ -65,10 +65,10 @@ const Home = () => {
           </section>
 
           <section className="mt-16" id="about-us" ref={aboutUsRef}>
-            <h2 className="text-3xl font-semibold text-gray-800 text-center">
+            <h2 className="text-3xl font-semibold text-center text-gray-800">
               How Smart Saver Works
             </h2>
-            <div className="flex flex-col md:flex-row justify-around items-center mt-8 space-y-8 md:space-y-0">
+            <div className="flex flex-col items-center justify-around mt-8 space-y-8 md:flex-row md:space-y-0">
               <div className="flex flex-col items-center text-center">
                 <img
                   src="https://i.postimg.cc/NFb3HHMp/login.png"
@@ -183,11 +183,11 @@ const Home = () => {
             </div>
           </section>
 
-          <section className="mt-16 bg-green-500 text-white py-12 px-4 rounded-lg">
+          <section className="px-4 py-12 mt-16 text-white bg-green-500 rounded-lg">
             <h2 className="text-3xl font-semibold text-center">
               Your Trusted Partner in Product Management
             </h2>
-            <div className="flex flex-col md:flex-row justify-around items-center mt-8 space-y-8 md:space-y-0">
+            <div className="flex flex-col items-center justify-around mt-8 space-y-8 md:flex-row md:space-y-0">
               <div className="flex flex-col items-center text-center">
                 <img
                   src="https://i.postimg.cc/CLBBJHCy/15-removebg-preview-1.png"
