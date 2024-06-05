@@ -21,6 +21,55 @@ app.use(cors());
 // Connect to the database
 dbConnect();
 
+// API for showing user details:
+
+const authenticateUser = (req, res, next) => {
+  const token = req.headers.authorization;
+
+  if (!token) {
+    return res.status(401).json({ message: "Authorization token is required" });
+  }
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded;
+    next();
+  } catch (error) {
+    return res.status(401).json({ message: "Invalid authorization token" });
+  }
+};
+
+// API for showing user details if logged in:
+app.get("/users", authenticateUser, async (req, res) => {
+  try {
+    const userId = req.user.userId;
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).send({ message: "User not found" });
+    }
+    res.status(200).send(user);
+  } catch (error) {
+    res.status(500).send({
+      message: "Error occurred when fetching user details.",
+      error: error.message,
+    });
+  }
+});
+
+// API for displaying products added by the currently logged-in user
+app.get("/products", authenticateUser, async (req, res) => {
+  try {
+    const userId = req.user.userId; // Get the ID of the currently logged-in user
+    const products = await Product.find({ addedBy: userId });
+    res.status(200).send(products);
+  } catch (error) {
+    res.status(500).send({
+      message: "Error occurred when fetching products.",
+      error: error.message,
+    });
+  }
+});
+
 // API for displaying products
 app.get("/products/:barcode", async (req, res) => {
   const { barcode } = req.params;
@@ -40,9 +89,9 @@ app.get("/products/:barcode", async (req, res) => {
 });
 
 // Route to handle form submissions via API (POST request)
-app.post("/add-product", async (req, res) => {
-  const { product_name, barcode, mfd, expiry_date, product_info, id } =
-    req.body;
+app.post("/add-product", authenticateUser, async (req, res) => {
+  const { product_name, barcode, mfd, expiry_date, product_info } = req.body;
+  const userId = req.user.userId;
 
   if (!product_name || !barcode || !mfd || !expiry_date || !product_info) {
     return res.status(400).send({ message: "All fields are required" });
@@ -68,7 +117,7 @@ app.post("/add-product", async (req, res) => {
     mfd: new Date(mfd),
     expiry_date: new Date(expiry_date),
     product_info,
-    id: id || undefined, // Include id if provided, otherwise let MongoDB handle it
+    addedBy: userId, // Associate the product with the currently logged-in user
   });
 
   try {

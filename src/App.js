@@ -14,6 +14,7 @@ import PrivateRoute from "./components/PrivateRoute.js";
 import UserD from "./Dashboards/UserD";
 import AuthRoute from "./components/AuthRoute";
 import AdminD from "./Dashboards/AdminD";
+import Settings from "./pages/Settings";
 
 const App = () => {
   return (
@@ -25,14 +26,18 @@ const App = () => {
         <Route path="/user/login" element={<Login />} />
         <Route element={<PrivateRoute />}>
           <Route path="/scanqr" element={<QRCodeVerification />} />
+          <Route path="/user/add-products" element={<PForm />} />
+          <Route path="/user/settings" element={<Settings></Settings>} />
+          <Route
+            path="/user/notifications"
+            element={<NotificationSettings />}
+          />
         </Route>
         <Route path="/user/dashboard" element={<UserD></UserD>} />
         <Route element={<AuthRoute />}>
           <Route path="/admin/dashboard" element={<AdminD></AdminD>} />
         </Route>
-        <Route path="/user/add-product" element={<AddProductForm />} />
         <Route path="/contact" element={<CustomerVoices />} />
-        <Route path="/user/notifications" element={<NotificationSettings />} />
         <Route path="/user/review" element={<Review />} />
       </Routes>
     </>
