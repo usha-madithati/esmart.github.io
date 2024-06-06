@@ -4,11 +4,24 @@ import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import firstImage from '../first.png';
+import secondImage from '../second.png';
+import thirdImage from '../third.png';
+
+
+
+
+
 
 const Home = () => {
   const aboutUsRef = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
+  useEffect(() => {
+    AOS.init();
+  }, []);
 
   useEffect(() => {
     if (location.hash === "#about-us") {
@@ -122,7 +135,7 @@ const Home = () => {
 
           <section class="text-gray-600 body-font">
             <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
-              <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+              <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center" data-aos="fade-right" data-aos-duration="1000">
                 <h1 class="title-font sm:text-4xl text-3xl font-semibold mb-4 text-gray-900">
                   Real-Time Updates
                 </h1>
@@ -131,11 +144,11 @@ const Home = () => {
                   insights.
                 </p>
               </div>
-              <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+              <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6"data-aos="fade-left" data-aos-duration="1000">
                 <img
                   class="object-cover object-center rounded"
                   alt="hero"
-                  src="https://i.postimg.cc/mgcrTbX0/real-time.png"
+                  src={firstImage}
                 ></img>
               </div>
             </div>
@@ -143,14 +156,14 @@ const Home = () => {
 
           <section class="text-gray-600 body-font">
             <div class="container mx-auto flex px-5 md:flex-row flex-col items-center">
-              <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
+              <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0" data-aos="fade-right" data-aos-duration="1000">
                 <img
                   class="object-cover object-center rounded"
                   alt="hero"
-                  src="https://i.postimg.cc/59Qd9n8k/image-17.png"
+                  src={secondImage}
                 />
               </div>
-              <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
+              <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center"data-aos="fade-left" data-aos-duration="1000">
                 <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
                   Automated Tracking
                 </h1>
@@ -164,7 +177,7 @@ const Home = () => {
 
           <section class="text-gray-600 body-font">
             <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
-              <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+              <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center" data-aos="fade-left" data-aos-duration="1000">
                 <h1 class="title-font sm:text-4xl text-3xl font-semibold mb-4 text-gray-900">
                   Customizable Reports
                 </h1>
@@ -173,11 +186,11 @@ const Home = () => {
                   and make informed decisions.
                 </p>
               </div>
-              <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+              <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6"data-aos="fade-left" data-aos-duration="1000">
                 <img
                   class="object-cover object-center rounded"
                   alt="hero"
-                  src="https://i.postimg.cc/ncdvdYPp/image-18.png"
+                  src={thirdImage}
                 ></img>
               </div>
             </div>
