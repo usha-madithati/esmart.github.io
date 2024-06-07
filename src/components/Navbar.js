@@ -12,7 +12,7 @@ const Navbar = () => {
 
   return (
     <nav className="fixed md:relative w-full top-0 left-0 bg-white flex items-center justify-between px-4 py-4  z-50">
-      <div className="md:flex md:items-center">
+      <div className="md:flex md:items-center ">
         <Link to="/">
           <img
             src="https://i.postimg.cc/jSY8z9x8/S-3-2.png"
