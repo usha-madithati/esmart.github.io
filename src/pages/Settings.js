@@ -29,7 +29,7 @@ const Settings = () => {
         "Are you sure you want to delete your account permanently?"
       );
       if (confirmation) {
-        const response = await axios.delete("http://localhost:6352/delete", {
+        const response = await axios.delete("https://smartserver-production.up.railway.app/delete", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },

@@ -16,8 +16,8 @@ const UserD = () => {
     const fetchData = async () => {
       try {
         const [userResponse, productResponse] = await Promise.all([
-          axios.get("http://localhost:6352/users"),
-          axios.get("http://localhost:6352/products"),
+          axios.get("https://smartserver-production.up.railway.app/users"),
+          axios.get("https://smartserver-production.up.railway.app/products"),
         ]);
         setUsers(userResponse.data);
         setProducts(productResponse.data);

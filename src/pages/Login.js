@@ -36,10 +36,13 @@ const Login = () => {
     if (Object.keys(newErrors).length === 0) {
       setLoading(true);
       try {
-        const response = await axios.post("http://localhost:6352/login", {
-          email,
-          password,
-        });
+        const response = await axios.post(
+          "https://smartserver-production.up.railway.app/login",
+          {
+            email,
+            password,
+          }
+        );
 
         if (response && response.data.success) {
           toast.success("Login successful!");
