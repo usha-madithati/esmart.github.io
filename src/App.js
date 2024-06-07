@@ -15,6 +15,7 @@ import UserD from "./Dashboards/UserD";
 import AuthRoute from "./components/AuthRoute";
 import AdminD from "./Dashboards/AdminD";
 import Settings from "./pages/Settings";
+import AccountSettings from "./settings/AccountSettings";
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
           <Route path="/scanqr" element={<QRCodeVerification />} />
           <Route path="/user/add-products" element={<PForm />} />
           <Route path="/user/settings" element={<Settings></Settings>} />
+          <Route path="/settings/account" element={<AccountSettings />} />
           <Route
             path="/user/notifications"
             element={<NotificationSettings />}

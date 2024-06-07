@@ -1,4 +1,3 @@
-// server.js
 import express from "express";
 import dotenv from "dotenv";
 import dbConnect from "./db/datbase.js";
@@ -21,8 +20,7 @@ app.use(cors());
 // Connect to the database
 dbConnect();
 
-// API for showing user details:
-
+// Middleware to authenticate user
 const authenticateUser = (req, res, next) => {
   const token = req.headers.authorization;
 
@@ -31,7 +29,7 @@ const authenticateUser = (req, res, next) => {
   }
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token.split(' ')[1], process.env.JWT_SECRET);
     req.user = decoded;
     next();
   } catch (error) {
@@ -39,7 +37,24 @@ const authenticateUser = (req, res, next) => {
   }
 };
 
-// API for showing user details if logged in:
+// API to delete user account
+app.delete("/delete", authenticateUser, async (req, res) => {
+  try {
+    const userId = req.user.userId;
+    const deletedUser = await User.findByIdAndDelete(userId);
+
+    if (!deletedUser) {
+      return res.status(404).send({ message: "User not found" });
+    }
+
+    res.status(200).send({ message: "User deleted successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ message: "Server error" });
+  }
+});
+
+// Existing APIs
 app.get("/users", authenticateUser, async (req, res) => {
   try {
     const userId = req.user.userId;
@@ -56,10 +71,9 @@ app.get("/users", authenticateUser, async (req, res) => {
   }
 });
 
-// API for displaying products added by the currently logged-in user
 app.get("/products", authenticateUser, async (req, res) => {
   try {
-    const userId = req.user.userId; // Get the ID of the currently logged-in user
+    const userId = req.user.userId;
     const products = await Product.find({ addedBy: userId });
     res.status(200).send(products);
   } catch (error) {
@@ -70,7 +84,6 @@ app.get("/products", authenticateUser, async (req, res) => {
   }
 });
 
-// API for displaying products
 app.get("/products/:barcode", async (req, res) => {
   const { barcode } = req.params;
   try {
@@ -88,7 +101,6 @@ app.get("/products/:barcode", async (req, res) => {
   }
 });
 
-// Route to handle form submissions via API (POST request)
 app.post("/add-product", authenticateUser, async (req, res) => {
   const { product_name, barcode, mfd, expiry_date, product_info } = req.body;
   const userId = req.user.userId;
@@ -117,7 +129,7 @@ app.post("/add-product", authenticateUser, async (req, res) => {
     mfd: new Date(mfd),
     expiry_date: new Date(expiry_date),
     product_info,
-    addedBy: userId, // Associate the product with the currently logged-in user
+    addedBy: userId,
   });
 
   try {
@@ -136,7 +148,6 @@ app.post("/add-product", authenticateUser, async (req, res) => {
   }
 });
 
-// Route to handle scanning and storing product
 app.post("/scan-product", async (req, res) => {
   const { barcode } = req.body;
 
@@ -148,7 +159,6 @@ app.post("/scan-product", async (req, res) => {
     let product = await Product.findOne({ barcode });
 
     if (!product) {
-      // If the product is not found, you can return an error or handle as needed
       return res.status(404).send({ message: "Product not found" });
     }
 
@@ -164,7 +174,6 @@ app.post("/scan-product", async (req, res) => {
   }
 });
 
-// Signup Route API
 app.post("/signup", async (req, res) => {
   const { name, email, phone, password } = req.body;
 
@@ -184,13 +193,10 @@ app.post("/signup", async (req, res) => {
     await newUser.save();
     res.status(201).send({ message: "User registered successfully!" });
   } catch (error) {
-    res
-      .status(500)
-      .send({ message: "Error registering user", error: error.message });
+    res.status(500).send({ message: "Error registering user", error: error.message });
   }
 });
 
-// Login Route API
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
