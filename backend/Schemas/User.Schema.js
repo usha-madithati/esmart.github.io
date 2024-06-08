@@ -18,6 +18,10 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  notificationPeriod: {
+    type: String,
+    default: "3 days",
+  },
 });
 
 const User = mongoose.model("User", UserSchema);
