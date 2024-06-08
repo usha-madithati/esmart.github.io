@@ -6,6 +6,7 @@ import cors from "cors";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import User from "./Schemas/User.Schema.js";
+import client from "./twilioConfig.js";
 
 dotenv.config();
 
@@ -29,7 +30,7 @@ const authenticateUser = (req, res, next) => {
   }
 
   try {
-    const decoded = jwt.verify(token.split(' ')[1], process.env.JWT_SECRET);
+    const decoded = jwt.verify(token.split(" ")[1], process.env.JWT_SECRET);
     req.user = decoded;
     next();
   } catch (error) {
@@ -54,7 +55,67 @@ app.delete("/delete", authenticateUser, async (req, res) => {
   }
 });
 
-// Existing APIs
+// API FOR NOTIFICATION SETTINGS
+
+// Ensure the phone number is in E.164 format
+const formatPhoneNumber = (phoneNumber) => {
+  if (phoneNumber.startsWith("+")) {
+    return phoneNumber;
+  }
+  // Assuming all phone numbers are from India for this example
+  const countryCode = "+91";
+  return countryCode + phoneNumber;
+};
+
+// API FOR NOTIFICATION SETTINGS
+app.put("/update-notification", authenticateUser, async (req, res) => {
+  const userId = req.user.userId;
+  const { notificationPeriod } = req.body;
+
+  if (!notificationPeriod) {
+    return res.status(400).json({ message: "Notification period is required" });
+  }
+
+  try {
+    const user = await User.findByIdAndUpdate(
+      userId,
+      { notificationPeriod },
+      { new: true }
+    );
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Ensure the phone number is correctly formatted
+    const formattedPhoneNumber = formatPhoneNumber(user.phone);
+
+    // Send SMS to the user's phone number
+    const message = `You have selected to receive notifications every ${notificationPeriod}.`;
+    await client.messages.create({
+      body: message,
+      from: +13392298921,
+      to: formattedPhoneNumber,
+    });
+
+    return res.status(200).json({
+      message: "Notification period updated and SMS sent successfully",
+      user,
+    });
+  } catch (error) {
+    console.error("Error updating notification period or sending SMS:", error);
+    if (error.code === 21408) {
+      return res.status(400).json({
+        message:
+          "SMS permissions not enabled for this region. Please check your Twilio settings.",
+      });
+    }
+    return res
+      .status(500)
+      .json({ message: "Server error", error: error.message });
+  }
+});
+
+// APIs
 app.get("/users", authenticateUser, async (req, res) => {
   try {
     const userId = req.user.userId;
@@ -193,7 +254,9 @@ app.post("/signup", async (req, res) => {
     await newUser.save();
     res.status(201).send({ message: "User registered successfully!" });
   } catch (error) {
-    res.status(500).send({ message: "Error registering user", error: error.message });
+    res
+      .status(500)
+      .send({ message: "Error registering user", error: error.message });
   }
 });
 

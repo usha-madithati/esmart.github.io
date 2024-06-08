@@ -1,14 +1,50 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const NotificationSettings = () => {
   const [isAlertVisible, setIsAlertVisible] = useState(false);
   const [selectedPeriod, setSelectedPeriod] = useState("");
 
-  const handleButtonClick = (period) => {
+  const handleButtonClick = async (period) => {
     setSelectedPeriod(period);
     setIsAlertVisible(true);
+
+    try {
+      const token = localStorage.getItem("token");
+      const response = await fetch(
+        "http://localhost:6352/update-notification",
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ notificationPeriod: period }),
+        }
+      );
+
+      if (response.status === 200) {
+        const data = await response.json();
+        console.log("Notification period updated:", data);
+        toast.success("Notification period updated and SMS sent successfully!");
+      } else {
+        const errorData = await response.json();
+        console.log("Response status:", response.status);
+        console.error(
+          "Failed to update notification period:",
+          errorData.message
+        );
+        toast.error(
+          `Failed to update notification period: ${errorData.message}`
+        );
+      }
+    } catch (error) {
+      console.error("Error updating notification period:", error);
+      toast.error("Error updating notification period");
+    }
   };
 
   const handleDismissAlert = () => {
@@ -50,8 +86,12 @@ const NotificationSettings = () => {
                 <h1>1</h1>
               </div>
               <div className="flex-grow">
-                <h2 className="text-gray-900 text-lg title-font font-medium mb-3">3 Days</h2>
-                <p className="leading-relaxed text-base">Receive notifications every 3 days for updates and insights.</p>
+                <h2 className="text-gray-900 text-lg title-font font-medium mb-3">
+                  3 Days
+                </h2>
+                <p className="leading-relaxed text-base">
+                  Receive notifications every 3 days for updates and insights.
+                </p>
                 <DrawOutlineButton period="3 days">
                   <span className="text-black">Set for 3 days</span>
                 </DrawOutlineButton>
@@ -62,105 +102,38 @@ const NotificationSettings = () => {
                 <h1>2</h1>
               </div>
               <div className="flex-grow">
-                <h2 className="text-gray-900 text-lg title-font font-medium mb-3">5 Days</h2>
-                <p className="leading-relaxed text-base">Receive notifications every 5 days for a more periodic update.</p>
+                <h2 className="text-gray-900 text-lg title-font font-medium mb-3">
+                  5 Days
+                </h2>
+                <p className="leading-relaxed text-base">
+                  Receive notifications every 5 days for a more periodic update.
+                </p>
                 <DrawOutlineButton period="5 days">
                   <span className="text-black">Set for 5 days</span>
                 </DrawOutlineButton>
               </div>
             </div>
             <div className="p-4 md:w-1/3 flex flex-col text-center items-center">
-              <div className="w-20 h-20 inline-flex text-black text-2xl items-center justify-center rounded-full bg-yellow-500 text-black-500 mb-5 flex-shrink-0">
+              <div className="w-20 h-20 inline-flex text-black text-2xl items-center justify-center rounded-full bg-red-500 text-black-500 mb-5 flex-shrink-0">
                 <h1>3</h1>
               </div>
               <div className="flex-grow">
-                <h2 className="text-gray-900 text-lg title-font font-medium mb-3">7 Days</h2>
-                <p className="leading-relaxed text-base">Receive notifications every 7 days for a less frequent but more comprehensive update.</p>
+                <h2 className="text-gray-900 text-lg title-font font-medium mb-3">
+                  7 Days
+                </h2>
+                <p className="leading-relaxed text-base">
+                  Receive notifications every week for regular updates.
+                </p>
                 <DrawOutlineButton period="7 days">
                   <span className="text-black">Set for 7 days</span>
                 </DrawOutlineButton>
               </div>
             </div>
           </div>
-          {isAlertVisible && (
-            <div
-              id="alert-additional-content-1"
-              className="p-4 mb-4 text-blue-800 border border-blue-300 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400 dark:border-blue-800"
-              role="alert"
-            >
-              <div className="flex items-center">
-                <svg
-                  className="flex-shrink-0 w-4 h-4 me-2"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
-                </svg>
-                <span className="sr-only">Info</span>
-                <h3 className="text-lg font-medium">This is an info alert</h3>
-              </div>
-              <div className="mt-2 mb-4 text-sm">
-                You have selected to receive notifications every {selectedPeriod}.
-              </div>
-              <div className="flex">
-                <button
-                  type="button"
-                  className="text-blue-800 bg-transparent border border-blue-800 hover:bg-blue-900 hover:text-black focus:ring-4 focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-xs px-3 py-1.5 text-center dark:hover:bg-blue-600 dark:text-blue-400 dark:hover:text-white dark:focus:ring-blue-800"
-                  onClick={handleDismissAlert}
-                  aria-label="Close"
-                >
-                  Dismiss
-                </button>
-              </div>
-            </div>
-          )}
         </div>
       </section>
-      <section className="text-gray-600 body-font">
-        <div className="container px-5 py-24 mx-auto">
-          <div className="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4 md:space-y-0 space-y-6">
-            <div className="p-4 md:w-1/3 flex flex-col text-center items-center">
-              <div className="w-20 h-20 inline-flex text-black text-2xl items-center justify-center rounded-full bg-yellow-100 text-black-500 mb-5 flex-shrink-0">
-                <h1>4</h1>
-              </div>
-              <div className="flex-grow">
-                <h2 className="text-gray-900 text-lg title-font font-medium mb-3">1 Month</h2>
-                <p className="leading-relaxed text-base">Receive notifications every 1 Month for a more periodic update.</p>
-                <DrawOutlineButton period="1 month">
-                  <span className="text-black">Set for 1 Month</span>
-                </DrawOutlineButton>
-              </div>
-            </div>
-            <div className="p-4 md:w-1/3 flex flex-col text-center items-center">
-              <div className="w-20 h-20 inline-flex text-black text-2xl items-center justify-center rounded-full bg-gray-400 text-black-500 mb-5 flex-shrink-0">
-                <h1>5</h1>
-              </div>
-              <div className="flex-grow">
-                <h2 className="text-gray-900 text-lg title-font font-medium mb-3">3 Months</h2>
-                <p className="leading-relaxed text-base">Receive notifications every 3 Months for a more periodic update.</p>
-                <DrawOutlineButton period="3 months">
-                  <span className="text-black">Set for 3 Months</span>
-                </DrawOutlineButton>
-              </div>
-            </div>
-            <div className="p-4 md:w-1/3 flex flex-col text-center items-center">
-              <div className="w-20 h-20 inline-flex text-black text-2xl items-center justify-center rounded-full bg-blue-900 text-black-500 mb-5 flex-shrink-0">
-                <h1>6</h1>
-              </div>
-              <div className="flex-grow">
-                <h2 className="text-gray-900 text-lg title-font font-medium mb-3">5 Months</h2>
-                <p className="leading-relaxed text-base">Receive notifications every 5 Months for a more periodic update.</p>
-                <DrawOutlineButton period="5 months">
-                  <span className="text-black">Set for 5 Months</span>
-                </DrawOutlineButton>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      
+      <Footer />
+      <ToastContainer />
     </>
   );
 };
