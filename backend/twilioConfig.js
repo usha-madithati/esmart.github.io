@@ -1,7 +1,10 @@
 import twilio from "twilio";
+import dotenv from "dotenv";
 
-const accountSid = "ACfe5021b28e8f76c6effba779195d10f3";
-const authToken = "796aaeab6c12c8033b60d41124682fa4";
+dotenv.config();
+
+const accountSid = process.env.SID;
+const authToken = process.env.AUTHTOKEN;
 
 const client = twilio(accountSid, authToken);
 

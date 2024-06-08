@@ -93,7 +93,7 @@ app.put("/update-notification", authenticateUser, async (req, res) => {
     const message = `You have selected to receive notifications every ${notificationPeriod}.`;
     await client.messages.create({
       body: message,
-      from: +13392298921,
+      from: process.env.PNUMB,
       to: formattedPhoneNumber,
     });
 
