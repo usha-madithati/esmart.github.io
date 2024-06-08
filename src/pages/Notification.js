@@ -130,9 +130,59 @@ const NotificationSettings = () => {
               </div>
             </div>
           </div>
+          <div className="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4 md:space-y-0 space-y-6">
+            <div className="p-4 md:w-1/3 flex flex-col text-center items-center">
+              <div className="w-20 h-20 inline-flex text-black text-2xl items-center justify-center rounded-full bg-green-600 text-black-500 mb-5 flex-shrink-0">
+                <h1>4</h1>
+              </div>
+              <div className="flex-grow">
+                <h2 className="text-gray-900 text-lg title-font font-medium mb-3">
+                  9 Days
+                </h2>
+                <p className="leading-relaxed text-base">
+                  Receive notifications every 9 days for updates and insights.
+                </p>
+                <DrawOutlineButton period="9 days">
+                  <span className="text-black">Set for 9 days</span>
+                </DrawOutlineButton>
+              </div>
+            </div>
+            <div className="p-4 md:w-1/3 flex flex-col text-center items-center">
+              <div className="w-20 h-20 inline-flex text-black text-2xl items-center justify-center rounded-full bg-orange-500 text-black-500 mb-5 flex-shrink-0">
+                <h1>5</h1>
+              </div>
+              <div className="flex-grow">
+                <h2 className="text-gray-900 text-lg title-font font-medium mb-3">
+                  11 Days
+                </h2>
+                <p className="leading-relaxed text-base">
+                  Receive notifications every 11 days for a more periodic
+                  update.
+                </p>
+                <DrawOutlineButton period="11 days">
+                  <span className="text-black">Set for 11 days</span>
+                </DrawOutlineButton>
+              </div>
+            </div>
+            <div className="p-4 md:w-1/3 flex flex-col text-center items-center">
+              <div className="w-20 h-20 inline-flex text-black text-2xl items-center justify-center rounded-full bg-red-500 text-black-500 mb-5 flex-shrink-0">
+                <h1>6</h1>
+              </div>
+              <div className="flex-grow">
+                <h2 className="text-gray-900 text-lg title-font font-medium mb-3">
+                  15 Days
+                </h2>
+                <p className="leading-relaxed text-base">
+                  Receive notifications every week for regular updates.
+                </p>
+                <DrawOutlineButton period="15 days">
+                  <span className="text-black">Set for 15 days</span>
+                </DrawOutlineButton>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
-      <Footer />
       <ToastContainer />
     </>
   );
