@@ -28,6 +28,12 @@ Try our web application: [https://esmartgit.vercel.app/](https://esmart-github-i
  - After successfully registering the user you will navigate automatically to `/login` page.
  - Login to the application as per the steps told above.
 
+## Authorization Tokens
+- Be ensure that in the application currently    we are using the JWT and BcryptJS for authorisation in the application.
+- For getting the Authorization token you must be logged in before. 
+- Now after getting in the application your token will be valid for next 1 hour.
+- Untill the token is valid you can use our application services as well.
+
 ## Review Section: 
 Share your feedback and insights with the Smart Savers community. Your reviews help us improve and guide others in making informed choices.
 ## QR Code Scanning: 
