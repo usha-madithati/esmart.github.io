@@ -47,10 +47,24 @@ const PForm = () => {
     }
 
     try {
+      // Get the token from localStorage
+      const token = localStorage.getItem("token");
+
+      if (!token) {
+        setLoading(false);
+        return toast.error("Authorization token is missing.");
+      }
+
       const response = await axios.post(
         "https://smartserver-production.up.railway.app/add-product",
-        formattedProductData
+        formattedProductData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
+
       toast.success("Product added successfully!");
       setProductData({
         product_name: "",
