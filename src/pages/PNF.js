@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const NotFoundPage = () => {
   return (
@@ -22,6 +23,7 @@ const NotFoundPage = () => {
           </div>
         </div>
       </div>
+      <Footer></Footer>
     </>
   );
 };
