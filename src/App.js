@@ -16,6 +16,7 @@ import AuthRoute from "./components/AuthRoute";
 import AdminD from "./Dashboards/AdminD";
 import Settings from "./pages/Settings";
 import AccountSettings from "./settings/AccountSettings";
+import NotFoundPage from "./pages/PNF";
 
 const App = () => {
   return (
@@ -41,6 +42,7 @@ const App = () => {
         </Route>
         <Route path="/contact" element={<CustomerVoices />} />
         <Route path="/user/review" element={<Review />} />
+        <Route path="*" element={<NotFoundPage></NotFoundPage>} />
       </Routes>
     </>
   );

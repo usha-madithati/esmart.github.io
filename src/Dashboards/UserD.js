@@ -8,35 +8,40 @@ import { Link } from "react-router-dom";
 const UserD = () => {
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
   const navigate = useNavigate();
-  const [users, setUsers] = useState([]);
+  const [currentUser, setCurrentUser] = useState(null);
   const [products, setProducts] = useState([]);
-  const [currentUser, setCurrentUser] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [userResponse, productResponse] = await Promise.all([
-          axios.get("https://smartserver-production.up.railway.app/users"),
-          axios.get("https://smartserver-production.up.railway.app/products"),
-        ]);
-        setUsers(userResponse.data);
+        const token = localStorage.getItem("token");
+        const userResponse = await axios.get("https://smartserver-production.up.railway.app/users", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const productResponse = await axios.get("https://smartserver-production.up.railway.app/products", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setCurrentUser(userResponse.data);
         setProducts(productResponse.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
-    const fetchCurrentUser = () => {
-      const user = JSON.parse(localStorage.getItem("currentUser"));
-      setCurrentUser(user);
-    };
 
-    fetchData();
-    fetchCurrentUser();
-  }, []);
+    if (isLoggedIn) {
+      fetchData();
+    } else {
+      navigate("/login");
+    }
+  }, [isLoggedIn, navigate]);
 
   const handleLogout = () => {
     try {
-      let confirmation = window.confirm("Are you sure want to logout?");
+      let confirmation = window.confirm("Are you sure you want to logout?");
       if (confirmation) {
         setTimeout(() => {
           localStorage.setItem("isLoggedIn", false);
@@ -49,6 +54,10 @@ const UserD = () => {
     }
   };
 
+  if (!isLoggedIn) {
+    return null;
+  }
+
   return (
     <>
       <Navbar />
@@ -56,7 +65,7 @@ const UserD = () => {
 
       <h3 className="flex justify-center font-semibold">Happy Saving!!</h3>
       {currentUser && (
-        <div className="flex justify-center font-semibold">Welcome!</div>
+        <div className="flex justify-center font-semibold">Welcome, {currentUser.name}!</div>
       )}
 
       <div className="flex h-screen w-full flex-col">
@@ -64,7 +73,7 @@ const UserD = () => {
           <div className="flex items-center gap-4">
             <Link
               className="flex items-center gap-2 text-lg font-semibold md:text-base"
-              href="#"
+              to="#"
               rel="ugc"
             >
               <svg
@@ -90,7 +99,7 @@ const UserD = () => {
             <div className="flex flex-col gap-4">
               <Link
                 className="flex items-center gap-2 text-lg font-semibold"
-                href="#"
+                to="#"
                 rel="ugc"
               >
                 <svg
@@ -159,114 +168,30 @@ const UserD = () => {
               </Link>
             </div>
           </nav>
-          <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-10">
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-              <div
-                className="rounded-lg border bg-card text-card-foreground shadow-sm"
-                data-v0-t="card"
-              >
-                <div className="space-y-1.5 p-6 flex flex-row items-center justify-between pb-2">
-                  <h3 className="whitespace-nowrap tracking-tight text-sm font-medium">
-                    Total Products
-                  </h3>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="h-6 w-6"
-                  >
-                    <path d="M20 21l-4-4H8l-4 4"></path>
-                    <path d="M12 17V8"></path>
-                    <path d="M18 14V4"></path>
-                    <path d="M6 14V10"></path>
-                  </svg>
-                </div>
-                <div className="p-6 pt-0 flex items-center">
-                  <div className="text-2xl font-bold">{products.length}</div>
-                </div>
+          <div className="flex flex-1 flex-col">
+            <div className="mb-4 px-4 md:px-6">
+              <div className="flex items-center justify-between py-6">
+                <h1 className="text-3xl font-bold">Products</h1>
+                <button
+                  className="rounded-lg bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </button>
               </div>
-              <div
-                className="rounded-lg border bg-card text-card-foreground shadow-sm"
-                data-v0-t="card"
-              >
-                <div className="space-y-1.5 p-6 flex flex-row items-center justify-between pb-2">
-                  <h3 className="whitespace-nowrap tracking-tight text-sm font-medium">
-                    Users
-                  </h3>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="h-6 w-6"
-                  >
-                    <path d="M6 9l6 6 6-6"></path>
-                  </svg>
-                </div>
-                <div className="p-6 pt-0 flex items-center">
-                  <div className="text-2xl font-bold">{users.length}</div>
-                </div>
+              <div className="flex items-center justify-between py-6">
+                <h2 className="text-xl">Total Products: {products.length}</h2>
               </div>
+              <ul className="space-y-4">
+                {products.map((product) => (
+                  <li key={product.id} className="rounded-lg bg-white p-4 shadow">
+                    <div className="font-bold">{product.name}</div>
+                    <div>{product.description}</div>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <div
-              className="rounded-lg border bg-card text-card-foreground shadow-sm"
-              data-v0-t="card"
-            >
-              <div className="space-y-1.5 p-6 flex flex-row items-center justify-between pb-2">
-                <h3 className="tracking-tight text-sm font-medium">
-                  User List
-                </h3>
-              </div>
-              <div className="p-6 pt-0">
-                <ul>
-                  {users.map((user) => (
-                    <li key={user._id} className="mb-2">
-                      <div className="flex justify-between">
-                        <span>{user.name}</span>
-                        <span>{user.email}</span>
-                        <span>{user.phone}</span>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <div
-              className="rounded-lg border bg-card text-card-foreground shadow-sm"
-              data-v0-t="card"
-            >
-              <div className="space-y-1.5 p-6 flex flex-row items-center justify-between pb-2">
-                <h3 className="tracking-tight text-sm font-medium">
-                  Product List
-                </h3>
-              </div>
-              <div className="p-6 pt-0">
-                <ul>
-                  {products.map((product) => (
-                    <li key={product._id} className="mb-2">
-                      <div className="flex justify-between">
-                        <span>{product.product_name}</span>
-                        <span>{product.barcode}</span>
-                        <span>{product.mfd}</span>
-                        <span>{product.expiry_date}</span>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </main>
+          </div>
         </div>
       </div>
     </>
