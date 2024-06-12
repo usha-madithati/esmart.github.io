@@ -10,7 +10,11 @@ After scanning , the users will have to give access to their mobile devices in o
 The users even have chance to set alaram in prior of 2 days or 5 days or 15 days.
 So this is the overview of our website where people can save the income they are spending on dalily product purchase.
 
-Try our web application: [https://esmartgit.vercel.app/](https://esmart-github-io-oq3w.vercel.app/)
+Try our web application: 
+https://esmart-github-io.vercel.app/ 
+
+And don't forget to give star ⭐ to this amazing project repository. 
+
 
 ### STEPS TO PROCEED:
 
