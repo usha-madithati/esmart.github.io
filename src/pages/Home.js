@@ -54,13 +54,13 @@ const Home = () => {
               Our Motive
             </h2>
             <p className="text-gray-600 mt-4 text-center max-w-2xl mx-auto">
-              Our Motive is to empower users with timely awareness of household
-              product expiration. Through platform users effortlessly scan
-              product QR code's upon login instantly accessing expiration
-              dates.With customizable notification preferneces they can recieve
-              timely alerts via SMS, ensuring products are used before expiry.
-              We priortize user connvenience, enhancing safety and efficiency
-              imanaging household items.
+            Our motive is to empower users with timely awareness of household
+            product expiration. Through our platform, users can effortlessly scan
+            product QR codes upon login, instantly accessing expiration
+            dates. With customizable notification preferences, they can receive
+            timely alerts via SMS, ensuring products are used before expiry.
+            We prioritize user convenience, enhancing safety and efficiency
+            in managing household items.
             </p>
           </section>
 
