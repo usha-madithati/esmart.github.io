@@ -10,7 +10,11 @@ After scanning , the users will have to give access to their mobile devices in o
 The users even have chance to set alaram in prior of 2 days or 5 days or 15 days.
 So this is the overview of our website where people can save the income they are spending on dalily product purchase.
 
-Try our web application: [https://esmartgit.vercel.app/](https://esmart-github-io-oq3w.vercel.app/)
+Try our web application: 
+https://esmart-github-io.vercel.app/ 
+
+And don't forget to give star ⭐ to this amazing project repository. 
+
 
 ### STEPS TO PROCEED:
 
@@ -33,6 +37,49 @@ Try our web application: [https://esmartgit.vercel.app/](https://esmart-github-i
 - For getting the Authorization token you must be logged in before. 
 - Now after getting in the application your token will be valid for next 1 hour.
 - Untill the token is valid you can use our application services as well.
+
+### Twilio Account Setup
+
+1. **Sign Up for Twilio**
+   - Go to [Twilio's website](https://www.twilio.com/try-twilio) and sign up for a new account if you haven't already.
+
+2. **Get Twilio API Credentials**
+   - After signing up, navigate to the dashboard and note down your Account SID and Auth Token. You'll need these to authenticate your requests to Twilio's API.
+
+3. **Purchase a Phone Number**
+   - Purchase a phone number from Twilio that you'll use to send SMS notifications to users. You can do this from the Twilio console.
+
+4. **Install Twilio SDK**
+   - Install the Twilio Node.js package in your project:
+     ```bash
+     npm install twilio
+     ```
+
+5. **Integrate Twilio into Your Backend**
+   - In your backend code, use the Twilio SDK to send SMS notifications.
+   - Initialize Twilio with your Account SID and Auth Token.
+   - Use the purchased phone number as the sender and your users' phone numbers as recipients.
+   - Craft a message containing the notification details, such as product expiry date, and send it using Twilio's API.
+
+6. **Test SMS Notifications**
+   - Test the integration by triggering SMS notifications in your application. Ensure that users receive the notifications correctly.
+
+7. **Handle Errors and Edge Cases**
+   - Implement error handling for cases such as failed SMS delivery or invalid phone numbers.
+   - Consider implementing retry mechanisms for failed SMS deliveries.
+
+8. **Monitor Usage and Costs**
+   - Keep track of your Twilio API usage and associated costs to ensure they align with your budget and usage expectations.
+
+9. **Document Integration Steps**
+   - Update your project documentation with detailed instructions on how to set up Twilio for SMS notifications. Include information on where to find Twilio credentials, how to purchase a phone number, and how to integrate Twilio into the project's backend.
+
+10. **Final Testing and Deployment**
+    - Once everything is set up and tested, deploy your updated project with Twilio integration to your preferred hosting platform.
+
+Remember to keep your Twilio credentials secure and never expose them in publicly accessible code repositories.
+
+
 
 ## Review Section: 
 Share your feedback and insights with the Smart Savers community. Your reviews help us improve and guide others in making informed choices.
