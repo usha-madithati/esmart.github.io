@@ -96,6 +96,12 @@ Explore additional pages including product management sections, and learn more a
 2. CSS
 3. JS
 4. ReactJS(need to be converted for better performance)
+5. MongoDB 
+6. Express JS
+7. Node JS
+8. SuperJEST
+9. Tailwind 
+10. Twilio
 
 ## Get Started
 
