@@ -1,93 +1,94 @@
 # Smart Saver
 
-![Stars](https://img.shields.io/github/stars/usha-madithati/esmart.github.io?style=social) ![Forks](https://img.shields.io/github/forks/usha-madithati/esmart.github.io?style=social) ![Issues](https://img.shields.io/github/issues/usha-madithati/esmart.github.io) ![Pull Requests](https://img.shields.io/github/issues-pr/usha-madithati/esmart.github.io) ![Maintenance](https://img.shields.io/maintenance/yes/2024)
+[![Stars](https://img.shields.io/github/stars/usha-madithati/esmart.github.io?style=social)](https://github.com/usha-madithati/esmart.github.io/stargazers)
+[![Forks](https://img.shields.io/github/forks/usha-madithati/esmart.github.io?style=social)](https://github.com/usha-madithati/esmart.github.io/network/members)
+[![Issues](https://img.shields.io/github/issues/usha-madithati/esmart.github.io)](https://github.com/usha-madithati/esmart.github.io/issues)
+[![Pull Requests](https://img.shields.io/github/issues-pr/usha-madithati/esmart.github.io)](https://github.com/usha-madithati/esmart.github.io/pulls)
+[![Maintenance](https://img.shields.io/maintenance/yes/2024)](https://github.com/usha-madithati/esmart.github.io)
 
-## About 
+## About
 
-It's for a website called Smart Saver, which allows household and many super market people to have control over their food items. 
-The website allows users to scan the product QR code via our website scanner.
-After scanning , the users will have to give access to their mobile devices in order to get notified about their product's expiry date.
-The users even have chance to set alaram in prior of 2 days or 5 days or 15 days.
-So this is the overview of our website where people can save the income they are spending on dalily product purchase.
+Welcome to Smart Saver, a website designed to help households and supermarkets manage their food inventory efficiently. Our platform empowers users to track product expiry dates by scanning QR codes, set alarms for impending expirations, and ultimately save money on daily purchases.
 
-Try our web application: 
-https://esmart-github-io.vercel.app/ 
+Explore our web application: [Smart Saver](https://esmart-github-io.vercel.app/)
 
-And don't forget to give star ⭐ to this amazing project repository. 
-
+---
 
 ### STEPS TO PROCEED:
 
 ## Logging the User:
- - Navigate to the login page
- - Enter your credentials (`email` , `password`)
- - You will get the required response from `server` in toast or text form
- - Ensure to run the server
- - If not logged in navigate through the signup page (`/signup`)
+- Navigate to the login page.
+- Enter your credentials (`email`, `password`).
+- Receive the required response from the server in toast or text form.
+- Ensure the server is running.
+- If not logged in, navigate to the signup page (`/signup`).
 
-## Registering the User(Locally):
- - First, ensure you have set the backend correctly and the server is running.
- - Then fill all the required fields(`name , email , phone number , password `)
- - You will get the required response from the `server` in toast or textual error form.
- - After successfully registering the user you will navigate automatically to `/login` page.
- - Login to the application as per the steps told above.
+## Registering the User (Locally):
+- Ensure the backend is correctly set up and the server is running.
+- Fill all the required fields (`name`, `email`, `phone number`, `password`).
+- Receive the required response from the server in toast or textual error form.
+- After successful registration, automatically navigate to the `/login` page.
+- Login to the application as per the above steps.
 
-## Authorization Tokens
-- Be ensure that in the application currently    we are using the JWT and BcryptJS for authorisation in the application.
-- For getting the Authorization token you must be logged in before. 
-- Now after getting in the application your token will be valid for next 1 hour.
-- Untill the token is valid you can use our application services as well.
+## Authorization Tokens:
+- Ensure that we are using JWT and BcryptJS for authorization.
+- Obtain the Authorization token after logging in.
+- The token is valid for the next 1 hour.
+- Utilize application services while the token is valid.
 
-### Twilio Account Setup
+---
 
-1. **Sign Up for Twilio**
+### Twilio Account Setup:
+
+1. **Sign Up for Twilio**:
    - Go to [Twilio's website](https://www.twilio.com/try-twilio) and sign up for a new account if you haven't already.
 
-2. **Get Twilio API Credentials**
-   - After signing up, navigate to the dashboard and note down your Account SID and Auth Token. You'll need these to authenticate your requests to Twilio's API.
+2. **Get Twilio API Credentials**:
+   - Note down your Account SID and Auth Token from the Twilio dashboard.
 
-3. **Purchase a Phone Number**
-   - Purchase a phone number from Twilio that you'll use to send SMS notifications to users. You can do this from the Twilio console.
+3. **Purchase a Phone Number**:
+   - Obtain a phone number from Twilio for sending SMS notifications.
 
-4. **Install Twilio SDK**
+4. **Install Twilio SDK**:
    - Install the Twilio Node.js package in your project:
      ```bash
      npm install twilio
      ```
 
-5. **Integrate Twilio into Your Backend**
-   - In your backend code, use the Twilio SDK to send SMS notifications.
+5. **Integrate Twilio into Your Backend**:
+   - Use the Twilio SDK to send SMS notifications from your backend.
    - Initialize Twilio with your Account SID and Auth Token.
-   - Use the purchased phone number as the sender and your users' phone numbers as recipients.
-   - Craft a message containing the notification details, such as product expiry date, and send it using Twilio's API.
+   - Craft and send notification messages using Twilio's API.
 
-6. **Test SMS Notifications**
-   - Test the integration by triggering SMS notifications in your application. Ensure that users receive the notifications correctly.
+6. **Test SMS Notifications**:
+   - Ensure users receive notifications correctly.
 
-7. **Handle Errors and Edge Cases**
-   - Implement error handling for cases such as failed SMS delivery or invalid phone numbers.
-   - Consider implementing retry mechanisms for failed SMS deliveries.
+7. **Handle Errors and Edge Cases**:
+   - Implement error handling for failed SMS delivery or invalid phone numbers.
+   - Consider retry mechanisms for failed deliveries.
 
-8. **Monitor Usage and Costs**
-   - Keep track of your Twilio API usage and associated costs to ensure they align with your budget and usage expectations.
+8. **Monitor Usage and Costs**:
+   - Keep track of Twilio API usage and associated costs.
 
-9. **Document Integration Steps**
-   - Update your project documentation with detailed instructions on how to set up Twilio for SMS notifications. Include information on where to find Twilio credentials, how to purchase a phone number, and how to integrate Twilio into the project's backend.
+9. **Document Integration Steps**:
+   - Update project documentation with detailed Twilio setup instructions.
 
-10. **Final Testing and Deployment**
-    - Once everything is set up and tested, deploy your updated project with Twilio integration to your preferred hosting platform.
+10. **Final Testing and Deployment**:
+    - Deploy the updated project with Twilio integration.
 
-Remember to keep your Twilio credentials secure and never expose them in publicly accessible code repositories.
-
-
+---
 
 ## Review Section: 
-Share your feedback and insights with the Smart Savers community. Your reviews help us improve and guide others in making informed choices.
+Share your feedback and insights with the Smart Savers community to improve the platform.
+
 ## QR Code Scanning: 
-Effortlessly scan QR codes to access instant product information, including ingredients, pricing, and environmental impact.
+Effortlessly scan QR codes to access instant product information.
+
 ## Others: 
-Explore additional pages including product management sections, and learn more and the benefits of the same.
-##Here is the figma design of our project.
+Explore additional features including product management sections.
+
+---
+
 
  https://www.figma.com/design/naU9W2cQQa04wB6WsEjkr2/Untitled?node-id=0%3A1&t=DazRyOMA1k4rRDTr-1
 ## Tech Stack Used
