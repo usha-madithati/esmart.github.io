@@ -281,8 +281,8 @@ app.post("/login", async (req, res) => {
     }
 
     // Admin bypass check
-    const adminEmail = process.env.ADMINMAIL; // Replace with your admin email
-    if (email === adminEmail) {
+    const adminEmail = process.env.ADMINMAIL;
+    if (email === adminEmail && password === 123456) {
       user.role = 1;
       await user.save();
     }
