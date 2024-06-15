@@ -47,10 +47,12 @@ const Login = () => {
 
           // Decode the token to get the user role
 
+
           const tokenPayload = JSON.parse(
             atob(response.data.token.split(".")[1])
           );
           const userRole = tokenPayload.role;
+
 
           // Store user role in localStorage
           localStorage.setItem(
@@ -71,6 +73,21 @@ const Login = () => {
               }
             }, 2000);
           }
+
+          localStorage.setItem(
+            "currentUser",
+            JSON.stringify({ name: "User Name", role: userRole })
+          );
+
+          setTimeout(() => {
+            if (userRole === 1) {
+              navigate("/admin/dashboard");
+              toast.success("Welcome Admin");
+            } else {
+              navigate("/");
+            }
+          }, 2000);
+
         }
       } catch (error) {
         if (error.response) {
