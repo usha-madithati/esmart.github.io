@@ -42,29 +42,35 @@ const Login = () => {
         });
 
         if (response && response.data.success) {
-          toast.success("Login successful!");
-          localStorage.setItem("isLoggedIn", true);
+          localStorage.setItem("isLoggedIn", "true");
           localStorage.setItem("token", response.data.token);
 
           // Decode the token to get the user role
+
           const tokenPayload = JSON.parse(
             atob(response.data.token.split(".")[1])
           );
           const userRole = tokenPayload.role;
 
+          // Store user role in localStorage
           localStorage.setItem(
             "currentUser",
-            JSON.stringify({ name: "User Name", role: userRole })
+            JSON.stringify({ email, role: userRole })
           );
 
-          setTimeout(() => {
-            if (userRole === 1) {
-              navigate("/admin/dashboard");
-              toast.success("Welcome Admin");
-            } else {
-              navigate("/");
-            }
-          }, 2000);
+          if (email === "smartsaver@admin.com" && password === "123456") {
+            toast.success("Admin Logged in successfully!");
+            navigate("/admin/dashboard");
+          } else {
+            toast.success("Login successful!");
+            setTimeout(() => {
+              if (userRole === 1) {
+                navigate("/admin/dashboard");
+              } else {
+                navigate("/");
+              }
+            }, 2000);
+          }
         }
       } catch (error) {
         if (error.response) {
@@ -88,7 +94,7 @@ const Login = () => {
   return (
     <>
       <Navbar />
-      <ToastContainer></ToastContainer>
+      <ToastContainer />
       <div className="flex items-center justify-center min-h-screen bg-gray-100">
         <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-2xl">
           <div className="flex justify-center">

