@@ -36,24 +36,34 @@ const Login = () => {
     if (Object.keys(newErrors).length === 0) {
       setLoading(true);
       try {
-        const response = await axios.post(
-          "https://smartserver-production.up.railway.app/login",
-          {
-            email,
-            password,
-          }
-        );
+        const response = await axios.post("http://localhost:6352/login", {
+          email,
+          password,
+        });
 
         if (response && response.data.success) {
           toast.success("Login successful!");
           localStorage.setItem("isLoggedIn", true);
           localStorage.setItem("token", response.data.token);
+
+          // Decode the token to get the user role
+          const tokenPayload = JSON.parse(
+            atob(response.data.token.split(".")[1])
+          );
+          const userRole = tokenPayload.role;
+
           localStorage.setItem(
             "currentUser",
-            JSON.stringify({ name: "User Name" })
+            JSON.stringify({ name: "User Name", role: userRole })
           );
+
           setTimeout(() => {
-            navigate("/");
+            if (userRole === 1) {
+              navigate("/admin/dashboard");
+              toast.success("Welcome Admin");
+            } else {
+              navigate("/");
+            }
           }, 2000);
         }
       } catch (error) {
