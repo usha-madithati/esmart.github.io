@@ -18,6 +18,10 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  role: {
+    type: Number,
+    default: 0,
+  },
   notificationPeriod: {
     type: String,
     default: "3 days",

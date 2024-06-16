@@ -1,19 +1,19 @@
+// AuthRoute.js
 import React from "react";
-import { Navigate, Outlet } from "react-router-dom";
+import { Route, Navigate } from "react-router-dom";
 
-const AuthRoute = () => {
+const AuthRoute = ({ element, ...rest }) => {
+  // Check if user is authenticated and has admin role
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
-  const userRole = localStorage.getItem("role"); // Assuming user role is stored in localStorage
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  const isAdmin = currentUser && currentUser.role === 1;
 
-  if (!isLoggedIn) {
+  // Redirect to login if not authenticated or not an admin
+  if (!isLoggedIn || !isAdmin) {
     return <Navigate to="/user/login" />;
   }
 
-  if (userRole !== "admin") {
-    return <Navigate to="/" />;
-  }
-
-  return <Outlet />;
+  return <Route {...rest} element={element} />;
 };
 
 export default AuthRoute;

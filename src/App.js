@@ -27,6 +27,7 @@ const App = () => {
         <Route path="/user/signup" element={<SignUp />} />
         <Route path="/user/login" element={<Login />} />
         <Route element={<PrivateRoute />}>
+          <Route path="/admin/dashboard" element={<AdminD></AdminD>} />
           <Route path="/scanqr" element={<QRCodeVerification />} />
           <Route path="/user/add-products" element={<PForm />} />
           <Route path="/user/settings" element={<Settings></Settings>} />
@@ -37,9 +38,6 @@ const App = () => {
           />
         </Route>
         <Route path="/user/dashboard" element={<UserD></UserD>} />
-        <Route element={<AuthRoute />}>
-          <Route path="/admin/dashboard" element={<AdminD></AdminD>} />
-        </Route>
         <Route path="/contact" element={<CustomerVoices />} />
         <Route path="/user/review" element={<Review />} />
         <Route path="*" element={<NotFoundPage></NotFoundPage>} />

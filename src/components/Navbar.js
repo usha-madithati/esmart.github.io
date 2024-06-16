@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  const userRole = currentUser?.role; 
 
   return (
     <nav className="flex items-center justify-between px-6 py-4">
@@ -25,13 +27,21 @@ const Navbar = () => {
         >
           ABOUT
         </Link>
-        {isLoggedIn ? (
+        {isLoggedIn && userRole === 1 && (
+          <Link
+            className="text-lg font-semibold hover:text-green-600"
+            to="/admin/dashboard"
+          >
+            ADMIN 
+          </Link>
+        )}
+        {isLoggedIn && (
           <>
             <Link
               className="text-lg font-semibold hover:text-green-600"
               to="/user/dashboard"
             >
-              USER
+              USER 
             </Link>
             <Link
               className="text-lg font-semibold hover:text-green-600"
@@ -40,7 +50,8 @@ const Navbar = () => {
               GET NOTIFIED
             </Link>
           </>
-        ) : (
+        )}
+        {!isLoggedIn && (
           <Link
             className="text-lg font-semibold hover:text-green-600"
             to="/user/login"
