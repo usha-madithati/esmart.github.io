@@ -282,6 +282,20 @@ app.post("/login", async (req, res) => {
       return res.status(400).send({ message: "Invalid email or password" });
     }
 
+
+    // Admin bypass check
+
+    const adminEmail = process.env.ADMINMAIL;
+    if (email === adminEmail) {
+
+    const adminEmail = process.env.ADMINMAIL; 
+    if (email === adminEmail) {
+
+      user.role = 1;
+      await user.save();
+    }
+
+
     const token = jwt.sign(
       { userId: user._id, role: user.role },
       process.env.JWT_SECRET,
