@@ -27,7 +27,7 @@ const PForm = () => {
   const handleStore = async (e) => {
     e.preventDefault();
     setLoading(true);
-
+  
     // Ensure date fields are in yyyy-mm-dd format
     const formattedProductData = {
       ...productData,
@@ -38,23 +38,23 @@ const PForm = () => {
         ? new Date(productData.expiry_date).toISOString().split("T")[0]
         : "",
     };
-
+  
     if (formattedProductData.expiry_date <= formattedProductData.mfd) {
       setLoading(false);
       return toast.error(
         "Manufacturing date cannot be greater than or equal to expiry date."
       );
     }
-
+  
     try {
       // Get the token from localStorage
       const token = localStorage.getItem("token");
-
+  
       if (!token) {
         setLoading(false);
         return toast.error("Authorization token is missing.");
       }
-
+  
       const response = await axios.post(
         "https://smartserver-production.up.railway.app/add-product",
         formattedProductData,
@@ -64,7 +64,7 @@ const PForm = () => {
           },
         }
       );
-
+  
       toast.success("Product added successfully!");
       setProductData({
         product_name: "",
@@ -76,12 +76,16 @@ const PForm = () => {
     } catch (error) {
       if (error.response) {
         // Server responded with a status other than 2xx
-        toast.error(
-          `Error occurred: ${
-            error.response.data.message || error.response.data
-          }`
-        );
-
+        if (error.response.status === 409) {
+          toast.error("Duplicate product. Please check and try again.");
+        } else {
+          toast.error(
+            `Error occurred: ${
+              error.response.data.message || error.response.data
+            }`
+          );
+        }
+  
         console.error("Response data:", error.response.data);
         console.error("Response status:", error.response.status);
         console.error("Response headers:", error.response.headers);
@@ -96,6 +100,7 @@ const PForm = () => {
       setLoading(false);
     }
   };
+  
 
   return (
     <>
