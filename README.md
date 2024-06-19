@@ -1,46 +1,94 @@
 # Smart Saver
 
-![Stars](https://img.shields.io/github/stars/usha-madithati/esmart.github.io?style=social) ![Forks](https://img.shields.io/github/forks/usha-madithati/esmart.github.io?style=social) ![Issues](https://img.shields.io/github/issues/usha-madithati/esmart.github.io) ![Pull Requests](https://img.shields.io/github/issues-pr/usha-madithati/esmart.github.io) ![Maintenance](https://img.shields.io/maintenance/yes/2024)
+[![Stars](https://img.shields.io/github/stars/usha-madithati/esmart.github.io?style=social)](https://github.com/usha-madithati/esmart.github.io/stargazers)
+[![Forks](https://img.shields.io/github/forks/usha-madithati/esmart.github.io?style=social)](https://github.com/usha-madithati/esmart.github.io/network/members)
+[![Issues](https://img.shields.io/github/issues/usha-madithati/esmart.github.io)](https://github.com/usha-madithati/esmart.github.io/issues)
+[![Pull Requests](https://img.shields.io/github/issues-pr/usha-madithati/esmart.github.io)](https://github.com/usha-madithati/esmart.github.io/pulls)
+[![Maintenance](https://img.shields.io/maintenance/yes/2024)](https://github.com/usha-madithati/esmart.github.io)
 
-## About 
+## About
 
-It's for a website called Smart Saver, which allows household and many super market people to have control over their food items. 
-The website allows users to scan the product QR code via our website scanner.
-After scanning , the users will have to give access to their mobile devices in order to get notified about their product's expiry date.
-The users even have chance to set alaram in prior of 2 days or 5 days or 15 days.
-So this is the overview of our website where people can save the income they are spending on dalily product purchase.
+Welcome to Smart Saver, a website designed to help households and supermarkets manage their food inventory efficiently. Our platform empowers users to track product expiry dates by scanning QR codes, set alarms for impending expirations, and ultimately save money on daily purchases.
 
-Try our web application: [https://esmartgit.vercel.app/](https://esmart-github-io-oq3w.vercel.app/)
+Explore our web application: [Smart Saver](https://esmart-github-io.vercel.app/)
+
+---
 
 ### STEPS TO PROCEED:
 
 ## Logging the User:
- - Navigate to the login page
- - Enter your credentials (`email` , `password`)
- - You will get the required response from `server` in toast or text form
- - Ensure to run the server
- - If not logged in navigate through the signup page (`/signup`)
+- Navigate to the login page.
+- Enter your credentials (`email`, `password`).
+- Receive the required response from the server in toast or text form.
+- Ensure the server is running.
+- If not logged in, navigate to the signup page (`/signup`).
 
-## Registering the User(Locally):
- - First, ensure you have set the backend correctly and the server is running.
- - Then fill all the required fields(`name , email , phone number , password `)
- - You will get the required response from the `server` in toast or textual error form.
- - After successfully registering the user you will navigate automatically to `/login` page.
- - Login to the application as per the steps told above.
+## Registering the User (Locally):
+- Ensure the backend is correctly set up and the server is running.
+- Fill all the required fields (`name`, `email`, `phone number`, `password`).
+- Receive the required response from the server in toast or textual error form.
+- After successful registration, automatically navigate to the `/login` page.
+- Login to the application as per the above steps.
 
-## Authorization Tokens
-- Be ensure that in the application currently    we are using the JWT and BcryptJS for authorisation in the application.
-- For getting the Authorization token you must be logged in before. 
-- Now after getting in the application your token will be valid for next 1 hour.
-- Untill the token is valid you can use our application services as well.
+## Authorization Tokens:
+- Ensure that we are using JWT and BcryptJS for authorization.
+- Obtain the Authorization token after logging in.
+- The token is valid for the next 1 hour.
+- Utilize application services while the token is valid.
+
+---
+
+### Twilio Account Setup:
+
+1. **Sign Up for Twilio**:
+   - Go to [Twilio's website](https://www.twilio.com/try-twilio) and sign up for a new account if you haven't already.
+
+2. **Get Twilio API Credentials**:
+   - Note down your Account SID and Auth Token from the Twilio dashboard.
+
+3. **Purchase a Phone Number**:
+   - Obtain a phone number from Twilio for sending SMS notifications.
+
+4. **Install Twilio SDK**:
+   - Install the Twilio Node.js package in your project:
+     ```bash
+     npm install twilio
+     ```
+
+5. **Integrate Twilio into Your Backend**:
+   - Use the Twilio SDK to send SMS notifications from your backend.
+   - Initialize Twilio with your Account SID and Auth Token.
+   - Craft and send notification messages using Twilio's API.
+
+6. **Test SMS Notifications**:
+   - Ensure users receive notifications correctly.
+
+7. **Handle Errors and Edge Cases**:
+   - Implement error handling for failed SMS delivery or invalid phone numbers.
+   - Consider retry mechanisms for failed deliveries.
+
+8. **Monitor Usage and Costs**:
+   - Keep track of Twilio API usage and associated costs.
+
+9. **Document Integration Steps**:
+   - Update project documentation with detailed Twilio setup instructions.
+
+10. **Final Testing and Deployment**:
+    - Deploy the updated project with Twilio integration.
+
+---
 
 ## Review Section: 
-Share your feedback and insights with the Smart Savers community. Your reviews help us improve and guide others in making informed choices.
+Share your feedback and insights with the Smart Savers community to improve the platform.
+
 ## QR Code Scanning: 
-Effortlessly scan QR codes to access instant product information, including ingredients, pricing, and environmental impact.
+Effortlessly scan QR codes to access instant product information.
+
 ## Others: 
-Explore additional pages including product management sections, and learn more and the benefits of the same.
-##Here is the figma design of our project.
+Explore additional features including product management sections.
+
+---
+
 
  https://www.figma.com/design/naU9W2cQQa04wB6WsEjkr2/Untitled?node-id=0%3A1&t=DazRyOMA1k4rRDTr-1
 ## Tech Stack Used
@@ -49,6 +97,12 @@ Explore additional pages including product management sections, and learn more a
 2. CSS
 3. JS
 4. ReactJS(need to be converted for better performance)
+5. MongoDB 
+6. Express JS
+7. Node JS
+8. SuperJEST
+9. Tailwind 
+10. Twilio
 
 ## Get Started
 
@@ -101,11 +155,12 @@ We love your input! We want to make contributing to this project as easy and tra
 
 ### Deployment
  - Login to your vercel here: https://vercel.com/login
- - Now select the forked repository on vercel
- - Now after selecting the repository select the root or default branch to     get  deployed.
+ - Now select the forked repository on vercel website in your dashboard.
+ - Now after selecting the repository select the root or default branch to get  deployed.
    It can be seen here: https:vercel.com/new/clone?repository-url=https://github.com/usha-madithati/esmart.github.io
  - Check and test whole website application and its functionality
- - Add the live hosted link of changed website things in your PR.
+
+Now if you tested the application and believe that it has your functionality or bug has been fixed as well then raise the PR(Pull Request).
 
 Try our web application here: [https://esmartgit.vercel.app/](https://esmart-github-io-oq3w.vercel.app/)
 
