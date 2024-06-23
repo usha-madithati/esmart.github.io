@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import { toast, ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { format, parseISO } from "date-fns";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -231,7 +230,7 @@ const UserD = () => {
                       </span>
                     </div>
                     <div>{product.product_info}</div>
-                    <button 
+                    <button
                       className="mt-2 px-4 py-2 text-sm text-white bg-red-500 rounded hover:bg-red-600"
                       onClick={() => handleDelete(product.id)}
                     >
