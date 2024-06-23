@@ -36,10 +36,13 @@ const Login = () => {
     if (Object.keys(newErrors).length === 0) {
       setLoading(true);
       try {
-        const response = await axios.post("https://smartserver-production.up.railway.app/login", {
-          email,
-          password,
-        });
+        const response = await axios.post(
+          "https://smartserver-scbe.onrender.com/login",
+          {
+            email,
+            password,
+          }
+        );
 
         if (response && response.data.success) {
           localStorage.setItem("isLoggedIn", "true");
@@ -47,12 +50,10 @@ const Login = () => {
 
           // Decode the token to get the user role
 
-
           const tokenPayload = JSON.parse(
             atob(response.data.token.split(".")[1])
           );
           const userRole = tokenPayload.role;
-
 
           // Store user role in localStorage
           localStorage.setItem(
@@ -87,7 +88,6 @@ const Login = () => {
               navigate("/");
             }
           }, 2000);
-
         }
       } catch (error) {
         if (error.response) {
