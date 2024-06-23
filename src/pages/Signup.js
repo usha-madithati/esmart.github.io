@@ -130,7 +130,7 @@ const SignUp = () => {
             <div>
               <label className="block text-gray-700">Phone Number</label>
               <input
-                type="text"
+                type="number"
                 value={phoneNumber}
                 onChange={(e) => setPhoneNumber(e.target.value)}
                 className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-green-600"

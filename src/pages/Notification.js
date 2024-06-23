@@ -82,7 +82,7 @@ const NotificationSettings = () => {
           </div>
           <div className="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4 md:space-y-0 space-y-6">
             <div className="p-4 md:w-1/3 flex flex-col text-center items-center">
-              <div className="w-20 h-20 inline-flex text-black text-2xl items-center justify-center rounded-full bg-green-600 text-black-500 mb-5 flex-shrink-0">
+              <div className="w-20 h-20 inline-flex text-black text-2xl items-center justify-center rounded-full bg-blue-600 text-black-500 mb-5 flex-shrink-0">
                 <h1>1</h1>
               </div>
               <div className="flex-grow">
@@ -98,7 +98,7 @@ const NotificationSettings = () => {
               </div>
             </div>
             <div className="p-4 md:w-1/3 flex flex-col text-center items-center">
-              <div className="w-20 h-20 inline-flex text-black text-2xl items-center justify-center rounded-full bg-orange-500 text-black-500 mb-5 flex-shrink-0">
+              <div className="w-20 h-20 inline-flex text-black text-2xl items-center justify-center rounded-full bg-yellow-500 text-black-500 mb-5 flex-shrink-0">
                 <h1>2</h1>
               </div>
               <div className="flex-grow">
@@ -132,7 +132,7 @@ const NotificationSettings = () => {
           </div>
           <div className="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4 md:space-y-0 space-y-6">
             <div className="p-4 md:w-1/3 flex flex-col text-center items-center">
-              <div className="w-20 h-20 inline-flex text-black text-2xl items-center justify-center rounded-full bg-green-600 text-black-500 mb-5 flex-shrink-0">
+              <div className="w-20 h-20 inline-flex text-black text-2xl items-center justify-center rounded-full bg-zinc-600 text-black-500 mb-5 flex-shrink-0">
                 <h1>4</h1>
               </div>
               <div className="flex-grow">
@@ -148,7 +148,7 @@ const NotificationSettings = () => {
               </div>
             </div>
             <div className="p-4 md:w-1/3 flex flex-col text-center items-center">
-              <div className="w-20 h-20 inline-flex text-black text-2xl items-center justify-center rounded-full bg-orange-500 text-black-500 mb-5 flex-shrink-0">
+              <div className="w-20 h-20 inline-flex text-black text-2xl items-center justify-center rounded-full bg-pink-500 text-black-500 mb-5 flex-shrink-0">
                 <h1>5</h1>
               </div>
               <div className="flex-grow">
@@ -165,7 +165,7 @@ const NotificationSettings = () => {
               </div>
             </div>
             <div className="p-4 md:w-1/3 flex flex-col text-center items-center">
-              <div className="w-20 h-20 inline-flex text-black text-2xl items-center justify-center rounded-full bg-red-500 text-black-500 mb-5 flex-shrink-0">
+              <div className="w-20 h-20 inline-flex text-black text-2xl items-center justify-center rounded-full bg-purple-700 text-black-500 mb-5 flex-shrink-0">
                 <h1>6</h1>
               </div>
               <div className="flex-grow">
