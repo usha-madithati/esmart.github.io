@@ -15,16 +15,22 @@ const UserD = () => {
     const fetchData = async () => {
       try {
         const token = localStorage.getItem("token");
-        const userResponse = await axios.get("https://smartserver-production.up.railway.app/users", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        const productResponse = await axios.get("https://smartserver-production.up.railway.app/products", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const userResponse = await axios.get(
+          "https://smartserver-production.up.railway.app/users",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        const productResponse = await axios.get(
+          "https://smartserver-production.up.railway.app/products",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
         setCurrentUser(userResponse.data);
         setProducts(productResponse.data);
       } catch (error) {
@@ -54,6 +60,28 @@ const UserD = () => {
     }
   };
 
+  const handleDelete = async (productId) => {
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.delete(
+        `https://smartserver-production.up.railway.app/products/${productId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (response.status === 200) {
+        setProducts(products.filter((product) => product.id !== productId));
+        toast.success("Product deleted successfully.");
+      } else {
+        toast.error("Failed to delete product.");
+      }
+    } catch (error) {
+      toast.error("Error deleting product. Try again.");
+    }
+  };
+
   if (!isLoggedIn) {
     return null;
   }
@@ -65,7 +93,9 @@ const UserD = () => {
 
       <h3 className="flex justify-center font-semibold">Happy Saving!!</h3>
       {currentUser && (
-        <div className="flex justify-center font-semibold">Welcome, {currentUser.name}!</div>
+        <div className="flex justify-center font-semibold">
+          Welcome, {currentUser.name}!
+        </div>
       )}
 
       <div className="flex h-screen w-full flex-col">
@@ -184,9 +214,28 @@ const UserD = () => {
               </div>
               <ul className="space-y-4">
                 {products.map((product) => (
-                  <li key={product.id} className="rounded-lg bg-white p-4 shadow">
-                    <div className="font-bold">{product.name}</div>
-                    <div>{product.description}</div>
+                  <li
+                    key={product.id}
+                    className="rounded-lg bg-white p-4 shadow"
+                  >
+                    <div className="font-bold">
+                      {product.product_name}{" "}
+                      <span className="font-semibold text-xs">
+                        Manufacturing Date:{" "}
+                        {new Date(product.mfd).toLocaleDateString("en-GB", {
+                          year: "numeric",
+                          month: "2-digit",
+                          day: "2-digit",
+                        })}
+                      </span>
+                    </div>
+                    <div>{product.product_info}</div>
+                    <button
+                      className="mt-2 px-4 py-2 text-sm text-white bg-red-500 rounded hover:bg-red-600"
+                      onClick={() => handleDelete(product.id)}
+                    >
+                      Delete
+                    </button>
                   </li>
                 ))}
               </ul>
