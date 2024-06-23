@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import { toast, ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { format, parseISO } from "date-fns";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -120,7 +121,7 @@ const UserD = () => {
               >
                 <path d="m8 3 4 8 5-5 5 15H2L8 3z"></path>
               </svg>
-              <span className="sr-only">Acme Inc</span>
+              <span className="sr-only">SmartSaver</span>
             </Link>
           </div>
         </header>
