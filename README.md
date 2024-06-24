@@ -145,6 +145,28 @@ Explore additional features including product management sections.
  -  Your backend server will be running on `PORT: 6352`
 
 
+### Running Tests
+
+To ensure the robustness of our application, we use Jest and Supertest for testing.
+
+#### Setting up Jest and Supertest
+
+1. **Install Dependencies**
+   ```bash
+   npm install jest supertest --save-dev
+
+2. Create Test Files Create test files in the       tests folder (or another preferred directory).
+
+3. Writing Tests Use Jest and Supertest to write your tests.
+
+4. Run Tests To run the tests, use the following command: `npm test` 
+
+5. You can also add a script in your package.json for convenience:
+`
+"scripts": {
+  "test": "jest"
+}`
+
  ### Contributing
 
 We love your input! We want to make contributing to this project as easy and transparent as possible, whether it's:
