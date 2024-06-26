@@ -1,0 +1,35 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: crimson;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="date"],
+input[type="time"],
+button {
+    padding: 8px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid blue;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+
+}
+
+button:hover {
+    background-color: #45a049;
+}
