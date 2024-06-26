@@ -21,8 +21,6 @@ app.use(cors());
 // Connect to the database
 dbConnect();
 
-
-
 // Middleware to authenticate user
 const authenticateUser = (req, res, next) => {
   const token = req.headers.authorization;
@@ -41,6 +39,11 @@ const authenticateUser = (req, res, next) => {
       .json({ message: "Invalid authorization token. Login Again" });
   }
 };
+
+// TEST API
+app.get("/", (req, res) => {
+  res.status(200).send("Server started.");
+});
 
 // API to delete user account
 app.delete("/delete", authenticateUser, async (req, res) => {
@@ -282,19 +285,11 @@ app.post("/login", async (req, res) => {
       return res.status(400).send({ message: "Invalid email or password" });
     }
 
-
-    // Admin bypass check
-
     const adminEmail = process.env.ADMINMAIL;
     if (email === adminEmail) {
-
-    const adminEmail = process.env.ADMINMAIL; 
-    if (email === adminEmail) {
-
       user.role = 1;
       await user.save();
     }
-
 
     const token = jwt.sign(
       { userId: user._id, role: user.role },
@@ -311,6 +306,9 @@ app.post("/login", async (req, res) => {
 });
 
 // Start the server
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+export default app;
+export { server };
