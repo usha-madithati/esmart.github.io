@@ -34,7 +34,7 @@ const AccountSettings = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.put(
-          "https://smartserver-production.up.railway.app/settings/account",
+          "https://smartserver-scbe.onrender.com/settings/account",
           {
             email,
             password,

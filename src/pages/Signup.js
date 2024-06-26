@@ -52,7 +52,7 @@ const SignUp = () => {
       setLoading(true);
       try {
         const response = await axios.post(
-          "https://smartserver-production.up.railway.app/signup",
+          "https://smartserver-scbe.onrender.com/signup",
           {
             name: username,
             email,

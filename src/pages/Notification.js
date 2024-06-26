@@ -15,7 +15,7 @@ const NotificationSettings = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        "https://smartserver-production.up.railway.app/update-notification",
+        "https://smartserver-scbe.onrender.com/update-notification",
         {
           method: "PUT",
           headers: {
