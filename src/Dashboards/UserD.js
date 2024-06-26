@@ -230,9 +230,6 @@ const UserD = () => {
                       </span>
                     </div>
                     <div>{product.product_info}</div>
-                    <button className="mt-2 m-2 px-4 py-2 text-sm text-white bg-blue-500 rounded hover:bg-red-600">
-                      Edit
-                    </button>
                     <button
                       className="mt-2 px-4 py-2 text-sm text-white bg-red-500 rounded hover:bg-red-600"
                       onClick={() => handleDelete(product.id)}
