@@ -61,7 +61,7 @@ const AdminD = () => {
     const fetchSalesData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:6352/getallproducts"
+          "https://smartserver-scbe.onrender.com/getallproducts"
         );
         const data = response.data;
         setBarData({
@@ -83,7 +83,9 @@ const AdminD = () => {
 
     const fetchRevenueData = async () => {
       try {
-        const response = await axios.get("http://localhost:6352/getallusers");
+        const response = await axios.get(
+          "https://smartserver-scbe.onrender.com/getallusers"
+        );
         const data = response.data;
         setLineData({
           labels: data.labels,
@@ -104,7 +106,9 @@ const AdminD = () => {
 
     const fetchUsers = async () => {
       try {
-        const response = await axios.get("http://localhost:6352/getallusers");
+        const response = await axios.get(
+          "https://smartserver-scbe.onrender.com/getallusers"
+        );
         setUsers(response.data);
       } catch (error) {
         console.error("Error fetching users:", error);
@@ -114,7 +118,7 @@ const AdminD = () => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:6352/getallproducts"
+          "https://smartserver-scbe.onrender.com/getallproducts"
         );
         setProducts(response.data);
       } catch (error) {
@@ -124,7 +128,9 @@ const AdminD = () => {
 
     const fetchAnnouncements = async () => {
       try {
-        const response = await axios.get("http://localhost:6352/announcements");
+        const response = await axios.get(
+          "https://smartserver-scbe.onrender.com/announcements"
+        );
         setAnnouncements(response.data);
       } catch (error) {
         console.error("Error fetching announcements:", error);
@@ -184,7 +190,7 @@ const AdminD = () => {
             </tbody>
           </table>
         </div>
-       
+
         <div className="bg-white shadow-md rounded-lg p-4">
           <h2 className="text-xl font-semibold mb-4">Products</h2>
           <table className="min-w-full bg-white">
