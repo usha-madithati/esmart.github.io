@@ -122,6 +122,43 @@ app.put("/update-notification", authenticateUser, async (req, res) => {
   }
 });
 
+// ANNOUNCEMENT APIS
+// API to get announcements
+app.get("/announcements", async (req, res) => {
+  try {
+    const announcements = [
+      { id: 1, message: "System maintenance on Sunday at 2 AM" },
+      { id: 2, message: "New feature release next week" },
+    ];
+    res.status(200).send(announcements);
+  } catch (error) {
+    res.status(500).send({
+      message: "Error occurred when fetching announcements.",
+      error: error.message,
+    });
+  }
+});
+
+// get all users
+app.get("/getallusers", async (req, res) => {
+  try {
+    const users = await User.find({});
+    res.json(users);
+  } catch (error) {
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+// get all products info
+app.get("/getallproducts", async (req, res) => {
+  try {
+    const products = await Product.find({});
+    res.json(products);
+  } catch (error) {
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
 // APIs
 app.get("/users", authenticateUser, async (req, res) => {
   try {
