@@ -215,21 +215,40 @@ const UserD = () => {
               <ul className="space-y-4">
                 {products.map((product) => (
                   <li
-                    key={product.id}
+                    key={product.addedBy}
                     className="rounded-lg bg-white p-4 shadow"
                   >
                     <div className="font-bold">
                       {product.product_name}{" "}
                       <span className="font-semibold text-xs">
-                        Manufacturing Date:{" "}
+                        Mfg Date:{" "}
                         {new Date(product.mfd).toLocaleDateString("en-GB", {
                           year: "numeric",
                           month: "2-digit",
                           day: "2-digit",
                         })}
                       </span>
+                      <span className="m-3 font-semibold text-xs">
+                        Exp Date:{" "}
+                        {new Date(product.expiry_date).toLocaleDateString(
+                          "en-GB",
+                          {
+                            year: "numeric",
+                            month: "2-digit",
+                            day: "2-digit",
+                          }
+                        )}
+                      </span>
                     </div>
                     <div>{product.product_info}</div>
+                    {/* edit setup */}
+                    <button
+                      className="mt-2 m-2 px-6 py-2 text-sm text-white bg-blue-500 rounded hover:bg-orange-300"
+                      onClick={() => handleDelete(product.id)}
+                    >
+                      Edit
+                    </button>
+                    {/* delete setup */}
                     <button
                       className="mt-2 px-4 py-2 text-sm text-white bg-red-500 rounded hover:bg-red-600"
                       onClick={() => handleDelete(product.id)}
