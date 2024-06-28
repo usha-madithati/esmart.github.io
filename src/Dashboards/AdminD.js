@@ -159,16 +159,7 @@ const AdminD = () => {
             ))}
           </ul>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-          <div className="bg-white shadow-md rounded-lg p-4">
-            <h2 className="text-xl font-semibold mb-4">Sales Data</h2>
-            <Bar data={barData} />
-          </div>
-          <div className="bg-white shadow-md rounded-lg p-4">
-            <h2 className="text-xl font-semibold mb-4">Revenue Data</h2>
-            <Line data={lineData} />
-          </div>
-        </div>
+
         <div className="bg-white shadow-md rounded-lg p-4 mb-8">
           <h2 className="text-xl font-semibold mb-4">Users</h2>
           <table className="min-w-full bg-white">
