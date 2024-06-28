@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -11,7 +13,6 @@ import {
   PointElement,
   LineElement,
 } from "chart.js";
-import { Bar, Line } from "react-chartjs-2";
 import Navbar from "../components/Navbar";
 import "tailwindcss/tailwind.css";
 
@@ -27,6 +28,21 @@ ChartJS.register(
 );
 
 const AdminD = () => {
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    try {
+      let confirmation = window.confirm("Are you sure you want to logout?");
+      if (confirmation) {
+        setTimeout(() => {
+          localStorage.setItem("isLoggedIn", false);
+          navigate("/");
+        }, 1000);
+        toast.success("Logout Successfully.");
+      }
+    } catch (error) {
+      toast.error("Error doing logout. Try again.");
+    }
+  };
   const [barData, setBarData] = useState({
     labels: [],
     datasets: [
@@ -94,7 +110,7 @@ const AdminD = () => {
               label: "Revenue",
               data: data.values,
               fill: false,
-              backgroundColor: "rgba(153, 102, 255, 0.2)",
+              backgroundColor: "rgba(153, 182, 455, 0.2)",
               borderColor: "rgba(153, 102, 255, 1)",
             },
           ],
@@ -147,10 +163,13 @@ const AdminD = () => {
   return (
     <>
       <Navbar />
+      <ToastContainer />
       <div className="container mx-auto p-4">
         <h1 className="text-2xl font-bold text-center mb-8">Admin Dashboard</h1>
         <div className="bg-white shadow-md rounded-lg p-4 mb-8">
-          <h2 className="text-xl font-semibold mb-4">Announcements</h2>
+          <h2 className="text-xl text-gray-800 bg-yellow-400 font-semibold mb-4">
+            Announcements
+          </h2>
           <ul>
             {announcements.map((announcement) => (
               <li key={announcement.id} className="py-2 border-b">
@@ -161,7 +180,7 @@ const AdminD = () => {
         </div>
 
         <div className="bg-white shadow-md rounded-lg p-4 mb-8">
-          <h2 className="text-xl font-semibold mb-4">Users</h2>
+          <h2 className="text-xl bg-green-500 font-semibold mb-4">Users</h2>
           <table className="min-w-full bg-white">
             <thead>
               <tr>
@@ -183,7 +202,7 @@ const AdminD = () => {
         </div>
 
         <div className="bg-white shadow-md rounded-lg p-4">
-          <h2 className="text-xl font-semibold mb-4">Products</h2>
+          <h2 className="text-xl bg-slate-500 font-semibold mb-4">Products</h2>
           <table className="min-w-full bg-white">
             <thead>
               <tr>
@@ -213,6 +232,12 @@ const AdminD = () => {
             </tbody>
           </table>
         </div>
+        <button
+          className="rounded-lg bg-blue-500 px-4 m-2 justify-center align-item-center py-2 text-white hover:bg-blue-600"
+          onClick={handleLogout}
+        >
+          Logout
+        </button>
       </div>
     </>
   );
