@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -43,6 +44,18 @@ const AdminD = () => {
       toast.error("Error doing logout. Try again.");
     }
   };
+
+  const handleSetting = () => {
+    navigate("/user/settings");
+  };
+
+  const handleManageDatabase = () => {
+    window.open(
+      "mongodb+srv://usha15322:SmartSaver%402024@cluster0.nd5jrmm.mongodb.net/",
+      "_blank"
+    );
+  };
+
   const [barData, setBarData] = useState({
     labels: [],
     datasets: [
@@ -232,13 +245,27 @@ const AdminD = () => {
             </tbody>
           </table>
         </div>
-        <button
-          className="rounded-lg bg-blue-500 px-4 m-2 justify-center align-item-center py-2 text-white hover:bg-blue-600"
-          onClick={handleLogout}
-        >
-          Logout
-        </button>
+
+        <div className="px-3 py-4 m-3 shadow-md rounded-lg">
+          <h3>Manage Database</h3>
+          <button
+            className="rounded-lg bg-blue-500 px-4 m-2 justify-center align-item-center py-2 text-white hover:bg-blue-600"
+            onClick={handleManageDatabase}
+          >
+            Open MongoDB Atlas
+          </button>
+        </div>
+        <div className="px-3 py-4 m-3 shadow-md rounded-lg">
+          <h3>Other Settings</h3>
+          <button
+            className="rounded-lg bg-black px-4 m-2 justify-center align-item-center py-2 text-white hover:bg-blue-600"
+            onClick={handleSetting}
+          >
+            Settings
+          </button>
+        </div>
       </div>
+      <Footer></Footer>
     </>
   );
 };
