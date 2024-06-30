@@ -85,7 +85,11 @@ Share your feedback and insights with the Smart Savers community to improve the 
 Effortlessly scan QR codes to access instant product information.
 
 ## Others: 
-Explore additional features including product management sections.
+
+## Announcements tab
+
+ - In the admin dashboard we have made the announcement tab in which the admin can make announcements regarding the updates and tech needs so that the registered users or developers can have the email regarding the updation in the web application.
+
 
 ---
 
@@ -107,10 +111,10 @@ Explore additional features including product management sections.
 ## Get Started
 
 1. After successfully setting up the project you can view the project on port `3000`
-2. Give access to the camera and log in with your credentials as well.
+2. Give access to the camera and log in with your credentials.
 3. Now scan the particular product QR and get all the details.
-4. If the software couldn't find your product then our database is missing the product details inn it.
-5. Add that particular product by following the above steps as mentioned above.
+4. If the software couldn't find your product then our database is missing the product details in it.
+5. Add that particular product by following the abovementioned steps.
 
 ### Setup and Installation
 
@@ -138,8 +142,8 @@ Explore additional features including product management sections.
 ### Backend Setup
 
  - Navigate through the `backend` folder
- - Setup `.env` file and set `MONGO_URL` and other dev dependencies regarding in `.env.sample` and set your own .env file
- - Make the conection string and copy the string in the mongodb compass and start server in the mongodb cluster in compassUI or on website respectively
+ - Setup `.env` file and set `MONGO_URL` and other dev dependencies regarding in `.env.sample` and set your .env file
+ - Make the connection string and copy the string in the Mongodb compass and start the server in the MongoDB cluster in compassUI or on the website respectively
  -  Now install all dependencies required for backend setup `npm install`
  -  Now run the server with `npm start`
  -  Your backend server will be running on `PORT: 6352`
@@ -181,6 +185,12 @@ We love your input! We want to make contributing to this project as easy and tra
  - Now after selecting the repository select the root or default branch to get  deployed.
    It can be seen here: https:vercel.com/new/clone?repository-url=https://github.com/usha-madithati/esmart.github.io
  - Check and test whole website application and its functionality
+
+### Backend Deployment:
+ - For Backend setup and server changes we have different approach in our project.
+ - We have the server on a different repo on which the specific interested project contributors have access to it.
+ - Soon we will add the functionality of adding the specific interested contributors through our web application.  
+
 
 Now if you tested the application and believe that it has your functionality or bug has been fixed as well then raise the PR(Pull Request).
 
