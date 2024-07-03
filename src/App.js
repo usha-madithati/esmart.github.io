@@ -17,6 +17,8 @@ import AdminD from "./Dashboards/AdminD";
 import Settings from "./pages/Settings";
 import AccountSettings from "./settings/AccountSettings";
 import NotFoundPage from "./pages/PNF";
+import ForgotPassword from "./pages/Forgotpassword.js";
+import ResetPassword from "./pages/ResetPassword.js";
 
 const App = () => {
   return (
@@ -26,6 +28,8 @@ const App = () => {
         <Route path="/user/add-products" element={<PForm />} />
         <Route path="/user/signup" element={<SignUp />} />
         <Route path="/user/login" element={<Login />} />
+        <Route path="/user/forgot-password" element={<ForgotPassword />} />
+        <Route path="/user/reset-password/:token" element={<ResetPassword />} />
         <Route element={<PrivateRoute />}>
           <Route path="/admin/dashboard" element={<AdminD></AdminD>} />
           <Route path="/scanqr" element={<QRCodeVerification />} />

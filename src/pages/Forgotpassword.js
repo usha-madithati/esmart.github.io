@@ -1,18 +1,16 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import { RotatingLines } from "react-loader-spinner";
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const ForgotPassword = () => {
+const navigate=useNavigate();
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
 
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -27,67 +25,20 @@ const Login = () => {
       newErrors.email = "Invalid email address.";
     }
 
-    if (!password) {
-      newErrors.password = "Password is required.";
-    }
-
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
       setLoading(true);
       try {
         const response = await axios.post(
-          "https://smartserver-scbe.onrender.com/login",
-          {
-            email,
-            password,
-          }
+          "https://smartserver-scbe.onrender.com/forgot-password",
+          { email }
         );
 
         if (response && response.data.success) {
-          localStorage.setItem("isLoggedIn", "true");
-          localStorage.setItem("token", response.data.token);
+          toast.success("Password reset email sent!");
+          navigate("/user/login")
 
-          // Decode the token to get the user role
-
-          const tokenPayload = JSON.parse(
-            atob(response.data.token.split(".")[1])
-          );
-          const userRole = tokenPayload.role;
-
-          // Store user role in localStorage
-          localStorage.setItem(
-            "currentUser",
-            JSON.stringify({ email, role: userRole })
-          );
-
-          if (email === "smartsaver@admin.com" && password === "123456") {
-            toast.success("Admin Logged in successfully!");
-            navigate("/admin/dashboard");
-          } else {
-            toast.success("Login successful!");
-            setTimeout(() => {
-              if (userRole === 1) {
-                navigate("/admin/dashboard");
-              } else {
-                navigate("/");
-              }
-            }, 2000);
-          }
-
-          localStorage.setItem(
-            "currentUser",
-            JSON.stringify({ name: "User Name", role: userRole })
-          );
-
-          setTimeout(() => {
-            if (userRole === 1) {
-              navigate("/admin/dashboard");
-              toast.success("Welcome Admin");
-            } else {
-              navigate("/");
-            }
-          }, 2000);
         }
       } catch (error) {
         if (error.response) {
@@ -122,9 +73,11 @@ const Login = () => {
             />
           </div>
           <h2 className="text-2xl font-bold text-center text-green-600">
-            Login
+            Forgot Password
           </h2>
-          <p className="text-center text-gray-600">Sign in to your account</p>
+          <p className="text-center text-gray-600">
+            Enter your email to receive a password reset link
+          </p>
           <form className="space-y-4" onSubmit={handleSubmit}>
             <div>
               <label className="block text-gray-700">Email</label>
@@ -137,19 +90,6 @@ const Login = () => {
               />
               {errors.email && (
                 <p className="mt-1 text-sm text-red-600">{errors.email}</p>
-              )}
-            </div>
-            <div>
-              <label className="block text-gray-700">Password</label>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-green-600"
-                placeholder="Password"
-              />
-              {errors.password && (
-                <p className="mt-1 text-sm text-red-600">{errors.password}</p>
               )}
             </div>
             {errors.server && (
@@ -168,23 +108,9 @@ const Login = () => {
                   visible={true}
                 />
               ) : (
-                "Login"
+                "Submit"
               )}
             </button>
-            <div className="flex justify-between mt-4">
-              <Link
-                to="/user/signup"
-                className="text-green-600 hover:underline"
-              >
-                Sign Up
-              </Link>
-              <Link
-                to="/user/forgot-password"
-                className="text-green-600 hover:underline"
-              >
-                Forgot Password?
-              </Link>
-            </div>
           </form>
         </div>
       </div>
@@ -192,4 +118,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ForgotPassword;

@@ -26,6 +26,12 @@ const UserSchema = new mongoose.Schema({
     type: String,
     default: "3 days",
   },
+  resetPasswordToken: {
+    type: String,
+  },
+  resetPasswordExpires: {
+    type: Date,
+  },
 });
 
 const User = mongoose.model("User", UserSchema);
