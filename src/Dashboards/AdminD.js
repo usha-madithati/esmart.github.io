@@ -49,6 +49,10 @@ const AdminD = () => {
     navigate("/user/settings");
   };
 
+  const handleAnnounce = () => {
+    navigate("/admin/announcement");
+  };
+
   const handleManageDatabase = () => {
     window.open(
       "mongodb+srv://usha15322:SmartSaver%402024@cluster0.nd5jrmm.mongodb.net/",
@@ -186,6 +190,7 @@ const AdminD = () => {
           <ul>
             {announcements.map((announcement) => (
               <li key={announcement.id} className="py-2 border-b">
+                {announcement.title}
                 {announcement.message}
               </li>
             ))}
@@ -245,8 +250,16 @@ const AdminD = () => {
             </tbody>
           </table>
         </div>
-
-        <div className="px-3 py-4 m-3 shadow-md rounded-lg">
+        <div className="px-3 py-2 border-b shadow-md rounded-lg">
+          <h3>Create Announcements</h3>
+          <button
+            className="rounded-lg bg-blue-500 px-4 m-2 justify-center align-item-center py-2 text-white hover:bg-green-600"
+            onClick={handleAnnounce}
+          >
+            Announncements
+          </button>
+        </div>
+        <div className=" py-4 m-3 shadow-md rounded-lg">
           <h3>Manage Database</h3>
           <button
             className="rounded-lg bg-blue-500 px-4 m-2 justify-center align-item-center py-2 text-white hover:bg-blue-600"

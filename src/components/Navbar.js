@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-  const userRole = currentUser?.role; 
+  const userRole = currentUser?.role;
 
   return (
     <nav className="flex items-center justify-between px-6 py-4">
@@ -32,16 +32,17 @@ const Navbar = () => {
             className="text-lg font-semibold hover:text-green-600"
             to="/admin/dashboard"
           >
-            ADMIN 
+            ADMIN
           </Link>
         )}
+
         {isLoggedIn && (
           <>
             <Link
               className="text-lg font-semibold hover:text-green-600"
               to="/user/dashboard"
             >
-              USER 
+              USER
             </Link>
             <Link
               className="text-lg font-semibold hover:text-green-600"

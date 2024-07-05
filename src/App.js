@@ -17,6 +17,7 @@ import AdminD from "./Dashboards/AdminD";
 import Settings from "./pages/Settings";
 import AccountSettings from "./settings/AccountSettings";
 import NotFoundPage from "./pages/PNF";
+import Announcement from "./components/Announcement";
 
 const App = () => {
   return (
@@ -28,6 +29,10 @@ const App = () => {
         <Route path="/user/login" element={<Login />} />
         <Route element={<PrivateRoute />}>
           <Route path="/admin/dashboard" element={<AdminD></AdminD>} />
+          <Route
+            path="/admin/announcement"
+            element={<Announcement></Announcement>}
+          />
           <Route path="/scanqr" element={<QRCodeVerification />} />
           <Route path="/user/add-products" element={<PForm />} />
           <Route path="/user/settings" element={<Settings></Settings>} />
