@@ -18,21 +18,28 @@ import Settings from "./pages/Settings";
 import AccountSettings from "./settings/AccountSettings";
 import NotFoundPage from "./pages/PNF";
 import Announcement from "./components/Announcement";
+import ForgotPassword from "./pages/Forgotpassword.js";
+import ResetPassword from "./pages/ResetPassword.js";
+import ProgressBar from "./components/ProgressBar.js";
 
 const App = () => {
   return (
     <>
+      <ProgressBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/user/add-products" element={<PForm />} />
         <Route path="/user/signup" element={<SignUp />} />
         <Route path="/user/login" element={<Login />} />
+        <Route path="/user/forgot-password" element={<ForgotPassword />} />
+        <Route path="/user/reset-password/:token" element={<ResetPassword />} />
         <Route element={<PrivateRoute />}>
           <Route path="/admin/dashboard" element={<AdminD></AdminD>} />
           <Route
             path="/admin/announcement"
             element={<Announcement></Announcement>}
           />
+          <Route path="/admin/" element={<AdminD></AdminD>} />
           <Route path="/scanqr" element={<QRCodeVerification />} />
           <Route path="/user/add-products" element={<PForm />} />
           <Route path="/user/settings" element={<Settings></Settings>} />
