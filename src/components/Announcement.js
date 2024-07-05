@@ -24,7 +24,7 @@ const Announcement = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:6352/announcements",
+        "https://smartserver-scbe.onrender.com/announcements",
         announcement
       );
 

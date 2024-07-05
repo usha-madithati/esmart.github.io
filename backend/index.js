@@ -447,7 +447,28 @@ app.post("/user/reset-password/:token", async (req, res) => {
     res.status(500).json({ message: "Server error", error: error.message });
   }
 });
-
+app.put('/products/:id', async (req, res) => {
+  try {
+    const product = await Product.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    if (!product) {
+      return res.status(404).send();
+    }
+    res.send(product);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+});
+app.delete("/products/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    await Product.findByIdAndDelete(id);
+    res.status(200).json({ message: "Product deleted successfully." });
+  } catch (error) {
+    res.status(500).json({ message: "Failed to delete product.", error });
+  }
+});
 
 
 
