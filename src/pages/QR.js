@@ -12,6 +12,7 @@ const QRCodeVerification = () => {
   const [productInfo, setProductInfo] = useState(null);
   const [error, setError] = useState(null);
   const [isScannerOpen, setIsScannerOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const requestRef = useRef(null);
@@ -100,6 +101,35 @@ const QRCodeVerification = () => {
     setError("Error scanning code: " + err.message);
   };
 
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const image = new Image();
+        image.onload = () => {
+          const canvas = canvasRef.current;
+          if (canvas) { // Ensure canvas is not null
+            const context = canvas.getContext("2d");
+            canvas.width = image.width;
+            canvas.height = image.height;
+            context.drawImage(image, 0, 0, canvas.width, canvas.height);
+            const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+            const code = jsQR(imageData.data, imageData.width, imageData.height);
+            if (code) {
+              handleScan(code.data);
+            } else {
+              setError("No QR code found in the selected image.");
+            }
+          } 
+        };
+        image.src = reader.result;
+        setSelectedImage(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   return (
     <>
       <div className="bg-white">
@@ -130,9 +160,7 @@ const QRCodeVerification = () => {
               <img
                 src="https://i.postimg.cc/PJghMmyQ/9427512-4149572-removebg-preview-1-1.jpg"
                 alt="Phone with QR codes"
-                className={`h-full w-full ${
-                  isImageLoading ? "hidden" : "block"
-                }`}
+                className={`h-full w-full ${isImageLoading ? "hidden" : "block"}`}
                 width="300"
                 height="300"
                 style={{ objectFit: "cover" }}
@@ -152,6 +180,11 @@ const QRCodeVerification = () => {
               <div className="relative">
                 <video ref={videoRef} style={{ width: "100%" }} />
                 <canvas ref={canvasRef} style={{ display: "none" }} />
+              </div>
+            )}
+            {selectedImage && (
+              <div className="mt-4">
+                <img src={selectedImage} alt="Selected QR code" className="w-full h-auto mb-6" />
               </div>
             )}
             {productInfo && (
@@ -178,6 +211,19 @@ const QRCodeVerification = () => {
               >
                 {isScannerOpen ? "Close Scanner" : "Scan Now"}
               </button>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleFileChange}
+                className="hidden"
+                id="file-input"
+              />
+              <label
+                htmlFor="file-input"
+                className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 md:w-auto cursor-pointer"
+              >
+                Browse QR
+              </label>
             </div>
           </div>
         </section>
