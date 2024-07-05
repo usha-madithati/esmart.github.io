@@ -126,18 +126,37 @@ app.put("/update-notification", authenticateUser, async (req, res) => {
 
 // ANNOUNCEMENT APIS
 // API to get announcements
-app.get("/announcements", async (req, res) => {
+app.post("/announcements", async (req, res) => {
+  // reqyest taken from the frontend connection
+  const { title, message } = req.body;
+  const users = await User.find({}, "email");
+  const emailList = users.map((user) => user.email);
+
+  // Set up Nodemailer transporter
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: process.env.EMAIL,
+      pass: process.env.PASS,
+    },
+  });
+
+  const mailOptions = {
+    from: process.env.EMAIL,
+    to: emailList,
+    subject: title,
+    text: message,
+  };
+
   try {
-    const announcements = [
-      { id: 1, message: "System maintenance on Sunday at 2 AM" },
-      { id: 2, message: "New feature release next week" },
-    ];
-    res.status(200).send(announcements);
+    // Send email
+    await transporter.sendMail(mailOptions);
+    res
+      .status(200)
+      .json({ message: "Announcement posted and email sent successfully!" });
   } catch (error) {
-    res.status(500).send({
-      message: "Error occurred when fetching announcements.",
-      error: error.message,
-    });
+    console.error("Error sending email:", error);
+    res.status(500).json({ message: "Error posting announcement" });
   }
 });
 
