@@ -1,0 +1,16 @@
+#progressBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 8px;
+    background: linear-gradient(90deg, rgba(8, 106, 68, 1) 0%, rgba(8, 170, 106, 1) 50%, rgba(8, 106, 68, 1) 100%);
+    z-index: 99;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    /* transition: width 0.3s ease-in-out; */
+  }
+  
+  #progressBar:hover {
+    background: linear-gradient(90deg, rgba(8, 170, 106, 1) 0%, rgba(8, 106, 68, 1) 100%);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
