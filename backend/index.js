@@ -371,6 +371,37 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+// api route for contactus page
+app.post("/contactus", async (req, res) => {
+  const { name, email, message } = req.body;
+
+  try {
+    // Set up Nodemailer transporter
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.EMAIL,
+        pass: process.env.PASS,
+      },
+    });
+
+    const mailOptions = {
+      from: process.env.EMAIL,
+      to: process.env.EMAIL,
+      subject: `Contact Us message from ${name}`,
+      text: `From: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
+    };
+
+    await transporter.sendMail(mailOptions);
+    res.status(200).json({ message: "Message sent successfully" });
+  } catch (error) {
+    res.status(500).json({
+      message: "Server Error. Please try again after sometime.",
+      error: error.message,
+    });
+  }
+});
+
 // Route to handle forgot password
 app.post("/forgot-password", async (req, res) => {
   const { email } = req.body;
@@ -428,7 +459,9 @@ app.post("/user/reset-password/:token", async (req, res) => {
     });
 
     if (!user) {
-      return res.status(400).json({ message: "Password reset token is invalid or has expired." });
+      return res
+        .status(400)
+        .json({ message: "Password reset token is invalid or has expired." });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -447,10 +480,28 @@ app.post("/user/reset-password/:token", async (req, res) => {
     res.status(500).json({ message: "Server error", error: error.message });
   }
 });
-
-
-
-
+app.put("/products/:id", async (req, res) => {
+  try {
+    const product = await Product.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    if (!product) {
+      return res.status(404).send();
+    }
+    res.send(product);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+});
+app.delete("/products/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    await Product.findByIdAndDelete(id);
+    res.status(200).json({ message: "Product deleted successfully." });
+  } catch (error) {
+    res.status(500).json({ message: "Failed to delete product.", error });
+  }
+});
 
 // Start the server
 const server = app.listen(PORT, () => {
