@@ -9,6 +9,7 @@ import User from "./Schemas/User.Schema.js";
 import client from "./twilioConfig.js";
 import crypto from "crypto"; // Add this line
 import nodemailer from "nodemailer"; // Add this line
+import Review from "./Schemas/Review.schema.js";
 
 dotenv.config();
 
@@ -502,6 +503,45 @@ app.delete("/products/:id", async (req, res) => {
     res.status(500).json({ message: "Failed to delete product.", error });
   }
 });
+// Review Backend
+
+
+// API to submit a review
+app.post("/reviews", async (req, res) => {
+  const { name, email, message } = req.body;
+
+  if (!name || !email || !message) {
+    return res.status(400).json({ message: "All fields are required" });
+  }
+
+  const newReview = new Review({ name, email, message });
+
+  try {
+    await newReview.save();
+    res.status(201).json({
+      message: "Review submitted successfully!",
+      success: true,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Error submitting review",
+      success: false,
+      error: error.message,
+    });
+  }
+});
+
+// API to get all reviews
+app.get("/reviews", async (req, res) => {
+  try {
+    const reviews = await Review.find({});
+    res.status(200).json(reviews);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching reviews", error: error.message });
+  }
+});
+
+
 
 // Start the server
 const server = app.listen(PORT, () => {
