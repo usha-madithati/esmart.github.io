@@ -70,7 +70,7 @@ const Home = () => {
               How Smart Saver Works
             </h2>
             <div className="flex flex-col md:flex-row justify-around items-center mt-8 space-y-8 md:space-y-0">
-              <div className="flex flex-col items-center text-center">
+            <Link to="/user/login" > <div className="flex flex-col items-center text-center">
                 <img
                   src="https://i.postimg.cc/NFb3HHMp/login.png"
                   alt="Login"
@@ -83,8 +83,8 @@ const Home = () => {
                   Log in to your SmartSaver account and unlock eco-friendly
                   savings today.
                 </p>
-              </div>
-              <div className="flex flex-col items-center text-center">
+              </div></Link>
+              <Link to="/scanqr" > <div className="flex flex-col items-center text-center">
                 <img
                   src="https://i.postimg.cc/Qt8SWnTZ/Group.png"
                   alt="Scan QR"
@@ -96,8 +96,8 @@ const Home = () => {
                 <p className="text-gray-600">
                   Scan the QR code of the product to get started instantly.
                 </p>
-              </div>
-              <div className="flex flex-col items-center text-center">
+              </div></Link>
+              <Link to="/user/notifications" ><div className="flex flex-col items-center text-center">
                 <img
                   src="https://i.postimg.cc/HWP3VzWF/octicondevicemobile24.png"
                   alt="Grant Access"
@@ -110,7 +110,7 @@ const Home = () => {
                   Real-time product tracking and updates. Stay connected to your
                   purchases effortlessly.
                 </p>
-              </div>
+              </div></Link>
             </div>
           </section>
 
