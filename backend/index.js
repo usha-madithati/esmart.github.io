@@ -7,6 +7,9 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import User from "./Schemas/User.Schema.js";
 import client from "./twilioConfig.js";
+import crypto from "crypto"; // Add this line
+import nodemailer from "nodemailer"; // Add this line
+import Review from "./Schemas/Review.schema.js";
 
 dotenv.config();
 
@@ -124,18 +127,37 @@ app.put("/update-notification", authenticateUser, async (req, res) => {
 
 // ANNOUNCEMENT APIS
 // API to get announcements
-app.get("/announcements", async (req, res) => {
+app.post("/announcements", async (req, res) => {
+  // reqyest taken from the frontend connection
+  const { title, message } = req.body;
+  const users = await User.find({}, "email");
+  const emailList = users.map((user) => user.email);
+
+  // Set up Nodemailer transporter
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: process.env.EMAIL,
+      pass: process.env.PASS,
+    },
+  });
+
+  const mailOptions = {
+    from: process.env.EMAIL,
+    to: emailList,
+    subject: title,
+    text: message,
+  };
+
   try {
-    const announcements = [
-      { id: 1, message: "System maintenance on Sunday at 2 AM" },
-      { id: 2, message: "New feature release next week" },
-    ];
-    res.status(200).send(announcements);
+    // Send email
+    await transporter.sendMail(mailOptions);
+    res
+      .status(200)
+      .json({ message: "Announcement posted and email sent successfully!" });
   } catch (error) {
-    res.status(500).send({
-      message: "Error occurred when fetching announcements.",
-      error: error.message,
-    });
+    console.error("Error sending email:", error);
+    res.status(500).json({ message: "Error posting announcement" });
   }
 });
 
@@ -341,6 +363,185 @@ app.post("/login", async (req, res) => {
     res.status(500).send({ message: "Error logging in", error: error.message });
   }
 });
+// Configure nodemailer for email sending
+const transporter = nodemailer.createTransport({
+  service: "Gmail",
+  auth: {
+    user: process.env.EMAIL,
+    pass: process.env.EMAIL_PASSWORD,
+  },
+});
+
+// api route for contactus page
+app.post("/contactus", async (req, res) => {
+  const { name, email, message } = req.body;
+
+  try {
+    // Set up Nodemailer transporter
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.EMAIL,
+        pass: process.env.PASS,
+      },
+    });
+
+    const mailOptions = {
+      from: process.env.EMAIL,
+      to: process.env.EMAIL,
+      subject: `Contact Us message from ${name}`,
+      text: `From: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
+    };
+
+    await transporter.sendMail(mailOptions);
+    res.status(200).json({ message: "Message sent successfully" });
+  } catch (error) {
+    res.status(500).json({
+      message: "Server Error. Please try again after sometime.",
+      error: error.message,
+    });
+  }
+});
+
+// Route to handle forgot password
+app.post("/forgot-password", async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const token = crypto.randomBytes(20).toString("hex");
+
+    user.resetPasswordToken = token;
+    user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
+
+    await user.save();
+
+    const resetURL = `http://localhost:3000/user/reset-password/${token}`;
+
+    const mailOptions = {
+      to: user.email,
+      from: process.env.EMAIL,
+      subject: "Password Reset",
+      text: `You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n
+        Please click on the following link, or paste this into your browser to complete the process:\n\n
+        ${resetURL}\n\n
+        If you did not request this, please ignore this email and your password will remain unchanged.\n`,
+    };
+
+    transporter.sendMail(mailOptions, (err, response) => {
+      if (err) {
+        console.error("There was an error: ", err);
+        res.status(500).json({ message: "Error sending email", error: err });
+      } else {
+        res.status(200).json({
+          success: true,
+          message: "Password reset email sent successfully",
+        });
+      }
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+});
+
+// Route to handle reset password
+app.post("/user/reset-password/:token", async (req, res) => {
+  const { token } = req.params;
+  const { password } = req.body;
+
+  try {
+    const user = await User.findOne({
+      resetPasswordToken: token,
+      resetPasswordExpires: { $gt: Date.now() },
+    });
+
+    if (!user) {
+      return res
+        .status(400)
+        .json({ message: "Password reset token is invalid or has expired." });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    user.password = hashedPassword;
+    user.resetPasswordToken = undefined;
+    user.resetPasswordExpires = undefined;
+
+    await user.save();
+
+    res.status(200).json({
+      success: true,
+      message: "Password reset successful!",
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+});
+app.put("/products/:id", async (req, res) => {
+  try {
+    const product = await Product.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    if (!product) {
+      return res.status(404).send();
+    }
+    res.send(product);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+});
+app.delete("/products/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    await Product.findByIdAndDelete(id);
+    res.status(200).json({ message: "Product deleted successfully." });
+  } catch (error) {
+    res.status(500).json({ message: "Failed to delete product.", error });
+  }
+});
+// Review Backend
+
+
+// API to submit a review
+app.post("/reviews", async (req, res) => {
+  const { name, email, message } = req.body;
+
+  if (!name || !email || !message) {
+    return res.status(400).json({ message: "All fields are required" });
+  }
+
+  const newReview = new Review({ name, email, message });
+
+  try {
+    await newReview.save();
+    res.status(201).json({
+      message: "Review submitted successfully!",
+      success: true,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Error submitting review",
+      success: false,
+      error: error.message,
+    });
+  }
+});
+
+// API to get all reviews
+app.get("/reviews", async (req, res) => {
+  try {
+    const reviews = await Review.find({});
+    res.status(200).json(reviews);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching reviews", error: error.message });
+  }
+});
+
+
 
 // Start the server
 const server = app.listen(PORT, () => {
