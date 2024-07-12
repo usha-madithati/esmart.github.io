@@ -21,6 +21,7 @@ import Announcement from "./components/Announcement";
 import ForgotPassword from "./pages/Forgotpassword.js";
 import ResetPassword from "./pages/ResetPassword.js";
 import ProgressBar from "./components/ProgressBar.js";
+import FAQs from "./components/Faq/Faq.js";
 
 const App = () => {
   return (
@@ -35,6 +36,7 @@ const App = () => {
         <Route path="/user/reset-password/:token" element={<ResetPassword />} />
         <Route element={<PrivateRoute />}>
           <Route path="/admin/dashboard" element={<AdminD></AdminD>} />
+          <Route path="/faq" element={<FAQs />} />
           <Route
             path="/admin/announcement"
             element={<Announcement></Announcement>}

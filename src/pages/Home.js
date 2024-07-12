@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import FAQs from "../components/Faq/Faq";
 
 const Home = () => {
   const aboutUsRef = useRef(null);
@@ -140,7 +141,7 @@ const Home = () => {
               </div>
             </div>
           </section>
-
+       
           <section class="text-gray-600 body-font">
             <div class="container mx-auto flex px-5 md:flex-row flex-col items-center">
               <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
@@ -182,7 +183,7 @@ const Home = () => {
               </div>
             </div>
           </section>
-
+        <FAQs/>
           <section className="mt-16 bg-green-500 text-white py-12 px-4 rounded-lg">
             <h2 className="text-3xl font-semibold text-center">
               Your Trusted Partner in Product Management
