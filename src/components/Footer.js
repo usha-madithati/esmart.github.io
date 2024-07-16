@@ -106,6 +106,11 @@ const Footer = () => {
               </h2>
               <nav className="list-none mb-10">
                 <li>
+                  <a href="https://github.com/usha-madithati/esmart.github.io/#readme" className="text-gray-600 hover:text-gray-800">
+                    How to use application?
+                  </a>
+                </li>
+                <li>
                   <Link to="/" className="text-gray-600 hover:text-gray-800">
                     Help Center
                   </Link>
