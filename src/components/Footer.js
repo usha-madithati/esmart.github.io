@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+
 const emailAddress = 'SmartSaver@gmail.com';
 
 const Footer = () => {
@@ -111,15 +112,12 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/" className="text-gray-600 hover:text-gray-800">
-                    Live Chat Link
+                  <Link to="/live-chat" className="text-gray-600 hover:text-gray-800">
+                    Live Chat
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    to="/user/review"
-                    className="text-gray-600 hover:text-gray-800"
-                  >
+                  <Link to="/user/review" className="text-gray-600 hover:text-gray-800">
                     Customer Review
                   </Link>
                 </li>
