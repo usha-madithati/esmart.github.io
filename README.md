@@ -16,24 +16,27 @@ Explore our web application: [Smart Saver](https://esmart-github-io.vercel.app/)
 
 ### STEPS TO PROCEED:
 
-## Logging the User:
+## Logging In:
+
 - Navigate to the login page.
 - Enter your credentials (`email`, `password`).
 - Receive the required response from the server in toast or text form.
 - Ensure the server is running.
 - If not logged in, navigate to the signup page (`/signup`).
 
-## Registering the User (Locally):
-- Ensure the backend is correctly set up and the server is running.
-- Fill all the required fields (`name`, `email`, `phone number`, `password`).
+## Registering (Local):
+
+- Ensure the backend is set up correctly and the server is running.
+- Fill in all required fields (`name`, `email`, `phone number`, `password`).
 - Receive the required response from the server in toast or textual error form.
 - After successful registration, automatically navigate to the `/login` page.
-- Login to the application as per the above steps.
+- Log in to the application as per the above steps.
 
 ## Authorization Tokens:
-- Ensure that we are using JWT and BcryptJS for authorization.
+
+- Ensure JWT and BcryptJS are used for authorization.
 - Obtain the Authorization token after logging in.
-- The token is valid for the next 1 hour.
+- The token is valid for the next hour.
 - Utilize application services while the token is valid.
 
 ---
@@ -84,8 +87,6 @@ Share your feedback and insights with the Smart Savers community to improve the 
 ## QR Code Scanning: 
 Effortlessly scan QR codes to access instant product information.
 
-## Others: 
-
 ## Announcements tab
 
  - In the admin dashboard we have made the announcement tab in which the admin can make announcements regarding the updates and tech needs so that the registered users or developers can have the email regarding the updation in the web application.
@@ -134,67 +135,111 @@ Effortlessly scan QR codes to access instant product information.
       git add .
       git commit -m "Describe your changes here"
       git push
-   ```
-
+```
 4. **Create a Pull Request**
-  Navigate back to the original repository and open a pull request from your forked repository.
+   Navigate back to the original repository and open a pull request from your forked repository.
 
-### Backend Setup
+# Backend Setup:
 
- - Navigate through the `backend` folder
- - Setup `.env` file and set `MONGO_URL` and other dev dependencies regarding in `.env.sample` and set your .env file
- - Make the connection string and copy the string in the Mongodb compass and start the server in the MongoDB cluster in compassUI or on the website respectively
- -  Now install all dependencies required for backend setup `npm install`
- -  Now run the server with `npm start`
- -  Your backend server will be running on `PORT: 6352`
+1. Navigate through the backend folder
+2. Setup .env file and set MONGO_URL and other dev dependencies regarding in .env.sample and set your .env file
+3. Make the connection string and copy the string in the Mongodb compass and start the server in the MongoDB cluster in compassUI or on the website respectively
+4. Now install all dependencies required for backend setup npm install
+5> Now run the server with npm start
+6> Your backend server will be running on PORT: `6352`
 
+### Running Setup:
+1> To ensure the robustness of our application, we use Jest and Supertest for testing.
 
-### Running Tests
+Setting up `Jest` and `Supertest`
+Install Dependencies
+```
+npm install jest supertest --save-dev
 
-To ensure the robustness of our application, we use Jest and Supertest for testing.
+```
+2> Create Test Files Create test files in the tests folder (or another preferred directory).
 
-#### Setting up Jest and Supertest
+3> Writing Tests Use Jest and Supertest to write your tests.
 
-1. **Install Dependencies**
-   ```bash
-   npm install jest supertest --save-dev
+4> Run Tests To run the tests, use the following command: npm test
 
-2. Create Test Files Create test files in the       tests folder (or another preferred directory).
-
-3. Writing Tests Use Jest and Supertest to write your tests.
-
-4. Run Tests To run the tests, use the following command: `npm test` 
-
-5. You can also add a script in your package.json for convenience:
-`
-"scripts": {
-  "test": "jest"
-}`
-
- ### Contributing
-
+5> You can also add a script in your package.json for convenience:
+```
+"scripts": { "test": "jest" }
+```
+## Contributing
 We love your input! We want to make contributing to this project as easy and transparent as possible, whether it's:
-- Reporting a bug
-- Discussing the current state of the code
-- Submitting a fix
-- Proposing new features
 
-### Deployment
- - Login to your vercel here: https://vercel.com/login
- - Now select the forked repository on vercel website in your dashboard.
- - Now after selecting the repository select the root or default branch to get  deployed.
-   It can be seen here: https:vercel.com/new/clone?repository-url=https://github.com/usha-madithati/esmart.github.io
- - Check and test whole website application and its functionality
+## Deployment
 
-### Backend Deployment:
- - For Backend setup and server changes we have different approach in our project.
- - We have the server on a different repo on which the specific interested project contributors have access to it.
- - Soon we will add the functionality of adding the specific interested contributors through our web application.  
+1. Login to your vercel here: https://vercel.com/login
+2. Now select the forked repository on vercel website in your dashboard.
+3. After selecting the repository select the root or default branch to get deployed.
 
 
-Now if you tested the application and believe that it has your functionality or bug has been fixed as well then raise the PR(Pull Request).
+# Backend Deployment:
 
-Try our web application here: [https://esmartgit.vercel.app/](https://esmart-github-io-oq3w.vercel.app/)
+1. For Backend setup and server changes we have different approaches in our project.
+2. We have the server on a different repo on which the specific interested project contributors have access to it.
+3. Soon we will add the functionality of adding the specific interested contributors through our web application.
+4. Now if you tested the application and believe that it has your functionality or bug has been fixed as well then raise the PR(Pull Request).
+
+## Using the Website
+
+Welcome to Smart Saver! This section provides a brief guide on how to navigate and utilize the features of our website effectively.
+
+### Logging In
+
+1. **Navigate to the Login Page**
+   - Access the login page by clicking on the "Login" button in the navigation bar.
+
+2. **Enter Your Credentials**
+   - Provide your email address and password in the designated fields.
+
+3. **Receive Authentication**
+   - Upon successful authentication, you will receive confirmation either through a toast notification or a text message.
+
+### Registering as a New User
+
+1. **Access the Signup Page**
+   - If you're not registered yet, click on the "Signup" link to navigate to the registration page (`/signup`).
+
+2. **Complete Registration**
+   - Fill out all required fields including your name, email, phone number, and password.
+
+3. **Confirmation**
+   - After successful registration, you will automatically be redirected to the login page (`/login`).
+
+### Managing Inventory with QR Codes
+
+1. **Scanning QR Codes**
+   - Use the QR code scanner feature to instantly retrieve detailed information about products.
+
+2. **Product Information**
+   - If a product is not found in our database, you can add it by following the provided steps.
+
+### Notifications with Twilio
+
+1. **Setting Up Twilio**
+   - Sign up for Twilio and obtain API credentials (Account SID and Auth Token).
+
+2. **Sending SMS Notifications**
+   - Integrate Twilio into your backend to send SMS notifications for product expirations or updates.
+
+### Admin Dashboard Features
+
+1. **Announcements**
+   - Admins can make announcements regarding updates and technical needs using the admin dashboard.
+
+2. **Monitoring and Maintenance**
+   - Keep track of system updates and user feedback to improve the platform continuously.
+
+### Tech Stack Used
+
+Our platform leverages a modern tech stack including HTML5, CSS, JavaScript, ReactJS, MongoDB, ExpressJS, NodeJS, Tailwind CSS, and Twilio for enhanced functionality and performance.
+
+Explore more about our application on our [Smart Saver](https://esmart-github-io.vercel.app/) website.
+
+
 
 ![Smart saver Infographic](https://camo.githubusercontent.com/dd5e3080a7adc2ead8f86cbbd6577cee0a38439c0ebf195021ce41587b0a405f/68747470733a2f2f6d69726f2e6d656469756d2e636f6d2f6d61782f313430302f312a633459675258595161794f5657785633376f757272772e706e67)
-
