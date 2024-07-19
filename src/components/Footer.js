@@ -117,7 +117,7 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/live-chat" className="text-gray-600 hover:text-gray-800">
+                  <Link to="../pages/Live-chat.js" className="text-gray-600 hover:text-gray-800">
                     Live Chat
                   </Link>
                 </li>
