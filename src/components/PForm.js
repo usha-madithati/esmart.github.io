@@ -15,20 +15,61 @@ const PForm = () => {
     product_info: "",
   });
   const [loading, setLoading] = useState(false);
+  const [notificationMessage, setNotificationMessage] = useState("");
+  const [notificationTimeout, setNotificationTimeout] = useState(null);
+  const [canRedirect, setCanRedirect] = useState(false);
 
   useEffect(() => {
     toast.info("Add your product here.");
-  }, []);
+    return () => {
+      if (notificationTimeout) {
+        clearTimeout(notificationTimeout);
+      }
+    };
+  }, [notificationTimeout]);
 
   const handleChange = (e) => {
     setProductData({ ...productData, [e.target.name]: e.target.value });
   };
 
+  const handleNotification = () => {
+    const { mfd, expiry_date } = productData;
+    if (!mfd || !expiry_date ) {
+      return toast.error("Please set both Manufacturing and Expiry dates.");
+    }
+
+    const mfdDate = new Date(mfd);
+    const expiryDate = new Date(expiry_date);
+    const diffDays = (expiryDate - mfdDate) / (1000 * 60 * 60 * 24);
+
+    let notifyDays;
+    if (diffDays > 3) {
+      notifyDays = 3;
+    } else {
+      notifyDays = 1;
+    }
+
+    if (!notificationTimeout) {
+      alert(`Set notification  for ${notifyDays} days`);
+      const timeoutId = setTimeout(() => {
+        setNotificationMessage("");
+        setCanRedirect(true);
+        setNotificationTimeout(null);
+      }, 50000);
+      setNotificationTimeout(timeoutId);
+    } else {
+      alert(`Set notification for ${notifyDays} days`);
+    }
+
+    if (canRedirect && notificationMessage === "") {
+      window.location.href = "/user/notifications";
+    }
+  };
+
   const handleStore = async (e) => {
     e.preventDefault();
     setLoading(true);
-  
-    // Ensure date fields are in yyyy-mm-dd format
+
     const formattedProductData = {
       ...productData,
       mfd: productData.mfd
@@ -38,33 +79,49 @@ const PForm = () => {
         ? new Date(productData.expiry_date).toISOString().split("T")[0]
         : "",
     };
-  
+
+    const { mfd, expiry_date } = formattedProductData;
+    const mfdDate = new Date(mfd);
+    const expiryDate = new Date(expiry_date);
+    const diffDays = (expiryDate - mfdDate) / (1000 * 60 * 60 * 24);
+
+    let notifyDays;
+    if (diffDays > 3) {
+      notifyDays = 5;
+    } else {
+      notifyDays = 1;
+    }
+
+    const productDataWithNotification = {
+      ...formattedProductData,
+      notificationPeriod: notifyDays,
+    };
+
     if (formattedProductData.expiry_date <= formattedProductData.mfd) {
       setLoading(false);
       return toast.error(
         "Manufacturing date cannot be greater than or equal to expiry date."
       );
     }
-  
+
     try {
-      // Get the token from localStorage
       const token = localStorage.getItem("token");
-  
+
       if (!token) {
         setLoading(false);
         return toast.error("Authorization token is missing.");
       }
-  
-      const response = await axios.post(
+
+      await axios.post(
         "https://smartserver-production.up.railway.app/add-product",
-        formattedProductData,
+        productDataWithNotification,
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }
       );
-  
+
       toast.success("Product added successfully!");
       setProductData({
         product_name: "",
@@ -75,7 +132,6 @@ const PForm = () => {
       });
     } catch (error) {
       if (error.response) {
-        // Server responded with a status other than 2xx
         if (error.response.status === 409) {
           toast.error("Duplicate product. Please check and try again.");
         } else {
@@ -85,22 +141,15 @@ const PForm = () => {
             }`
           );
         }
-  
-        console.error("Response data:", error.response.data);
-        console.error("Response status:", error.response.status);
-        console.error("Response headers:", error.response.headers);
       } else if (error.request) {
-        // Request was made but no response was received
         toast.error("No response from server.");
       } else {
-        // Something else caused the error
         toast.error(`Error: ${error.message}`);
       }
     } finally {
       setLoading(false);
     }
   };
-  
 
   return (
     <>
@@ -212,23 +261,33 @@ const PForm = () => {
                       </div>
                     </div>
                     <div className="p-2 w-full">
-                      <button
-                        type="submit"
-                        className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
-                        disabled={loading}
-                      >
-                        {loading ? (
-                          <Oval
-                            height={20}
-                            width={20}
-                            color="white"
-                            visible={true}
-                            ariaLabel="loading"
-                          />
-                        ) : (
-                          "Store Product"
-                        )}
-                      </button>
+                      <div className="flex justify-between">
+                        <button
+                          type="submit"
+                          className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+                          disabled={loading}
+                        >
+                          {loading ? (
+                            <Oval
+                              height={20}
+                              width={20}
+                              color="white"
+                              visible={true}
+                              ariaLabel="loading"
+                            />
+                          ) : (
+                            "Store Product"
+                          )}
+                        </button>
+                        <button
+                          type="button"
+                          onClick={handleNotification}
+                          className="text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg"
+                        >
+                          Get Notified
+                        </button>
+                      </div>
+                     
                     </div>
                   </div>
                 </form>

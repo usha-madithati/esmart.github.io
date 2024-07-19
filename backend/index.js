@@ -229,10 +229,10 @@ app.get("/products/:barcode", async (req, res) => {
 });
 
 app.post("/add-product", authenticateUser, async (req, res) => {
-  const { product_name, barcode, mfd, expiry_date, product_info } = req.body;
+  const { product_name, barcode, mfd, expiry_date, product_info ,notificationPeriod } = req.body;
   const userId = req.user.userId;
 
-  if (!product_name || !barcode || !mfd || !expiry_date || !product_info) {
+  if (!product_name || !barcode || !mfd || !expiry_date || !product_info || !notificationPeriod) {
     return res.status(400).send({ message: "All fields are required" });
   }
 
@@ -257,6 +257,7 @@ app.post("/add-product", authenticateUser, async (req, res) => {
     expiry_date: new Date(expiry_date),
     product_info,
     addedBy: userId,
+    notificationPeriod,
   });
 
   try {
