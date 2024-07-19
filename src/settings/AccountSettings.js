@@ -34,7 +34,7 @@ const AccountSettings = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.put(
-          "https://smartserver-scbe.onrender.com/settings/account",
+          "http://localhost:6352/settings/account",
           {
             email,
             password,
