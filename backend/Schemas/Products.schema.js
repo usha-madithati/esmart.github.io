@@ -28,6 +28,10 @@ const ProductSchema = new mongoose.Schema({
     ref: "User",
     required: true,
   },
+  notificationPeriod: {
+    type: Number,
+    required: true,
+  },
 });
 
 const Product = mongoose.model("Product", ProductSchema);
