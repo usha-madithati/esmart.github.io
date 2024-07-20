@@ -229,6 +229,7 @@ const AdminD = () => {
                 <th className="py-2 px-4 border-b">MFD</th>
                 <th className="py-2 px-4 border-b">Expiry Date</th>
                 <th className="py-2 px-4 border-b">Product Info</th>
+                <th className="py-2 px-4 border-b">Notification Period</th>
               </tr>
             </thead>
             <tbody>
@@ -245,6 +246,7 @@ const AdminD = () => {
                     {new Date(product.expiry_date).toLocaleDateString()}
                   </td>
                   <td className="py-2 px-4 border-b">{product.product_info}</td>
+                  <td className="py-2 px-4 border-b">{`${product.notificationPeriod} days`}</td>
                 </tr>
               ))}
             </tbody>
