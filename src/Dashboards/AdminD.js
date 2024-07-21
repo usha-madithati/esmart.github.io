@@ -190,8 +190,7 @@ const AdminD = () => {
           <ul>
             {announcements.map((announcement) => (
               <li key={announcement.id} className="py-2 border-b">
-                {announcement.title}
-                {announcement.message}
+                <strong>{announcement.title}</strong>: {announcement.message}
               </li>
             ))}
           </ul>
