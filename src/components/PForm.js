@@ -42,12 +42,12 @@ const PForm = () => {
     const expiryDate = new Date(expiry_date);
     const diffDays = (expiryDate - mfdDate) / (1000 * 60 * 60 * 24);
 
-    let notifyDays;
-    if (diffDays > 3) {
-      notifyDays = 3;
-    } else {
-      notifyDays = 1;
-    }
+     let notifyDays =diffDays;
+    // if (diffDays > 3) {
+    //   notifyDays = 3;
+    // } else {
+    //   notifyDays = 1;
+    // }
 
     if (!notificationTimeout) {
       alert(`Set notification  for ${notifyDays} days`);
@@ -85,12 +85,13 @@ const PForm = () => {
     const expiryDate = new Date(expiry_date);
     const diffDays = (expiryDate - mfdDate) / (1000 * 60 * 60 * 24);
 
-    let notifyDays;
-    if (diffDays > 3) {
-      notifyDays = 5;
-    } else {
-      notifyDays = 1;
-    }
+    let notifyDays=diffDays ;
+  
+    // if (diffDays > 3) {
+    //   notifyDays = 5;
+    // } else {
+    //   notifyDays = 1;
+    // }
 
     const productDataWithNotification = {
       ...formattedProductData,
@@ -103,7 +104,7 @@ const PForm = () => {
         "Manufacturing date cannot be greater than or equal to expiry date."
       );
     }
-
+    console.log("diff",diffDays);
     try {
       const token = localStorage.getItem("token");
 
