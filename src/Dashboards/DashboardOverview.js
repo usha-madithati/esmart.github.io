@@ -1,4 +1,3 @@
-// DashboardOverview.js
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 import { Chart, LineElement, PointElement, LinearScale, CategoryScale, Title, Tooltip, Legend } from 'chart.js';
@@ -13,28 +12,30 @@ const DashboardOverview = ({ products }) => {
     return !isNaN(date);
   });
 
+  // Extract dates
   const productDates = validProducts.map(product => new Date(product.addedDate));
 
   // Aggregate products added per day
   const productsAddedPerDay = productDates.reduce((acc, date) => {
     const day = date.toISOString().split('T')[0];
-    if (!acc[day]) {
-      acc[day] = 1;
-    } else {
-      acc[day]++;
-    }
+    acc[day] = (acc[day] || 0) + 1;
     return acc;
   }, {});
 
+  // Prepare chart data
   const labels = Object.keys(productsAddedPerDay).sort();
   const data = labels.map(label => productsAddedPerDay[label]);
 
+  // Debugging: Log chart data
+  console.log('Chart Data:', { labels, data });
+
+  // Default chartData if no data is present
   const chartData = {
-    labels: labels,
+    labels: labels.length > 0 ? labels : ['No Data'],
     datasets: [
       {
         label: 'Products Added',
-        data: data,
+        data: data.length > 0 ? data : [1],
         borderColor: 'blue',
         backgroundColor: 'rgba(0,0,255,0.2)',
         fill: true,
@@ -43,8 +44,31 @@ const DashboardOverview = ({ products }) => {
   };
 
   const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      tooltip: {
+        callbacks: {
+          label: function (context) {
+            return `Products Added: ${context.raw}`;
+          },
+        },
+      },
+    },
     scales: {
+      x: {
+        title: {
+          display: true,
+          text: 'Date',
+        },
+      },
       y: {
+        title: {
+          display: true,
+          text: 'Number of Products',
+        },
         beginAtZero: true,
       },
     },
