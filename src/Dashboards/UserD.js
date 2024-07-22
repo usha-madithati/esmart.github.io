@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import EditProductModal from "../components/EditProductModal";
+import DashboardOverview from './DashboardOverview';
+import './DashboardOverview.css';
 
 const UserD = () => {
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
@@ -19,7 +21,7 @@ const UserD = () => {
       try {
         const token = localStorage.getItem("token");
         const userResponse = await axios.get(
-          "https://smartserver-production.up.railway.app/users",
+          "https://smartserver-scbe.onrender.com/users",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -27,7 +29,7 @@ const UserD = () => {
           }
         );
         const productResponse = await axios.get(
-          "https://smartserver-production.up.railway.app/products",
+          "https://smartserver-scbe.onrender.com/products",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -67,7 +69,7 @@ const UserD = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.delete(
-        `https://smartserver-production.up.railway.app/products/${productId}`,
+        `https://smartserver-scbe.onrender.com/products/${productId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -225,6 +227,11 @@ const UserD = () => {
             </Link>
           </div>
         </nav>
+        <main className="flex-1">
+            <section>
+              <DashboardOverview products={products} />
+            </section>
+          </main>
         <div className="flex flex-1 flex-col">
           <div className="mb-4 px-4 md:px-6">
             <div className="flex items-center justify-between py-6">

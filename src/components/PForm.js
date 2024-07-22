@@ -104,7 +104,7 @@ const PForm = () => {
         "Manufacturing date cannot be greater than or equal to expiry date."
       );
     }
-    console.log("diff",diffDays);
+
     try {
       const token = localStorage.getItem("token");
 
@@ -114,7 +114,7 @@ const PForm = () => {
       }
 
       await axios.post(
-        "https://smartserver-production.up.railway.app/add-product",
+        "https://smartserver-scbe.onrender.com/add-product",
         productDataWithNotification,
         {
           headers: {

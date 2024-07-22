@@ -1,0 +1,25 @@
+/* DashboardOverview.css */
+.cards {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+  
+  .card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    width: 20%;
+  }
+  
+  .card-content {
+    margin: 0 auto;
+  }
+  
+  .charts {
+    display: flex;
+    justify-content: space-around;
+  }
+  
