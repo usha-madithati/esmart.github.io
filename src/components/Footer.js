@@ -121,11 +121,11 @@ const Footer = () => {
                     Help Center
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <a href="#" onClick={handleLiveChatClick} className="text-gray-600 hover:text-gray-800">
                     Live Chat
                   </a>
-                </li>
+                </li> */}
                 <li>
                   <Link to="/user/review" className="text-gray-600 hover:text-gray-800">
                     Customer Review
