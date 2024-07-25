@@ -1,3 +1,5 @@
+// src/App.js
+
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
@@ -21,11 +23,14 @@ import Announcement from "./components/Announcement";
 import ForgotPassword from "./pages/Forgotpassword.js";
 import ResetPassword from "./pages/ResetPassword.js";
 import ProgressBar from "./components/ProgressBar.js";
+import FAQs from "./components/Faq/Faq.js";
+import ChatBox from "./components/ChatBox"; // Import the ChatBox component
 
 const App = () => {
   return (
     <>
       <ProgressBar />
+      <ChatBox /> {/* Include the ChatBox component */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/user/add-products" element={<PForm />} />
@@ -35,6 +40,7 @@ const App = () => {
         <Route path="/user/reset-password/:token" element={<ResetPassword />} />
         <Route element={<PrivateRoute />}>
           <Route path="/admin/dashboard" element={<AdminD></AdminD>} />
+          <Route path="/faq" element={<FAQs />} />
           <Route
             path="/admin/announcement"
             element={<Announcement></Announcement>}

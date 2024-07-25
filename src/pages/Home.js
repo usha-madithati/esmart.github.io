@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import FAQs from "../components/Faq/Faq";
 
 const Home = () => {
   const aboutUsRef = useRef(null);
@@ -69,7 +70,7 @@ const Home = () => {
               How Smart Saver Works
             </h2>
             <div className="flex flex-col md:flex-row justify-around items-center mt-8 space-y-8 md:space-y-0">
-              <div className="flex flex-col items-center text-center">
+            <Link to="/user/login" > <div className="flex flex-col items-center text-center">
                 <img
                   src="https://i.postimg.cc/NFb3HHMp/login.png"
                   alt="Login"
@@ -82,8 +83,8 @@ const Home = () => {
                   Log in to your SmartSaver account and unlock eco-friendly
                   savings today.
                 </p>
-              </div>
-              <div className="flex flex-col items-center text-center">
+              </div></Link>
+              <Link to="/scanqr" > <div className="flex flex-col items-center text-center">
                 <img
                   src="https://i.postimg.cc/Qt8SWnTZ/Group.png"
                   alt="Scan QR"
@@ -95,8 +96,8 @@ const Home = () => {
                 <p className="text-gray-600">
                   Scan the QR code of the product to get started instantly.
                 </p>
-              </div>
-              <div className="flex flex-col items-center text-center">
+              </div></Link>
+              <Link to="/user/notifications" ><div className="flex flex-col items-center text-center">
                 <img
                   src="https://i.postimg.cc/HWP3VzWF/octicondevicemobile24.png"
                   alt="Grant Access"
@@ -109,7 +110,7 @@ const Home = () => {
                   Real-time product tracking and updates. Stay connected to your
                   purchases effortlessly.
                 </p>
-              </div>
+              </div></Link>
             </div>
           </section>
 
@@ -140,7 +141,7 @@ const Home = () => {
               </div>
             </div>
           </section>
-
+       
           <section class="text-gray-600 body-font">
             <div class="container mx-auto flex px-5 md:flex-row flex-col items-center">
               <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
@@ -182,7 +183,7 @@ const Home = () => {
               </div>
             </div>
           </section>
-
+        <FAQs/>
           <section className="mt-16 bg-green-500 text-white py-12 px-4 rounded-lg">
             <h2 className="text-3xl font-semibold text-center">
               Your Trusted Partner in Product Management
