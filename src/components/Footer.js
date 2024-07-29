@@ -1,10 +1,15 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const emailAddress = 'SmartSaver@gmail.com';
 
 const Footer = () => {
-  const { pathname } = useLocation();
+  const navigate = useNavigate();
+
+  const handleLiveChatClick = (e) => {
+    e.preventDefault();
+    navigate('/chat'); // Update the route if needed
+  };
 
   return (
     <>
@@ -116,11 +121,11 @@ const Footer = () => {
                     Help Center
                   </Link>
                 </li>
-                <li>
-                  <Link to="../pages/Live-chat.js" className="text-gray-600 hover:text-gray-800">
+                {/* <li>
+                  <a href="#" onClick={handleLiveChatClick} className="text-gray-600 hover:text-gray-800">
                     Live Chat
-                  </Link>
-                </li>
+                  </a>
+                </li> */}
                 <li>
                   <Link to="/user/review" className="text-gray-600 hover:text-gray-800">
                     Customer Review
@@ -170,33 +175,26 @@ const Footer = () => {
               </a>
               <a href="https://www.instagram.com/smart_saver_2k24/" className="ml-3 text-gray-500">
                 <svg
-                  fill="none"
-                  stroke="currentColor"
+                  fill="currentColor"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
                   className="w-5 h-5"
                   viewBox="0 0 24 24"
                 >
-                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                  <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+                  <path d="M16 2h-8a6 6 0 00-6 6v8a6 6 0 006 6h8a6 6 0 006-6V8a6 6 0 00-6-6zm-4 2h4a4 4 0 014 4v4h-2v-2h-4v2H8V8a4 4 0 014-4zm-4 6h2v4H8v-4zm6 0h2v4h-2v-4z"></path>
                 </svg>
               </a>
-              <a href="https://www.linkedin.com/in/smart-saver" className="ml-3 text-gray-500">
+              <a href="https://github.com/smart_saver" className="ml-3 text-gray-500">
                 <svg
                   fill="currentColor"
-                  stroke="currentColor"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth="0"
+                  strokeWidth="2"
                   className="w-5 h-5"
                   viewBox="0 0 24 24"
                 >
-                  <path
-                    stroke="none"
-                    d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"
-                  ></path>
-                  <circle cx="4" cy="4" r="2" stroke="none"></circle>
+                  <path d="M12 2a10 10 0 00-10 10c0 4.42 2.86 8.16 6.84 9.48.5.09.68-.21.68-.48v-1.7c-2.75.6-3.33-1.32-3.33-1.32-.45-1.15-1.11-1.45-1.11-1.45-.91-.62.07-.61.07-.61 1 0 1.64 1.03 1.64 1.03.88 1.52 2.31 1.08 2.88.83.09-.64.34-1.08.62-1.33-2.12-.24-4.36-1.06-4.36-4.72 0-1.04.37-1.89.98-2.56-.1-.24-.43-1.22.09-2.55 0 0 .8-.25 2.62.96a9.07 9.07 0 014.78 0c1.82-1.21 2.62-.96 2.62-.96.52 1.33.2 2.31.1 2.55.6.67.98 1.52.98 2.56 0 3.66-2.25 4.48-4.39 4.71.35.3.67.89.67 1.8v2.68c0 .27.19.58.69.48A10 10 0 0012 2z"></path>
                 </svg>
               </a>
             </span>
