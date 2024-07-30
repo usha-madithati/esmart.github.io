@@ -134,7 +134,7 @@ const PForm = () => {
     } catch (error) {
       if (error.response) {
         if (error.response.status === 409) {
-          toast.error("Duplicate product. Please check and try again.");
+          toast.error("Product with same barcode Exist. Please check and try again.");
         } else {
           toast.error(
             `Error occurred: ${
