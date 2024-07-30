@@ -15,7 +15,7 @@ const Review = () => {
     const review = { name, email, message };
 
     try {
-      const response = await fetch("https://smartserver-scbe.onrender.com/reviews", {
+      const response = await fetch("http://localhost:6352/reviews", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

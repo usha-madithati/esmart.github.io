@@ -94,7 +94,7 @@ const AdminD = () => {
     const fetchSalesData = async () => {
       try {
         const response = await axios.get(
-          "https://smartserver-scbe.onrender.com/getallproducts"
+          "http://localhost:6352/getallproducts"
         );
         const data = response.data;
         setBarData({
@@ -117,7 +117,7 @@ const AdminD = () => {
     const fetchRevenueData = async () => {
       try {
         const response = await axios.get(
-          "https://smartserver-scbe.onrender.com/getallusers"
+          "http://localhost:6352/getallusers"
         );
         const data = response.data;
         setLineData({
@@ -140,7 +140,7 @@ const AdminD = () => {
     const fetchUsers = async () => {
       try {
         const response = await axios.get(
-          "https://smartserver-scbe.onrender.com/getallusers"
+          "http://localhost:6352/getallusers"
         );
         setUsers(response.data);
       } catch (error) {
@@ -151,7 +151,7 @@ const AdminD = () => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get(
-          "https://smartserver-scbe.onrender.com/getallproducts"
+          "http://localhost:6352/getallproducts"
         );
         setProducts(response.data);
       } catch (error) {
@@ -162,7 +162,7 @@ const AdminD = () => {
     const fetchAnnouncements = async () => {
       try {
         const response = await axios.get(
-          "https://smartserver-scbe.onrender.com/announcements"
+          "http://localhost:6352/announcements"
         );
         setAnnouncements(response.data);
       } catch (error) {

@@ -21,7 +21,7 @@ const UserD = () => {
       try {
         const token = localStorage.getItem("token");
         const userResponse = await axios.get(
-          "https://smartserver-scbe.onrender.com/users",
+          "http://localhost:6352/users",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -29,7 +29,7 @@ const UserD = () => {
           }
         );
         const productResponse = await axios.get(
-          "https://smartserver-scbe.onrender.com/products",
+          "http://localhost:6352/products",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -69,7 +69,7 @@ const UserD = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.delete(
-        `https://smartserver-scbe.onrender.com/products/${productId}`,
+        `http://localhost:6352/products/${productId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

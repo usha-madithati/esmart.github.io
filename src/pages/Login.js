@@ -37,7 +37,7 @@ const Login = () => {
       setLoading(true);
       try {
         const response = await axios.post(
-          "https://smartserver-scbe.onrender.com/login",
+          "http://localhost:6352/login",
           {
             email,
             password,

@@ -81,13 +81,13 @@ const QRCodeVerification = () => {
       setIsScannerOpen(false);
       try {
         const response = await axios.post(
-          `https://smartserver-scbe.onrender.com/scan-product`,
+          `http://localhost:6352/scan-product`,
           { barcode: data }
         );
         setProductInfo(response.data.product);
         // Save the product information to the database if not already present
         await axios.post(
-          `https://smartserver-scbe.onrender.com/add-product`,
+          `http://localhost:6352/add-product`,
           response.data.product
         );
       } catch (err) {

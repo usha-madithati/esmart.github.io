@@ -17,6 +17,7 @@ const PForm = () => {
   const [loading, setLoading] = useState(false);
   const [notificationMessage, setNotificationMessage] = useState("");
   const [notificationTimeout, setNotificationTimeout] = useState(null);
+  const [hasNotified, setHasNotified] = useState(false);
   const [canRedirect, setCanRedirect] = useState(false);
 
   useEffect(() => {
@@ -57,6 +58,7 @@ const PForm = () => {
         setNotificationTimeout(null);
       }, 50000);
       setNotificationTimeout(timeoutId);
+      setHasNotified(true);
     } else {
       alert(`Set notification for ${notifyDays} days`);
     }
@@ -69,6 +71,10 @@ const PForm = () => {
   const handleStore = async (e) => {
     e.preventDefault();
     setLoading(true);
+    if (!hasNotified) { // Check if the user has clicked "Get Notified"
+      setLoading(false);
+      return toast.error("Please click 'Get Notified' before storing the product.");
+    }
 
     const formattedProductData = {
       ...productData,
