@@ -13,7 +13,7 @@ const CustomerVoices = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:6352/contactus", {
+      const response = await axios.post("https://smartserver-scbe.onrender.com/contactus", {
         name,
         email,
         message,
