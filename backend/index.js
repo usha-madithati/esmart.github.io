@@ -229,7 +229,7 @@ app.get("/products/:barcode", async (req, res) => {
 });
 
 app.post("/add-product", authenticateUser, async (req, res) => {
-  const { product_name, barcode, mfd, expiry_date, product_info ,notificationPeriod } = req.body;
+  const { product_name, barcode, mfd, expiry_date, product_info, notificationPeriod } = req.body;
   const userId = req.user.userId;
 
   if (!product_name || !barcode || !mfd || !expiry_date || !product_info || !notificationPeriod) {
@@ -250,17 +250,24 @@ app.post("/add-product", authenticateUser, async (req, res) => {
       .send({ message: "Expiry date must be after the manufacturing date." });
   }
 
-  const newProduct = new Product({
-    product_name,
-    barcode,
-    mfd: new Date(mfd),
-    expiry_date: new Date(expiry_date),
-    product_info,
-    addedBy: userId,
-    notificationPeriod,
-  });
-
   try {
+    // Check if a product with the same barcode exists
+    const existingProduct = await Product.findOne({ barcode });
+
+    if (existingProduct) {
+      return res.status(409).send({ message: "A product with this barcode already exists." });
+    }
+
+    const newProduct = new Product({
+      product_name,
+      barcode,
+      mfd: new Date(mfd),
+      expiry_date: new Date(expiry_date),
+      product_info,
+      addedBy: userId,
+      notificationPeriod,
+    });
+
     await newProduct.save();
     res.status(201).send({
       message: "Product added successfully!",
