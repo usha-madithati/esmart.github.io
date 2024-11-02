@@ -162,16 +162,20 @@ const Footer = () => {
                 </svg>
               </a>
               <a href="https://twitter.com/smart_saver" className="ml-3 text-gray-500">
-                <svg
-                  fill="currentColor"
+              <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" fill="#adb5bd"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth="2"
-                  className="w-5 h-5"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
-                </svg>
+                  strokeWidth="2" viewBox="0 0 512 512" id="twitter" className="w-5 h-5">
+                <g clip-path="url(#clip0_84_15698)">
+                  <rect width="512" height="512" fill="none" rx="60"></rect>
+                  <path fill="currentColor" d="M355.904 100H408.832L293.2 232.16L429.232 412H322.72L239.296 302.928L143.84 412H90.8805L214.56 270.64L84.0645 100H193.28L268.688 199.696L355.904 100ZM337.328 380.32H366.656L177.344 130.016H145.872L337.328 380.32Z"></path>
+                </g>
+                <defs>
+                  <clipPath id="clip0_84_15698">
+                    <rect width="512" height="512" fill="none"></rect>
+                  </clipPath>
+                </defs>
+              </svg>
               </a>
               <a href="https://www.instagram.com/smart_saver_2k24/" className="ml-3 text-gray-500">
                 <svg
@@ -206,3 +210,5 @@ const Footer = () => {
 };
 
 export default Footer;
+
+
