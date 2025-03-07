@@ -7,7 +7,7 @@ const FAQs = () => {
 
   const faqs = [
     {
-      question:'How Can I Add Product To User Dasboard',
+      question:'How Can I Add Product To User Dasboard ?',
       answer:`You can add a product to your dashboard either by scanning its QR code for automatic data entry on the 'Scan QR' page or by manually entering the product details on the 'Users' page. Both options are available.`,
     },
     {
