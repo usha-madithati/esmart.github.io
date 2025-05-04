@@ -27,6 +27,8 @@ const Navbar = () => {
           <div className="hidden md:flex flex-1 justify-center space-x-6">
             <NavLink to="/" text="HOME" />
             <NavLink to="/#about-us" text="ABOUT" />
+            <NavLink to="/scanqr" text="SCAN QR" />
+            <NavLink to="/contact" text="CONTACT" />
             {isLoggedIn && userRole === 1 && (
               <NavLink to="/admin/dashboard" text="ADMIN" />
             )}
@@ -37,8 +39,6 @@ const Navbar = () => {
               </>
             )}
             {!isLoggedIn && <NavLink to="/user/login" text="LOGIN" />}
-            <NavLink to="/scanqr" text="SCAN QR" />
-            <NavLink to="/contact" text="CONTACT" />
           </div>
           <div className="md:hidden flex items-center">
             <button

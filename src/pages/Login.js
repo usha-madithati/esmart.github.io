@@ -4,7 +4,6 @@ import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import { RotatingLines } from "react-loader-spinner";
 
 const Login = () => {
